@@ -1,0 +1,2 @@
+[22-Aug-2014 07:23:15 UTC] PHP Warning:  require(/home/felicia/board/app/controllers/thread_controller.php): failed to open stream: No such file or directory in /home/felicia/board/app/config/bootstrap.php on line 17
+[22-Aug-2014 07:23:15 UTC] PHP Fatal error:  require(): Failed opening required '/home/felicia/board/app/controllers/thread_controller.php' (include_path='.:/usr/share/php:/usr/share/pear') in /home/felicia/board/app/config/bootstrap.php on line 17
