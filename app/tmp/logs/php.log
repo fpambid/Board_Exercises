@@ -1,0 +1,73 @@
+[27-Aug-2014 01:23:05 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 01:23:09 UTC] PHP Warning:  file_put_contents(/home/felicia/Board_Exercises/app/tmp/logs/debug.log): failed to open stream: Permission denied in /home/felicia/Board_Exercises/app/config/log.php on line 76
+[27-Aug-2014 01:23:09 UTC] PHP Warning:  file_put_contents(/home/felicia/Board_Exercises/app/tmp/logs/debug.log): failed to open stream: Permission denied in /home/felicia/Board_Exercises/app/config/log.php on line 76
+[27-Aug-2014 01:23:09 UTC] PHP Warning:  file_put_contents(/home/felicia/Board_Exercises/app/tmp/logs/debug.log): failed to open stream: Permission denied in /home/felicia/Board_Exercises/app/config/log.php on line 76
+[27-Aug-2014 01:23:10 UTC] PHP Warning:  file_put_contents(/home/felicia/Board_Exercises/app/tmp/logs/debug.log): failed to open stream: Permission denied in /home/felicia/Board_Exercises/app/config/log.php on line 76
+[27-Aug-2014 01:23:10 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 01:23:41 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 01:23:45 UTC] PHP Warning:  file_put_contents(/home/felicia/Board_Exercises/app/tmp/logs/debug.log): failed to open stream: Permission denied in /home/felicia/Board_Exercises/app/config/log.php on line 76
+[27-Aug-2014 01:23:45 UTC] PHP Warning:  file_put_contents(/home/felicia/Board_Exercises/app/tmp/logs/debug.log): failed to open stream: Permission denied in /home/felicia/Board_Exercises/app/config/log.php on line 76
+[27-Aug-2014 01:23:45 UTC] PHP Warning:  file_put_contents(/home/felicia/Board_Exercises/app/tmp/logs/debug.log): failed to open stream: Permission denied in /home/felicia/Board_Exercises/app/config/log.php on line 76
+[27-Aug-2014 01:23:45 UTC] PHP Warning:  file_put_contents(/home/felicia/Board_Exercises/app/tmp/logs/debug.log): failed to open stream: Permission denied in /home/felicia/Board_Exercises/app/config/log.php on line 76
+[27-Aug-2014 01:23:45 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 01:28:46 UTC] PHP Warning:  file_put_contents(/home/felicia/Board_Exercises/app/tmp/logs/debug.log): failed to open stream: Permission denied in /home/felicia/Board_Exercises/app/config/log.php on line 76
+[27-Aug-2014 01:28:46 UTC] PHP Warning:  file_put_contents(/home/felicia/Board_Exercises/app/tmp/logs/debug.log): failed to open stream: Permission denied in /home/felicia/Board_Exercises/app/config/log.php on line 76
+[27-Aug-2014 01:28:46 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 01:28:51 UTC] PHP Warning:  file_put_contents(/home/felicia/Board_Exercises/app/tmp/logs/debug.log): failed to open stream: Permission denied in /home/felicia/Board_Exercises/app/config/log.php on line 76
+[27-Aug-2014 01:28:51 UTC] PHP Warning:  file_put_contents(/home/felicia/Board_Exercises/app/tmp/logs/debug.log): failed to open stream: Permission denied in /home/felicia/Board_Exercises/app/config/log.php on line 76
+[27-Aug-2014 01:28:51 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 01:28:53 UTC] PHP Warning:  file_put_contents(/home/felicia/Board_Exercises/app/tmp/logs/debug.log): failed to open stream: Permission denied in /home/felicia/Board_Exercises/app/config/log.php on line 76
+[27-Aug-2014 01:28:53 UTC] PHP Warning:  file_put_contents(/home/felicia/Board_Exercises/app/tmp/logs/debug.log): failed to open stream: Permission denied in /home/felicia/Board_Exercises/app/config/log.php on line 76
+[27-Aug-2014 01:28:53 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 01:42:22 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 01:43:07 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 01:43:11 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 01:43:15 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 01:43:17 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 01:43:20 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 01:43:21 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 01:46:21 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 01:47:12 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 01:47:57 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 01:47:59 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 01:48:07 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 01:48:09 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 01:48:12 UTC] PHP Fatal error:  Class 'ValidationException' not found in /home/felicia/Board_Exercises/app/models/thread.php on line 61
+[27-Aug-2014 01:48:17 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 01:48:19 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 01:49:16 UTC] PHP Fatal error:  Class 'ValidationException' not found in /home/felicia/Board_Exercises/app/models/thread.php on line 61
+[27-Aug-2014 01:49:28 UTC] PHP Fatal error:  Class 'ValidationException' not found in /home/felicia/Board_Exercises/app/models/thread.php on line 61
+[27-Aug-2014 01:51:25 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 01:51:27 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 01:51:29 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 01:51:33 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 01:51:35 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 01:51:37 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 01:51:38 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 01:52:20 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 01:52:25 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 01:52:38 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 01:52:44 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 01:52:45 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 01:52:47 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 01:52:49 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 01:52:51 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 01:52:54 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 01:52:59 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 01:53:00 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 01:53:19 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 01:53:20 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 01:53:24 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 01:53:25 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 01:53:28 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 01:53:29 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 01:53:39 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 01:53:40 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 01:54:14 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 01:54:16 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 01:54:21 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 01:54:27 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 01:54:29 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 02:02:13 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 02:02:54 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
+[27-Aug-2014 02:06:01 UTC] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5
