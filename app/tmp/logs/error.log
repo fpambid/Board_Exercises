@@ -106,3 +106,8 @@
 [Wed Aug 27 09:19:55 2014] [error] [client 127.0.0.1] PHP Warning:  file_put_contents(/home/felicia/Board_Exercises/app/tmp/logs/debug.log): failed to open stream: Permission denied in /home/felicia/Board_Exercises/app/config/log.php on line 76, referer: http://board.example.com/thread/create
 [Wed Aug 27 09:19:55 2014] [error] [client 127.0.0.1] PHP Warning:  file_put_contents(/home/felicia/Board_Exercises/app/tmp/logs/debug.log): failed to open stream: Permission denied in /home/felicia/Board_Exercises/app/config/log.php on line 76, referer: http://board.example.com/thread/create
 [Wed Aug 27 09:19:55 2014] [error] [client 127.0.0.1] PHP Notice:  Undefined variable: title in /home/felicia/Board_Exercises/app/views/layouts/default.php on line 5, referer: http://board.example.com/thread/create
+[Thu Aug 28 08:39:47 2014] [error] [client 127.0.0.1] File does not exist: /home/felicia/Board_Exercises/app/webroot/favicon.ico
+[Thu Aug 28 11:57:53 2014] [error] [client 127.0.0.1] PHP Notice:  Use of undefined constant MIN_NAME - assumed 'MIN_NAME' in /home/felicia/Board_Exercises/app/config/core_development.php on line 7
+[Thu Aug 28 11:57:53 2014] [error] [client 127.0.0.1] PHP Notice:  Use of undefined constant MAX_NAME - assumed 'MAX_NAME' in /home/felicia/Board_Exercises/app/config/core_development.php on line 8
+[Thu Aug 28 11:57:53 2014] [error] [client 127.0.0.1] PHP Notice:  Use of undefined constant MIN_PASS - assumed 'MIN_PASS' in /home/felicia/Board_Exercises/app/config/core_development.php on line 10
+[Thu Aug 28 11:57:53 2014] [error] [client 127.0.0.1] PHP Notice:  Use of undefined constant MAX_PASS - assumed 'MAX_PASS' in /home/felicia/Board_Exercises/app/config/core_development.php on line 11

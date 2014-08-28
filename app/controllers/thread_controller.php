@@ -3,7 +3,7 @@ class ThreadController extends AppController
 {
     public function index()
     {
-    	$title = "";
+    	$title = " ";
         $threads = Thread::getAll();
         //TODO: Get all threads
         $this->set(get_defined_vars());
@@ -14,6 +14,7 @@ class ThreadController extends AppController
     **/
     public function view()
     {
+        $title = " ";
         $thread = Thread::get(Param::get('thread_id'));
         $comments = $thread->getComments();
 
@@ -25,6 +26,7 @@ class ThreadController extends AppController
     **/
     public function write()
     {
+        $title = " ";
         $thread = Thread::get(Param::get('thread_id'));
         $comment = new Comment;
         $page = Param::get('page_next');
@@ -55,6 +57,8 @@ class ThreadController extends AppController
 
 	public function create()
     {
+    	
+        $title = "";
     	$thread = new Thread;
     	$comment = new Comment;
     	$page = Param::get('page_next', 'create');
@@ -66,18 +70,18 @@ class ThreadController extends AppController
     	$comment->username = Param::get('username');
     	$comment->body = Param::get('body');
     try {
-$thread->create($comment);
-} catch (ValidationException $e) {
-$page = 'create';
-}
-break;
-default:
-throw new NotFoundException("{$page} is not found");
-break;
-}
-$this->set(get_defined_vars());
-$this->render($page);
-}
+        $thread->create($comment);
+    } catch (ValidationException $e) {
+        $page = 'create';
+      }
+      break;
+	default:
+	throw new NotFoundException("{$page} is not found");
+	break;
+	}
+	$this->set(get_defined_vars());
+	$this->render($page);
+	}
 
 
 

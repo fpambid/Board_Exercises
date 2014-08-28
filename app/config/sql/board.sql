@@ -1,7 +1,7 @@
 CREATE DATABASE IF NOT EXISTS board;
 GRANT SELECT, INSERT, UPDATE, DELETE ON board.*
     TO board_root@localhost 
-    IDENTIFIED BY ’board_root’;
+    IDENTIFIED BY 'board_root';
 FLUSH PRIVILEGES;
 
 USE board;
@@ -23,4 +23,12 @@ CREATE TABLE IF NOT EXISTS comment (
     INDEX (thread_id, created)
 )ENGINE=InnoDB;
 
+CREATE TABLE IF NOT EXISTS user_detail (
+    id     INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    username    VARCHAR(255) NOT NULL,
+    name        VARCHAR(255) NOT NULL,
+    email       VARCHAR(255) NOT NULL,
+    password    VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id)
+)ENGINE=InnoDB;
 
