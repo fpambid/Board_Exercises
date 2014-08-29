@@ -3,35 +3,30 @@
             <h4 class="alert-heading">Validation error!</h4>
 
             <?php if (!empty($register->validation_errors['name']['length'])): ?>
-                <div><em>Name</em> must be between
-                <?php eh($register->validation['name']['length'][1]) ?> and
-                <?php eh($register->validation['name']['length'][2]) ?> characters in length.
+                <div><em>Name</em> must be between 3 and 16 characters in length 
                 </div>
+
                 <?php endif ?>
 
              <?php if (!empty($register->validation_errors['username']['length'])): ?>
                 
-                <div><em>Your username</em> must be between
-                <?php eh($register->validation['username']['length'][1]) ?> and
-                <?php eh($register->validation['username']['length'][2]) ?> characters in length.
+                <div>Invalid<em> username</em>! Alphanumerics only! 
                 </div>
             <?php endif ?>
 
              <?php if (!empty($register->validation_errors['password']['length'])): ?>
                 
-                <div><em>Your password</em> must be between
-                <?php eh($register->validation['password']['length'][1]) ?> and
-                <?php eh($register->validation['password']['length'][2]) ?> characters in length.
+                <div><em>Your password</em> must be between 6 and 16 characters in length.
                 </div>
             <?php endif ?>
- <?php endif ?>
+<?php endif ?>
         </div>
       <!--   <?php //print("<pre>");// print_r($register); print(//"</pre>"); ?> -->
 
 
 <div class="container">
     <div class="row">
-        <form role="form" action = "<?php eh(url(''))?>">
+        <form role="form" action = "<?php eh(url(''))?>" method = "post" onSubmit = "register()">
             <div class="col-lg-6">
                 <div class="well well-sm"><strong><span class="icon-asterisk"></span>Required Field</strong></div>
                 <div class="form-group">
@@ -58,7 +53,7 @@
                 <div class="form-group">
                     <label for="InputPassword">Password</label>
                     <div class="input-group">
-                        <input name="password" id="password" class="form-control" rows="5">
+                        <input type="Password" name="password" id="password" class="form-control" rows="5">
                         <span class="input-group-addon"><span class="icon-asterisk"></span></span>
                     </div>
                 </div>

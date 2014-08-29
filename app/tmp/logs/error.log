@@ -111,3 +111,14 @@
 [Thu Aug 28 11:57:53 2014] [error] [client 127.0.0.1] PHP Notice:  Use of undefined constant MAX_NAME - assumed 'MAX_NAME' in /home/felicia/Board_Exercises/app/config/core_development.php on line 8
 [Thu Aug 28 11:57:53 2014] [error] [client 127.0.0.1] PHP Notice:  Use of undefined constant MIN_PASS - assumed 'MIN_PASS' in /home/felicia/Board_Exercises/app/config/core_development.php on line 10
 [Thu Aug 28 11:57:53 2014] [error] [client 127.0.0.1] PHP Notice:  Use of undefined constant MAX_PASS - assumed 'MAX_PASS' in /home/felicia/Board_Exercises/app/config/core_development.php on line 11
+[Thu Aug 28 18:00:57 2014] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected '}' in /home/felicia/Board_Exercises/app/helpers/validation_helper.php on line 27, referer: http://board.example.com/user/register
+[Thu Aug 28 18:01:08 2014] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected '}' in /home/felicia/Board_Exercises/app/helpers/validation_helper.php on line 32, referer: http://board.example.com/user/register
+[Thu Aug 28 18:34:12 2014] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected ',' in /home/felicia/Board_Exercises/app/helpers/validation_helper.php on line 36, referer: http://board.example.com/user/register
+[Thu Aug 28 18:34:44 2014] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected '}' in /home/felicia/Board_Exercises/app/helpers/validation_helper.php on line 38, referer: http://board.example.com/user/register
+[Fri Aug 29 07:29:53 2014] [error] [client 127.0.0.1] File does not exist: /home/felicia/Board_Exercises/app/webroot/favicon.ico
+[Fri Aug 29 07:48:13 2014] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected '}' in /home/felicia/Board_Exercises/app/helpers/validation_helper.php on line 27, referer: http://board.example.com/user/register
+[Fri Aug 29 14:55:43 2014] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected T_LNUMBER in /home/felicia/Board_Exercises/app/config/core_development.php on line 13
+[Fri Aug 29 15:29:17 2014] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected T_PUBLIC in /home/felicia/Board_Exercises/app/helpers/pagination_helper.php on line 3
+[Fri Aug 29 15:29:17 2014] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected T_PUBLIC in /home/felicia/Board_Exercises/app/helpers/pagination_helper.php on line 3
+[Fri Aug 29 15:29:18 2014] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected T_PUBLIC in /home/felicia/Board_Exercises/app/helpers/pagination_helper.php on line 3
+[Fri Aug 29 15:29:18 2014] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected T_PUBLIC in /home/felicia/Board_Exercises/app/helpers/pagination_helper.php on line 3

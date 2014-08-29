@@ -1,7 +1,10 @@
 <?php
 class UserController Extends AppController
 {
+	
+
     public function index(){
+    	$title = " ";
     	$status = " ";
 
     	$username = Param::get('username');
@@ -18,6 +21,7 @@ class UserController Extends AppController
                 $log_detail = $user->is_real($username, $password);   
                 $_SESSION['username'] = $log_detail->username;
                 $_SESSION['password'] = $log_detail->password;
+                $_SESSION['password'] = $log_detail->name;
                 redirect('thread','index');
             } catch (ValidationException $e) {
                 $status = notice($e->getMessage(),"error");
@@ -31,6 +35,7 @@ class UserController Extends AppController
 
 
     public function register(){
+    	$title = " ";
     	$status = " ";
 
     	$reg_username = Param::get('username');
@@ -39,7 +44,6 @@ class UserController Extends AppController
     	$reg_password= Param::get('password');
     	$empty_field = 0;
 
-// echo $username;
     	$user_detail = array(
                	          'name' => $reg_name,
                	          'username' => $reg_username,
@@ -51,11 +55,17 @@ class UserController Extends AppController
     	
  
 		$status = " ";
-        // $register->username = Param::get('username');
-        // $register->name = Param::get('name');
-        // $register->email = Param::get('email');
-        // $register->password = Param::get('password');
+        $register->username = Param::get('username');
+        $register->name = Param::get('name');
+        $register->email = Param::get('email');
+        $register->password = Param::get('password');
 
+        if (!isset($reg_name) || !isset($reg_password) || !isset($reg_email) ||!isset($reg_username)) {
+            $status = " ";
+        } elseif (!($reg_username) || !($reg_password) || !($reg_email) || !($reg_name)) {
+            $status = notice("All fields are required", "error");
+        }
+       	
        	foreach ($user_detail as $key => $value) {
     		if (!$value){
     			$empty_field++;
@@ -78,11 +88,10 @@ class UserController Extends AppController
         	$status = notice($e->getMessage(), "error");
         }  
         }  
-     else
-			{
-				$status = notice("All Fields are Required", "error");
-			}
+    
 
+       
+    
 
         //TODO: Get all threads
         $this->set(get_defined_vars());

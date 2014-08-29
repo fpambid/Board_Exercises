@@ -2,27 +2,38 @@
 class Register Extends AppModel
     {
 
-    const MIN_NAME = 12;
-    const MAX_NAME = 25;
+    const MIN_NAME = 3;
+    const MAX_NAME = 20;
     const MIN_PASS = 6;
     const MAX_PASS = 20;
 
     	public $validation = array(
         'name' => array(
             'length' => array(
-                'validate_between', MIN_NAME, MAX_NAME,
+                'validate_between', MIN_NAME,MAX_NAME
                 )
+            // 'format' => array(
+            //     'is_valid_name', "Invalid name"
+            //     )
             ),
         'username' => array(
-        	'length' => array(
-        		'validate_between', MIN_NAME, MAX_NAME
-        		)
+            'length' => array(
+                'validate_between', MIN_NAME,MAX_NAME
+                )
+            // 'for
+        	// 'format' => array(
+         //        'is_valid_username', "Invalid username"
+         //        )
             ),
 
         'password'=> array(
-        	'length' => array(
-        		'validate_between', MIN_PASS, MAX_PASS
-        		)
+            'length' => array(
+                'validate_between', MIN_PASS,MAX_PASS
+                )
+            // 'for
+        		// 'format' => array(
+          //           'is_valid_pass', "Invalid password"
+          //       )
         	),
 
         );
@@ -44,7 +55,7 @@ class Register Extends AppModel
                 if ($this->hasError()) {
 
                     throw new ValidationException(notice('Error Found!', "error"));
-                    $status = notice("What???", "error");
+                    // $status = notice("What???", "error");
                 }
 
                 $user = array();

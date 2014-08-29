@@ -4,8 +4,8 @@ define('APP_HOST', 'hello.example.com');
 define('APP_BASE_PATH', '/');
 define('APP_URL', 'http://hello.example.com/');
 
-define('MIN_NAME', 12);
-define('MAX_NAME', 25);
+define('MIN_NAME', 3);
+define('MAX_NAME', 20);
 
 define('MIN_PASS', 6);
 define('MAX_PASS', 20);

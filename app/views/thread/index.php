@@ -1,4 +1,6 @@
-	    <h1>All threads</h1>
+	    <h1>Hello there! <?php echo $_SESSION['username'];?><h1>
+
+        <h2>All threads</h2>
     <ul>
     <!--<li>TODO: Link to thread</li>
     <li>TODO: Link to thread</li> -->
@@ -13,3 +15,6 @@
     </ul><br/>
 
     	<a class="btn btn-large btn-primary" href="<?php eh(url('thread/create')) ?>">Create</a>
+        <br/>
+
+        <?php echo $pagination['control'];?>

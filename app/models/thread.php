@@ -13,11 +13,12 @@ class Thread extends AppModel
     /**
     *TO view all threads
     */
-    public static function getAll()
+    public static function getAll($limit)
     {
         $threads = array();
+        $limited = $limit;
         $db = DB::conn();
-        $rows = $db->rows('SELECT * FROM thread');
+        $rows = $db->rows("SELECT * FROM thread $limited");
         
         foreach ($rows as $row) {
         	$threads[] = new Thread($row);
@@ -82,5 +83,15 @@ class Thread extends AppModel
         // write first comment at the same time
         $this->write($comment);
         $db->commit();
+    }
+
+    //count number of rows
+    public static function countThread()
+    {
+        $db= DB::conn();
+        $total = $db->value("SELECT COUNT(id) FROM thread");
+
+        return $total;
+
     }
 }

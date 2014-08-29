@@ -1,13 +1,73 @@
-<form id="login-form" action='<?php eh(url(''));?>' method="post">
-        <fieldset>
-          <span class="text">
-          <input type="text" name="username" value="Username" onFocus="if(this.value=='Username'){this.value=''}" onBlur="if(this.value==''){this.value='Username'}" >
-          </span> <span class="text">
-          <input type="password" name="password" value="Password" onFocus="if(this.value=='Password'){this.value=''}" onBlur="if(this.value==''){this.value='Password'}"></span> &nbsp;
-         <span class="btn btn-mini btn-inverse"> <input type="submit"   value="Log In" > </span>
-         &nbsp;
-          
+<body>
+<div class="row">
+    <div class="col-lg-4 col-lg-offset-4">
+        <div class="input-group">
 
-          <a href="<?php eh(url('user/register'));?>">Create an account</a>
-        </fieldset>
+
+<form class ="form-signin" id="login-form" action='<?php eh(url(''));?>' method="post">
+<table align="center">
+
+<tr>
+
+<td align="left"><div class="control-group"> 
+<h1>Sign in </h1>
+<?php echo $status;?><br/><label class="control-label" for = "inputUsername"> Username </label>
+<div class="controls">
+
+
+
+	<input type="text" name="username" maxlength="20"> 
+
+</div></div></td></tr>
+<tr><td align="left">
+    <div class="control-group">
+    <label class="control-label" for="inputPassword">Password</label>
+    <div class="controls">
+          <input type="password" name="password" maxlength="16" >
+          </div></div></td></tr>
+          <tr><td align="left">
+              <div class="control-group">
+    <div class="controls">
+    <button type="submit" class="btn btn-primary">Sign in</button> &nbsp; &nbsp; &nbsp;
+     <a href="<?php eh(url('user/register'));?>">Create an account</a>
+    </div>
+    </div>
+</td></tr>
+</table>
+
+         
+            </form>
+          
+</div>
+</div></div></div>
+
+</body>
+
+
+        <!-- </fieldset>
 </form>
+
+
+
+    <form class="form-horizontal">
+    <div class="control-group">
+    <label class="control-label" for="inputEmail">Email</label>
+    <div class="controls">
+    <input type="text" id="inputEmail" placeholder="Email">
+    </div>
+    </div>
+    <div class="control-group">
+    <label class="control-label" for="inputPassword">Password</label>
+    <div class="controls">
+    <input type="password" id="inputPassword" placeholder="Password">
+    </div>
+    </div>
+    <div class="control-group">
+    <div class="controls">
+    <label class="checkbox">
+    <input type="checkbox"> Remember me
+    </label>
+    <button type="submit" class="btn">Sign in</button>
+    </div>
+    </div>
+    </form> -->

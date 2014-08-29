@@ -4,8 +4,10 @@ class ThreadController extends AppController
     public function index()
     {
     	$title = " ";
-        $threads = Thread::getAll();
-        //TODO: Get all threads
+        $total_thread = Thread::countThread();
+        $pagination = pagination($total_thread, '');
+
+        $threads = Thread::getAll($pagination['max']);
         $this->set(get_defined_vars());
     }
 
@@ -82,7 +84,5 @@ class ThreadController extends AppController
 	$this->set(get_defined_vars());
 	$this->render($page);
 	}
-
-
 
 }
