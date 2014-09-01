@@ -1,25 +1,45 @@
 <?php if ($register->hasError()): ?>
-        <div class="alert alert-block">
-            <h4 class="alert-heading">Validation error!</h4>
+    <div class="alert alert-block">
+        <h4 class="alert-heading">Validation error!</h4>
 
-            <?php if (!empty($register->validation_errors['name']['length'])): ?>
-                <div><em>Name</em> must be between 3 and 16 characters in length 
-                </div>
+         <?php if (!empty($user->validation_errors['name']['format'])): ?>
+            <div>That name is INVALID! Alphanumerics only!
+            </div>
+        <?php endif ?>  
 
-                <?php endif ?>
+        <?php if (!empty($user->validation_errors['username']['format'])): ?>
+            <div>That username is INVALID!
+            </div>
+        <?php endif ?>     
 
-             <?php if (!empty($register->validation_errors['username']['length'])): ?>
+        <?php if (!empty($user->validation_errors['email']['format'])): ?>
+            <div>That Email is INVALID!
+            </div>
+        <?php endif ?>          
+        
+        <?php if (!empty($register->validation_errors['name']['length'])): ?>
+            <div><em>Comment</em> must be between
+                <?php eh($register->validation['name']['length'][1]) ?> and
+                <?php eh($register->validation['name']['length'][2]) ?> characters in length.
+            </div>
+        <?php endif ?>
+
+        <?php if (!empty($register->validation_errors['username']['length'])|| !empty($user->validation_errors['username']['format'])): ?>
                 
-                <div>Invalid<em> username</em>! Alphanumerics only! 
-                </div>
-            <?php endif ?>
+            <div><em>Your name</em> must be between
+                <?php eh($register->validation['username']['length'][1]) ?> and
+                <?php eh($register->validation['username']['length'][2]) ?> characters in length.
+            </div>
+        <?php endif ?>
 
-             <?php if (!empty($register->validation_errors['password']['length'])): ?>
+        <?php if (!empty($register->validation_errors['password']['length'])): ?>
                 
-                <div><em>Your password</em> must be between 6 and 16 characters in length.
-                </div>
-            <?php endif ?>
-<?php endif ?>
+            <div><em>Your password</em> must be between
+                <?php eh($register->validation['password']['length'][1]) ?> and
+                <?php eh($register->validation['password']['length'][2]) ?> characters in length.
+            </div>
+        <?php endif ?>
+ <?php endif ?>
         </div>
       <!--   <?php //print("<pre>");// print_r($register); print(//"</pre>"); ?> -->
 
@@ -53,7 +73,7 @@
                 <div class="form-group">
                     <label for="InputPassword">Password</label>
                     <div class="input-group">
-                        <input type="Password" name="password" id="password" class="form-control" rows="5">
+                        <input type ="Password" name="password" id="password" class="form-control" rows="5">
                         <span class="input-group-addon"><span class="icon-asterisk"></span></span>
                     </div>
                 </div>
@@ -64,3 +84,6 @@
 </div>
 
 <?php echo $status;?>
+
+<!-- CHANGED validation_errors line 5, 12 -->
+<!--cleaned codes-->

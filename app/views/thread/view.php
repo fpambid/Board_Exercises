@@ -12,8 +12,10 @@
 	        </div>
 	    </div> 
 
-	<div> <ul>
-    <?php echo readable_text($v->body); ?></ul>
+	<div> 
+	<ul>
+    <?php echo readable_text($v->body); ?>
+    </ul>
     </div>
 
     <?php endforeach ?>

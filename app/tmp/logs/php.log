@@ -1707,3 +1707,238 @@ Stack trace:
 [29-Aug-2014 08:57:28 UTC] PHP Fatal error:  Call to a member function is_real() on a non-object in /home/felicia/Board_Exercises/app/controllers/user_controller.php on line 21
 [29-Aug-2014 09:00:21 UTC] PHP Notice:  Undefined variable: _SESSION in /home/felicia/Board_Exercises/app/views/thread/index.php on line 1
 [29-Aug-2014 09:07:40 UTC] PHP Notice:  Undefined variable: _SESSION in /home/felicia/Board_Exercises/app/views/thread/index.php on line 1
+[29-Aug-2014 09:26:41 UTC] PHP Notice:  Undefined variable: _SESSION in /home/felicia/Board_Exercises/app/views/thread/index.php on line 1
+[29-Aug-2014 09:28:05 UTC] PHP Notice:  Undefined variable: _SESSION in /home/felicia/Board_Exercises/app/views/thread/index.php on line 1
+[29-Aug-2014 09:28:05 UTC] PHP Notice:  Undefined variable: _SESSION in /home/felicia/Board_Exercises/app/views/thread/index.php on line 1
+[29-Aug-2014 09:28:08 UTC] PHP Notice:  Undefined variable: _SESSION in /home/felicia/Board_Exercises/app/views/thread/index.php on line 1
+[01-Sep-2014 00:45:46 UTC] PHP Notice:  Undefined variable: _SESSION in /home/felicia/Board_Exercises/app/views/thread/index.php on line 1
+[01-Sep-2014 00:45:49 UTC] PHP Notice:  Undefined variable: _SESSION in /home/felicia/Board_Exercises/app/views/thread/index.php on line 1
+[01-Sep-2014 00:48:32 UTC] PHP Notice:  Undefined variable: _SESSION in /home/felicia/Board_Exercises/app/views/thread/index.php on line 1
+[01-Sep-2014 01:05:20 UTC] PHP Notice:  Undefined index: username in /home/felicia/Board_Exercises/app/views/thread/index.php on line 1
+[01-Sep-2014 01:05:35 UTC] PHP Notice:  Undefined index: username in /home/felicia/Board_Exercises/app/views/thread/index.php on line 1
+[01-Sep-2014 01:05:36 UTC] PHP Notice:  Undefined index: username in /home/felicia/Board_Exercises/app/views/thread/index.php on line 1
+[01-Sep-2014 01:05:40 UTC] PHP Notice:  Undefined index: username in /home/felicia/Board_Exercises/app/views/thread/index.php on line 1
+[01-Sep-2014 01:07:42 UTC] PHP Notice:  Use of undefined constant MIN_LENGTH - assumed 'MIN_LENGTH' in /home/felicia/Board_Exercises/app/controllers/user_controller.php on line 13
+[01-Sep-2014 01:07:42 UTC] PHP Notice:  Use of undefined constant MAX_LENGTH - assumed 'MAX_LENGTH' in /home/felicia/Board_Exercises/app/controllers/user_controller.php on line 13
+[01-Sep-2014 01:07:42 UTC] PHP Fatal error:  Undefined class constant 'self::PASS_MIN_LENGTH' in /home/felicia/Board_Exercises/app/controllers/user_controller.php on line 13
+[01-Sep-2014 01:10:36 UTC] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home/felicia/Board_Exercises/app/models/register.php on line 62
+[01-Sep-2014 01:23:03 UTC] PHP Parse error:  syntax error, unexpected T_PUBLIC, expecting '=' in /home/felicia/Board_Exercises/app/controllers/user_controller.php on line 7
+[01-Sep-2014 01:35:29 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens' in /home/felicia/Board_Exercises/vendor/SimpleDBI/src/SimpleDBIStatement.php:14
+Stack trace:
+#0 /home/felicia/Board_Exercises/vendor/SimpleDBI/src/SimpleDBIStatement.php(14): PDOStatement->execute(Array)
+#1 /home/felicia/Board_Exercises/vendor/SimpleDBI/src/SimpleDBI.php(300): SimpleDBIStatement->execute(Array)
+#2 /home/felicia/Board_Exercises/vendor/SimpleDBI/src/SimpleDBI.php(330): SimpleDBI->query('SELECT username...', Array)
+#3 /home/felicia/Board_Exercises/vendor/SimpleDBI/src/SimpleDBI.php(316): SimpleDBI->rows('SELECT username...', Array)
+#4 /home/felicia/Board_Exercises/app/models/register.php(63): SimpleDBI->row('SELECT username...', Array)
+#5 /home/felicia/Board_Exercises/app/controllers/user_controller.php(82): Register->UserRegister(Array)
+#6 /home/felicia/Board_Exercises/dietcake/core/controller.php(46): UserController->register()
+#7 /home/felicia/B in /home/felicia/Board_Exercises/vendor/SimpleDBI/src/SimpleDBIStatement.php on line 14
+[01-Sep-2014 01:37:56 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens' in /home/felicia/Board_Exercises/vendor/SimpleDBI/src/SimpleDBIStatement.php:14
+Stack trace:
+#0 /home/felicia/Board_Exercises/vendor/SimpleDBI/src/SimpleDBIStatement.php(14): PDOStatement->execute(Array)
+#1 /home/felicia/Board_Exercises/vendor/SimpleDBI/src/SimpleDBI.php(300): SimpleDBIStatement->execute(Array)
+#2 /home/felicia/Board_Exercises/vendor/SimpleDBI/src/SimpleDBI.php(330): SimpleDBI->query('SELECT username...', Array)
+#3 /home/felicia/Board_Exercises/vendor/SimpleDBI/src/SimpleDBI.php(316): SimpleDBI->rows('SELECT username...', Array)
+#4 /home/felicia/Board_Exercises/app/models/register.php(63): SimpleDBI->row('SELECT username...', Array)
+#5 /home/felicia/Board_Exercises/app/controllers/user_controller.php(82): Register->UserRegister(Array)
+#6 /home/felicia/Board_Exercises/dietcake/core/controller.php(46): UserController->register()
+#7 /home/felicia/B in /home/felicia/Board_Exercises/vendor/SimpleDBI/src/SimpleDBIStatement.php on line 14
+[01-Sep-2014 01:37:57 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens' in /home/felicia/Board_Exercises/vendor/SimpleDBI/src/SimpleDBIStatement.php:14
+Stack trace:
+#0 /home/felicia/Board_Exercises/vendor/SimpleDBI/src/SimpleDBIStatement.php(14): PDOStatement->execute(Array)
+#1 /home/felicia/Board_Exercises/vendor/SimpleDBI/src/SimpleDBI.php(300): SimpleDBIStatement->execute(Array)
+#2 /home/felicia/Board_Exercises/vendor/SimpleDBI/src/SimpleDBI.php(330): SimpleDBI->query('SELECT username...', Array)
+#3 /home/felicia/Board_Exercises/vendor/SimpleDBI/src/SimpleDBI.php(316): SimpleDBI->rows('SELECT username...', Array)
+#4 /home/felicia/Board_Exercises/app/models/register.php(63): SimpleDBI->row('SELECT username...', Array)
+#5 /home/felicia/Board_Exercises/app/controllers/user_controller.php(82): Register->UserRegister(Array)
+#6 /home/felicia/Board_Exercises/dietcake/core/controller.php(46): UserController->register()
+#7 /home/felicia/B in /home/felicia/Board_Exercises/vendor/SimpleDBI/src/SimpleDBIStatement.php on line 14
+[01-Sep-2014 01:55:35 UTC] PHP Warning:  Missing argument 2 for redirect(), called in /home/felicia/Board_Exercises/app/controllers/thread_controller.php on line 92 and defined in /home/felicia/Board_Exercises/app/helpers/validation_helper.php on line 7
+[01-Sep-2014 01:55:35 UTC] PHP Notice:  Undefined variable: view in /home/felicia/Board_Exercises/app/helpers/validation_helper.php on line 8
+[01-Sep-2014 01:55:35 UTC] PHP Fatal error:  Uncaught exception 'DCException' with message '/home/felicia/Board_Exercises/app/views/thread/logout.php is not found' in /home/felicia/Board_Exercises/app/app_layout_view.php:34
+Stack trace:
+#0 /home/felicia/Board_Exercises/app/app_layout_view.php(23): AppLayoutView::extractAndMerge('/home/felicia/B...', Array)
+#1 /home/felicia/Board_Exercises/dietcake/core/controller.php(83): AppLayoutView->render(NULL)
+#2 /home/felicia/Board_Exercises/dietcake/core/controller.php(48): Controller->render()
+#3 /home/felicia/Board_Exercises/dietcake/core/dispatcher.php(12): Controller->dispatchAction()
+#4 /home/felicia/Board_Exercises/app/webroot/index.php(7): Dispatcher::invoke()
+#5 {main}
+  thrown in /home/felicia/Board_Exercises/app/app_layout_view.php on line 34
+[01-Sep-2014 01:58:25 UTC] PHP Notice:  Undefined index: username in /home/felicia/Board_Exercises/app/views/thread/index.php on line 1
+[01-Sep-2014 01:58:39 UTC] PHP Warning:  Missing argument 2 for redirect(), called in /home/felicia/Board_Exercises/app/controllers/thread_controller.php on line 92 and defined in /home/felicia/Board_Exercises/app/helpers/validation_helper.php on line 7
+[01-Sep-2014 01:58:39 UTC] PHP Notice:  Undefined variable: view in /home/felicia/Board_Exercises/app/helpers/validation_helper.php on line 8
+[01-Sep-2014 01:58:39 UTC] PHP Fatal error:  Uncaught exception 'DCException' with message '/home/felicia/Board_Exercises/app/views/thread/logout.php is not found' in /home/felicia/Board_Exercises/app/app_layout_view.php:34
+Stack trace:
+#0 /home/felicia/Board_Exercises/app/app_layout_view.php(23): AppLayoutView::extractAndMerge('/home/felicia/B...', Array)
+#1 /home/felicia/Board_Exercises/dietcake/core/controller.php(83): AppLayoutView->render(NULL)
+#2 /home/felicia/Board_Exercises/dietcake/core/controller.php(48): Controller->render()
+#3 /home/felicia/Board_Exercises/dietcake/core/dispatcher.php(12): Controller->dispatchAction()
+#4 /home/felicia/Board_Exercises/app/webroot/index.php(7): Dispatcher::invoke()
+#5 {main}
+  thrown in /home/felicia/Board_Exercises/app/app_layout_view.php on line 34
+[01-Sep-2014 01:58:45 UTC] PHP Notice:  Undefined index: username in /home/felicia/Board_Exercises/app/views/thread/index.php on line 1
+[01-Sep-2014 02:00:54 UTC] PHP Warning:  require(/home/felicia/Board_Exercises/app/controllers/register_controller.php): failed to open stream: No such file or directory in /home/felicia/Board_Exercises/app/config/bootstrap.php on line 27
+[01-Sep-2014 02:00:54 UTC] PHP Fatal error:  require(): Failed opening required '/home/felicia/Board_Exercises/app/controllers/register_controller.php' (include_path='.:/usr/share/php:/usr/share/pear') in /home/felicia/Board_Exercises/app/config/bootstrap.php on line 27
+[01-Sep-2014 02:01:11 UTC] PHP Warning:  Missing argument 2 for redirect(), called in /home/felicia/Board_Exercises/app/controllers/thread_controller.php on line 92 and defined in /home/felicia/Board_Exercises/app/helpers/validation_helper.php on line 7
+[01-Sep-2014 02:01:11 UTC] PHP Notice:  Undefined variable: view in /home/felicia/Board_Exercises/app/helpers/validation_helper.php on line 8
+[01-Sep-2014 02:01:11 UTC] PHP Fatal error:  Uncaught exception 'DCException' with message '/home/felicia/Board_Exercises/app/views/thread/logout.php is not found' in /home/felicia/Board_Exercises/app/app_layout_view.php:34
+Stack trace:
+#0 /home/felicia/Board_Exercises/app/app_layout_view.php(23): AppLayoutView::extractAndMerge('/home/felicia/B...', Array)
+#1 /home/felicia/Board_Exercises/dietcake/core/controller.php(83): AppLayoutView->render(NULL)
+#2 /home/felicia/Board_Exercises/dietcake/core/controller.php(48): Controller->render()
+#3 /home/felicia/Board_Exercises/dietcake/core/dispatcher.php(12): Controller->dispatchAction()
+#4 /home/felicia/Board_Exercises/app/webroot/index.php(7): Dispatcher::invoke()
+#5 {main}
+  thrown in /home/felicia/Board_Exercises/app/app_layout_view.php on line 34
+[01-Sep-2014 02:04:05 UTC] PHP Fatal error:  Uncaught exception 'DCException' with message '/home/felicia/Board_Exercises/app/views/thread/logout.php is not found' in /home/felicia/Board_Exercises/app/app_layout_view.php:34
+Stack trace:
+#0 /home/felicia/Board_Exercises/app/app_layout_view.php(23): AppLayoutView::extractAndMerge('/home/felicia/B...', Array)
+#1 /home/felicia/Board_Exercises/dietcake/core/controller.php(83): AppLayoutView->render(NULL)
+#2 /home/felicia/Board_Exercises/dietcake/core/controller.php(48): Controller->render()
+#3 /home/felicia/Board_Exercises/dietcake/core/dispatcher.php(12): Controller->dispatchAction()
+#4 /home/felicia/Board_Exercises/app/webroot/index.php(7): Dispatcher::invoke()
+#5 {main}
+  thrown in /home/felicia/Board_Exercises/app/app_layout_view.php on line 34
+[01-Sep-2014 02:09:22 UTC] PHP Fatal error:  Uncaught exception 'DCException' with message 'action does not exist' in /home/felicia/Board_Exercises/dietcake/core/controller.php:36
+Stack trace:
+#0 /home/felicia/Board_Exercises/dietcake/core/dispatcher.php(12): Controller->dispatchAction()
+#1 /home/felicia/Board_Exercises/app/webroot/index.php(7): Dispatcher::invoke()
+#2 {main}
+  thrown in /home/felicia/Board_Exercises/dietcake/core/controller.php on line 36
+[01-Sep-2014 02:09:33 UTC] PHP Fatal error:  Uncaught exception 'DCException' with message '/home/felicia/Board_Exercises/app/views/user/logout.php is not found' in /home/felicia/Board_Exercises/app/app_layout_view.php:34
+Stack trace:
+#0 /home/felicia/Board_Exercises/app/app_layout_view.php(23): AppLayoutView::extractAndMerge('/home/felicia/B...', Array)
+#1 /home/felicia/Board_Exercises/dietcake/core/controller.php(83): AppLayoutView->render(NULL)
+#2 /home/felicia/Board_Exercises/dietcake/core/controller.php(48): Controller->render()
+#3 /home/felicia/Board_Exercises/dietcake/core/dispatcher.php(12): Controller->dispatchAction()
+#4 /home/felicia/Board_Exercises/app/webroot/index.php(7): Dispatcher::invoke()
+#5 {main}
+  thrown in /home/felicia/Board_Exercises/app/app_layout_view.php on line 34
+[01-Sep-2014 02:12:34 UTC] PHP Fatal error:  Uncaught exception 'DCException' with message '/home/felicia/Board_Exercises/app/views/thread/logout.php is not found' in /home/felicia/Board_Exercises/app/app_layout_view.php:34
+Stack trace:
+#0 /home/felicia/Board_Exercises/app/app_layout_view.php(23): AppLayoutView::extractAndMerge('/home/felicia/B...', Array)
+#1 /home/felicia/Board_Exercises/dietcake/core/controller.php(83): AppLayoutView->render(NULL)
+#2 /home/felicia/Board_Exercises/dietcake/core/controller.php(48): Controller->render()
+#3 /home/felicia/Board_Exercises/dietcake/core/dispatcher.php(12): Controller->dispatchAction()
+#4 /home/felicia/Board_Exercises/app/webroot/index.php(7): Dispatcher::invoke()
+#5 {main}
+  thrown in /home/felicia/Board_Exercises/app/app_layout_view.php on line 34
+[01-Sep-2014 02:13:44 UTC] PHP Warning:  Missing argument 2 for redirect(), called in /home/felicia/Board_Exercises/app/controllers/thread_controller.php on line 91 and defined in /home/felicia/Board_Exercises/app/helpers/validation_helper.php on line 7
+[01-Sep-2014 02:13:44 UTC] PHP Notice:  Undefined variable: view in /home/felicia/Board_Exercises/app/helpers/validation_helper.php on line 8
+[01-Sep-2014 02:13:44 UTC] PHP Fatal error:  Uncaught exception 'DCException' with message '/home/felicia/Board_Exercises/app/views/thread/logout.php is not found' in /home/felicia/Board_Exercises/app/app_layout_view.php:34
+Stack trace:
+#0 /home/felicia/Board_Exercises/app/app_layout_view.php(23): AppLayoutView::extractAndMerge('/home/felicia/B...', Array)
+#1 /home/felicia/Board_Exercises/dietcake/core/controller.php(83): AppLayoutView->render(NULL)
+#2 /home/felicia/Board_Exercises/dietcake/core/controller.php(48): Controller->render()
+#3 /home/felicia/Board_Exercises/dietcake/core/dispatcher.php(12): Controller->dispatchAction()
+#4 /home/felicia/Board_Exercises/app/webroot/index.php(7): Dispatcher::invoke()
+#5 {main}
+  thrown in /home/felicia/Board_Exercises/app/app_layout_view.php on line 34
+[01-Sep-2014 02:15:04 UTC] PHP Warning:  Missing argument 2 for redirect(), called in /home/felicia/Board_Exercises/app/controllers/thread_controller.php on line 92 and defined in /home/felicia/Board_Exercises/app/helpers/validation_helper.php on line 7
+[01-Sep-2014 02:15:04 UTC] PHP Notice:  Undefined variable: view in /home/felicia/Board_Exercises/app/helpers/validation_helper.php on line 8
+[01-Sep-2014 02:15:04 UTC] PHP Fatal error:  Uncaught exception 'DCException' with message '/home/felicia/Board_Exercises/app/views/thread/logout.php is not found' in /home/felicia/Board_Exercises/app/app_layout_view.php:34
+Stack trace:
+#0 /home/felicia/Board_Exercises/app/app_layout_view.php(23): AppLayoutView::extractAndMerge('/home/felicia/B...', Array)
+#1 /home/felicia/Board_Exercises/dietcake/core/controller.php(83): AppLayoutView->render(NULL)
+#2 /home/felicia/Board_Exercises/dietcake/core/controller.php(48): Controller->render()
+#3 /home/felicia/Board_Exercises/dietcake/core/dispatcher.php(12): Controller->dispatchAction()
+#4 /home/felicia/Board_Exercises/app/webroot/index.php(7): Dispatcher::invoke()
+#5 {main}
+  thrown in /home/felicia/Board_Exercises/app/app_layout_view.php on line 34
+[01-Sep-2014 02:15:08 UTC] PHP Notice:  Undefined index: username in /home/felicia/Board_Exercises/app/views/thread/index.php on line 1
+[01-Sep-2014 02:20:32 UTC] PHP Warning:  Missing argument 2 for redirect(), called in /home/felicia/Board_Exercises/app/controllers/thread_controller.php on line 92 and defined in /home/felicia/Board_Exercises/app/helpers/validation_helper.php on line 7
+[01-Sep-2014 02:20:32 UTC] PHP Notice:  Undefined variable: view in /home/felicia/Board_Exercises/app/helpers/validation_helper.php on line 8
+[01-Sep-2014 02:20:32 UTC] PHP Fatal error:  Uncaught exception 'DCException' with message '/home/felicia/Board_Exercises/app/views/thread/logout.php is not found' in /home/felicia/Board_Exercises/app/app_layout_view.php:34
+Stack trace:
+#0 /home/felicia/Board_Exercises/app/app_layout_view.php(23): AppLayoutView::extractAndMerge('/home/felicia/B...', Array)
+#1 /home/felicia/Board_Exercises/dietcake/core/controller.php(83): AppLayoutView->render(NULL)
+#2 /home/felicia/Board_Exercises/dietcake/core/controller.php(48): Controller->render()
+#3 /home/felicia/Board_Exercises/dietcake/core/dispatcher.php(12): Controller->dispatchAction()
+#4 /home/felicia/Board_Exercises/app/webroot/index.php(7): Dispatcher::invoke()
+#5 {main}
+  thrown in /home/felicia/Board_Exercises/app/app_layout_view.php on line 34
+[01-Sep-2014 02:20:33 UTC] PHP Notice:  Undefined index: username in /home/felicia/Board_Exercises/app/views/thread/index.php on line 1
+[01-Sep-2014 02:29:30 UTC] PHP Notice:  Undefined index: username in /home/felicia/Board_Exercises/app/views/thread/index.php on line 1
+[01-Sep-2014 02:29:31 UTC] PHP Notice:  Undefined index: username in /home/felicia/Board_Exercises/app/views/thread/index.php on line 1
+[01-Sep-2014 02:53:44 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'Username or Email not available' in /home/felicia/Board_Exercises/app/models/register.php:64
+Stack trace:
+#0 /home/felicia/Board_Exercises/app/controllers/user_controller.php(85): Register->UserRegister(Array)
+#1 /home/felicia/Board_Exercises/dietcake/core/controller.php(46): UserController->register()
+#2 /home/felicia/Board_Exercises/dietcake/core/dispatcher.php(12): Controller->dispatchAction()
+#3 /home/felicia/Board_Exercises/app/webroot/index.php(7): Dispatcher::invoke()
+#4 {main}
+  thrown in /home/felicia/Board_Exercises/app/models/register.php on line 64
+[01-Sep-2014 02:54:30 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'Username or Email not available' in /home/felicia/Board_Exercises/app/models/register.php:64
+Stack trace:
+#0 /home/felicia/Board_Exercises/app/controllers/user_controller.php(85): Register->UserRegister(Array)
+#1 /home/felicia/Board_Exercises/dietcake/core/controller.php(46): UserController->register()
+#2 /home/felicia/Board_Exercises/dietcake/core/dispatcher.php(12): Controller->dispatchAction()
+#3 /home/felicia/Board_Exercises/app/webroot/index.php(7): Dispatcher::invoke()
+#4 {main}
+  thrown in /home/felicia/Board_Exercises/app/models/register.php on line 64
+[01-Sep-2014 04:11:28 UTC] PHP Warning:  Missing argument 2 for redirect(), called in /home/felicia/Board_Exercises/app/controllers/thread_controller.php on line 88 and defined in /home/felicia/Board_Exercises/app/helpers/validation_helper.php on line 7
+[01-Sep-2014 04:11:28 UTC] PHP Notice:  Undefined variable: view in /home/felicia/Board_Exercises/app/helpers/validation_helper.php on line 8
+[01-Sep-2014 04:11:28 UTC] PHP Fatal error:  Uncaught exception 'DCException' with message '/home/felicia/Board_Exercises/app/views/thread/logout.php is not found' in /home/felicia/Board_Exercises/app/app_layout_view.php:34
+Stack trace:
+#0 /home/felicia/Board_Exercises/app/app_layout_view.php(23): AppLayoutView::extractAndMerge('/home/felicia/B...', Array)
+#1 /home/felicia/Board_Exercises/dietcake/core/controller.php(83): AppLayoutView->render(NULL)
+#2 /home/felicia/Board_Exercises/dietcake/core/controller.php(48): Controller->render()
+#3 /home/felicia/Board_Exercises/dietcake/core/dispatcher.php(12): Controller->dispatchAction()
+#4 /home/felicia/Board_Exercises/app/webroot/index.php(7): Dispatcher::invoke()
+#5 {main}
+  thrown in /home/felicia/Board_Exercises/app/app_layout_view.php on line 34
+[01-Sep-2014 04:11:30 UTC] PHP Notice:  Undefined index: username in /home/felicia/Board_Exercises/app/views/thread/index.php on line 1
+[01-Sep-2014 04:14:44 UTC] PHP Warning:  Missing argument 2 for redirect(), called in /home/felicia/Board_Exercises/app/controllers/thread_controller.php on line 88 and defined in /home/felicia/Board_Exercises/app/helpers/validation_helper.php on line 7
+[01-Sep-2014 04:14:44 UTC] PHP Notice:  Undefined variable: view in /home/felicia/Board_Exercises/app/helpers/validation_helper.php on line 8
+[01-Sep-2014 04:14:44 UTC] PHP Fatal error:  Uncaught exception 'DCException' with message '/home/felicia/Board_Exercises/app/views/thread/logout.php is not found' in /home/felicia/Board_Exercises/app/app_layout_view.php:34
+Stack trace:
+#0 /home/felicia/Board_Exercises/app/app_layout_view.php(23): AppLayoutView::extractAndMerge('/home/felicia/B...', Array)
+#1 /home/felicia/Board_Exercises/dietcake/core/controller.php(83): AppLayoutView->render(NULL)
+#2 /home/felicia/Board_Exercises/dietcake/core/controller.php(48): Controller->render()
+#3 /home/felicia/Board_Exercises/dietcake/core/dispatcher.php(12): Controller->dispatchAction()
+#4 /home/felicia/Board_Exercises/app/webroot/index.php(7): Dispatcher::invoke()
+#5 {main}
+  thrown in /home/felicia/Board_Exercises/app/app_layout_view.php on line 34
+[01-Sep-2014 04:15:51 UTC] PHP Warning:  Missing argument 2 for redirect(), called in /home/felicia/Board_Exercises/app/controllers/thread_controller.php on line 88 and defined in /home/felicia/Board_Exercises/app/helpers/validation_helper.php on line 7
+[01-Sep-2014 04:15:51 UTC] PHP Notice:  Undefined variable: view in /home/felicia/Board_Exercises/app/helpers/validation_helper.php on line 8
+[01-Sep-2014 04:15:51 UTC] PHP Fatal error:  Uncaught exception 'DCException' with message '/home/felicia/Board_Exercises/app/views/thread/logout.php is not found' in /home/felicia/Board_Exercises/app/app_layout_view.php:34
+Stack trace:
+#0 /home/felicia/Board_Exercises/app/app_layout_view.php(23): AppLayoutView::extractAndMerge('/home/felicia/B...', Array)
+#1 /home/felicia/Board_Exercises/dietcake/core/controller.php(83): AppLayoutView->render(NULL)
+#2 /home/felicia/Board_Exercises/dietcake/core/controller.php(48): Controller->render()
+#3 /home/felicia/Board_Exercises/dietcake/core/dispatcher.php(12): Controller->dispatchAction()
+#4 /home/felicia/Board_Exercises/app/webroot/index.php(7): Dispatcher::invoke()
+#5 {main}
+  thrown in /home/felicia/Board_Exercises/app/app_layout_view.php on line 34
+[01-Sep-2014 04:15:59 UTC] PHP Notice:  Undefined index: username in /home/felicia/Board_Exercises/app/views/thread/index.php on line 1
+[01-Sep-2014 04:16:02 UTC] PHP Warning:  Missing argument 2 for redirect(), called in /home/felicia/Board_Exercises/app/controllers/thread_controller.php on line 88 and defined in /home/felicia/Board_Exercises/app/helpers/validation_helper.php on line 7
+[01-Sep-2014 04:16:02 UTC] PHP Notice:  Undefined variable: view in /home/felicia/Board_Exercises/app/helpers/validation_helper.php on line 8
+[01-Sep-2014 04:16:02 UTC] PHP Fatal error:  Uncaught exception 'DCException' with message '/home/felicia/Board_Exercises/app/views/thread/logout.php is not found' in /home/felicia/Board_Exercises/app/app_layout_view.php:34
+Stack trace:
+#0 /home/felicia/Board_Exercises/app/app_layout_view.php(23): AppLayoutView::extractAndMerge('/home/felicia/B...', Array)
+#1 /home/felicia/Board_Exercises/dietcake/core/controller.php(83): AppLayoutView->render(NULL)
+#2 /home/felicia/Board_Exercises/dietcake/core/controller.php(48): Controller->render()
+#3 /home/felicia/Board_Exercises/dietcake/core/dispatcher.php(12): Controller->dispatchAction()
+#4 /home/felicia/Board_Exercises/app/webroot/index.php(7): Dispatcher::invoke()
+#5 {main}
+  thrown in /home/felicia/Board_Exercises/app/app_layout_view.php on line 34
+[01-Sep-2014 04:17:00 UTC] PHP Warning:  Missing argument 2 for redirect(), called in /home/felicia/Board_Exercises/app/controllers/thread_controller.php on line 88 and defined in /home/felicia/Board_Exercises/app/helpers/validation_helper.php on line 7
+[01-Sep-2014 04:17:00 UTC] PHP Notice:  Undefined variable: view in /home/felicia/Board_Exercises/app/helpers/validation_helper.php on line 8
+[01-Sep-2014 04:17:00 UTC] PHP Fatal error:  Uncaught exception 'DCException' with message '/home/felicia/Board_Exercises/app/views/thread/logout.php is not found' in /home/felicia/Board_Exercises/app/app_layout_view.php:34
+Stack trace:
+#0 /home/felicia/Board_Exercises/app/app_layout_view.php(23): AppLayoutView::extractAndMerge('/home/felicia/B...', Array)
+#1 /home/felicia/Board_Exercises/dietcake/core/controller.php(83): AppLayoutView->render(NULL)
+#2 /home/felicia/Board_Exercises/dietcake/core/controller.php(48): Controller->render()
+#3 /home/felicia/Board_Exercises/dietcake/core/dispatcher.php(12): Controller->dispatchAction()
+#4 /home/felicia/Board_Exercises/app/webroot/index.php(7): Dispatcher::invoke()
+#5 {main}
+  thrown in /home/felicia/Board_Exercises/app/app_layout_view.php on line 34
+[01-Sep-2014 04:17:42 UTC] PHP Fatal error:  Uncaught exception 'DCException' with message '/home/felicia/Board_Exercises/app/views/thread/logout.php is not found' in /home/felicia/Board_Exercises/app/app_layout_view.php:34
+Stack trace:
+#0 /home/felicia/Board_Exercises/app/app_layout_view.php(23): AppLayoutView::extractAndMerge('/home/felicia/B...', Array)
+#1 /home/felicia/Board_Exercises/dietcake/core/controller.php(83): AppLayoutView->render(NULL)
+#2 /home/felicia/Board_Exercises/dietcake/core/controller.php(48): Controller->render()
+#3 /home/felicia/Board_Exercises/dietcake/core/dispatcher.php(12): Controller->dispatchAction()
+#4 /home/felicia/Board_Exercises/app/webroot/index.php(7): Dispatcher::invoke()
+#5 {main}
+  thrown in /home/felicia/Board_Exercises/app/app_layout_view.php on line 34

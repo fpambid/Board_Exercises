@@ -10,11 +10,7 @@ class Thread extends AppModel
             ),
         );
 
-    /**
-    *TO view all threads
-    */
-    public static function getAll($limit)
-    {
+    public static function getAll($limit) {
         $threads = array();
         $limited = $limit;
         $db = DB::conn();
@@ -25,22 +21,20 @@ class Thread extends AppModel
 	    }
 	return $threads;
     }
-
     /**
-    *To get and display the title of the selected thread
-    **/
-    public static function get($id)
-    {
+    *Select all threads from database
+    */
+
+    public static function get($id) {
     	$db = DB::conn();
     	$row = $db->row('SELECT * FROM thread WHERE id = ?', array($id));
     	return new self($row);
 	}
 
     /**
-    *To get and display comments on each thread
+    *Select specific thread
     **/
-    public function getComments()
-    {
+    public function getComments() {
     	$comments = array();
     	$db = DB::conn();
     	$rows = $db->rows('SELECT * FROM comment WHERE thread_id = ? ORDER BY created ASC',
@@ -52,12 +46,10 @@ class Thread extends AppModel
     	return $comments;
 	}
 
-	/**
-	*Insert validated comments in database
+    /**
+    *Select comments on each thread
     **/
-    public function write(Comment $comment)
-    {
-    	//Validates comment
+    public function write(Comment $comment) {
         if (!$comment->validate()) {
         throw new ValidationException('invalid comment');
         }
@@ -68,8 +60,7 @@ class Thread extends AppModel
 
     }
 
-    public function create(Comment $comment)
-    {
+    public function create(Comment $comment) {
     	//Validates thread
     	$this->validate();
     	$comment->validate();
@@ -84,14 +75,15 @@ class Thread extends AppModel
         $this->write($comment);
         $db->commit();
     }
+    //Insert validated comments to database
 
-    //count number of rows
-    public static function countThread()
-    {
+   
+    public static function countThread() {
         $db= DB::conn();
         $total = $db->value("SELECT COUNT(id) FROM thread");
 
         return $total;
 
     }
+     //count number of rows
 }

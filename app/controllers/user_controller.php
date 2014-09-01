@@ -1,7 +1,6 @@
 <?php
 class UserController Extends AppController
-{
-	
+{	
 
     public function index(){
     	$title = " ";
@@ -12,7 +11,7 @@ class UserController Extends AppController
 
     	$user = new User();
 
-    	 if (!isset($username) || !isset($password)) {
+    	if (!isset($username) || !isset($password)) {
             $status = " ";
         } elseif (!($username || $password)) {
             $status = notice("All fields are required", "error");
@@ -22,7 +21,10 @@ class UserController Extends AppController
                 $_SESSION['username'] = $log_detail->username;
                 $_SESSION['password'] = $log_detail->password;
                 $_SESSION['password'] = $log_detail->name;
+
+                echo $log_detail->username;
                 redirect('thread','index');
+
             } catch (ValidationException $e) {
                 $status = notice($e->getMessage(),"error");
             } catch (RecordNotFoundException $e) {
@@ -32,6 +34,8 @@ class UserController Extends AppController
         $this->set(get_defined_vars());           
     }
 
+
+ 
 
 
     public function register(){
@@ -52,7 +56,6 @@ class UserController Extends AppController
                           );
 
     	$register = new Register();
-    	
  
 		$status = " ";
         $register->username = Param::get('username');
@@ -70,7 +73,7 @@ class UserController Extends AppController
     		if (!$value){
     			$empty_field++;
     		}
-    	else {
+    	    else {
                 $user_detail['$key'] = $value;
             }
         }
@@ -81,18 +84,13 @@ class UserController Extends AppController
         try{
             $a = $register->UserRegister($user_detail);
 	            $status = notice("Registration Done! Thank You!");
-	           } catch (ExistingUserException $e) {
-                $status = notice($e->getMessage(), "error");
+	    } catch (ExistingUserException $e) {
+            $status = notice($e->getMessage(), "error");
             
         } catch (ValidationException $e) {
         	$status = notice($e->getMessage(), "error");
         }  
-        }  
-    
-
-       
-    
-
+    }  
         //TODO: Get all threads
         $this->set(get_defined_vars());
     }

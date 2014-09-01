@@ -1,12 +1,10 @@
 <?php
-function validate_between($check, $min, $max)
-{
+function validate_between($check, $min, $max) {
     $n = mb_strlen($check);
     return $min <= $n && $n <= $max;
 }
 
-function redirect($controller, $view, array $url_query = null)
-{
+function redirect($controller, $view, array $url_query = null) {
     $url = "/$controller/$view";
     if ($url_query) {
         foreach ($url_query as $key => $value) {
@@ -16,23 +14,26 @@ function redirect($controller, $view, array $url_query = null)
     header("location: {$url}");
 }
 
-function is_email($email)
-{
-	return (preg_match('/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/', $email));
+function name_valid($string) {
+    if(preg_match("/[a-zA-Z]/", $string)) {
+        return true;
+    }else
+        return false;
+    // return true;
 }
 
-function is_valid_username($username)
-{
-	return (preg_match('/^[a-z0-9_-]$/', $username));//|| !(preg_match('/^\s$/', $string)));
+function email_valid($email) {
+    if(preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/", $email)) {
+        return true;
+    }else 
+        return false;
+
 }
 
-function is_valid_pass($password)
-{
-	return (preg_match('/^[a-z0-9_-]$/', $password)); //|| !(preg_match('/^\s$/', $string)));
-}
-
-function is_valid_name($name)
-{
-	return (preg_match('/^[[A-za-z]\s?]$/', $name)); //|| !(preg_match('/^\s$/', $string)));
-
+function username_valid($uname) {
+    if(preg_match('/[a-zA-Z0-9_-]/', $uname)) {
+        return true;
+    }else
+        return false;
+        return true;
 }

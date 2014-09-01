@@ -1,8 +1,7 @@
 <?php
 class ThreadController extends AppController 
 {
-    public function index()
-    {
+    public function index() {
     	$title = " ";
         $total_thread = Thread::countThread();
         $pagination = pagination($total_thread, '');
@@ -14,8 +13,7 @@ class ThreadController extends AppController
 	/**
 	*To view comments on each thread
     **/
-    public function view()
-    {
+    public function view() {
         $title = " ";
         $thread = Thread::get(Param::get('thread_id'));
         $comments = $thread->getComments();
@@ -26,8 +24,7 @@ class ThreadController extends AppController
     /**
     *Enables users to write a comment
     **/
-    public function write()
-    {
+    public function write() {
         $title = " ";
         $thread = Thread::get(Param::get('thread_id'));
         $comment = new Comment;
@@ -41,6 +38,7 @@ class ThreadController extends AppController
         case 'write_end':
         $comment->username = Param::get('username');
         $comment->body = Param::get('body');
+
         try{
             $thread->write($comment);
         } catch (ValidationException $e) {
@@ -57,10 +55,10 @@ class ThreadController extends AppController
 		$this->render($page);
 	}
 
-	public function create()
-    {
+	public function create() {
     	
         $title = "";
+        $uname = $_SESSION['username'];
     	$thread = new Thread;
     	$comment = new Comment;
     	$page = Param::get('page_next', 'create');
@@ -69,7 +67,7 @@ class ThreadController extends AppController
     		break;
     	case 'create_end':
     	$thread->title = Param::get('title');
-    	$comment->username = Param::get('username');
+    	$comment->username = $uname;
     	$comment->body = Param::get('body');
     try {
         $thread->create($comment);
@@ -84,5 +82,11 @@ class ThreadController extends AppController
 	$this->set(get_defined_vars());
 	$this->render($page);
 	}
+
+   function logout() {
+        session_destroy();
+        redirect('user', 'index');
+    }
+
 
 }

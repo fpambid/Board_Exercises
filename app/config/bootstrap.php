@@ -1,4 +1,5 @@
 <?php
+session_start();
 // application
 require_once APP_DIR.'app_controller.php';
 require_once APP_DIR.'app_model.php';
