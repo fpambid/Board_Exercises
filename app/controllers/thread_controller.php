@@ -1,9 +1,10 @@
 <?php
+
 class ThreadController extends AppController 
 {
     public function index() 
     {
-    	$title = ' ';
+        $title = ' ';
         $total_thread = Thread::countThread();
         $page = new Pagination();
         $pagination = $page::setControls($total_thread);
@@ -12,8 +13,8 @@ class ThreadController extends AppController
         $this->set(get_defined_vars());
     }
 
-	/**
-	*To view comments on each thread
+    /**
+    **To view comments on each thread
     **/
     public function view() 
     {
@@ -35,7 +36,7 @@ class ThreadController extends AppController
         $page = Param::get('page_next');
 
         switch ($page) {
-		case 'write':
+        case 'write':
             break;
         case 'write_end':
             $comment->username = Param::get('username');
@@ -43,33 +44,33 @@ class ThreadController extends AppController
             try{
                 $thread->write($comment);
             } catch (ValidationException $e) {
-        	    $page ='write';
+                $page ='write';
             }    
             break;
         default:
             throw new NotFoundException("{$page} is not found");
             break;
-		}
+        }
 
-		$this->set(get_defined_vars());
-		$this->render($page);
-	}
+        $this->set(get_defined_vars());
+        $this->render($page);
+    }
 
-	public function create() 
+    public function create() 
     {
         $title = ' ';
         $uname = $_SESSION['username'];
-    	$thread = new Thread;
-    	$comment = new Comment;
-    	$page = Param::get('page_next', 'create');
+        $thread = new Thread;
+        $comment = new Comment;
+        $page = Param::get('page_next', 'create');
 
-    	switch ($page) {
-    	case 'create':
-    	    break;
-    	case 'create_end':
-    	    $thread->title = Param::get('title');
-    	    $comment->username = $uname;
-    	    $comment->body = Param::get('body');
+        switch ($page) {
+        case 'create':
+            break;
+        case 'create_end':
+            $thread->title = Param::get('title');
+            $comment->username = $uname;
+            $comment->body = Param::get('body');
 
             try {
                 $thread->create($comment);
@@ -77,14 +78,14 @@ class ThreadController extends AppController
                 $page = 'create';
             }
             break;
-	    default:
-	        throw new NotFoundException("{$page} is not found");
-	        break;
-	    }
+        default:
+            throw new NotFoundException("{$page} is not found");
+            break;
+        }
 
-	    $this->set(get_defined_vars());
-	    $this->render($page);
-	}
+        $this->set(get_defined_vars());
+        $this->render($page);
+    }
 
     function logout() 
     {

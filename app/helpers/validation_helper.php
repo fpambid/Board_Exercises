@@ -7,7 +7,6 @@ function validate_between($check, $min, $max)
 
 function redirect($url) 
 {
-
     header("Location:" .$url);
 }
 
@@ -25,7 +24,6 @@ function isEmailValid($email)
         return true;
     }
     return false;
-
 }
 
 function isUsernameValid($uname) 

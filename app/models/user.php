@@ -74,7 +74,7 @@ class User extends AppModel
     public function UserRegister(array $user_detail) 
     {
         extract($user_detail);
-        $detail = array(
+        $values = array(
             'name' => $name,
             'username' => $username,
             'email' => $email,
@@ -100,11 +100,8 @@ class User extends AppModel
         if($exist){
             throw new ValidationException(notice('Sorry, that Username, Name or Email is not available', "error"));
         }
-        else{
-            $insert = 'INSERT INTO user_detail SET name = ?, username = ?, email = ?, password = ?, created = ?';
-            $values = array($name, $username, $email , $password, date('Y-m-d H:i:s'));
-
-            $db->query($insert, $values);      
+        else{ 
+            $db->insert('user_detail', $values);      
         }
     }  
 }
