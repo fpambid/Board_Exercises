@@ -4,7 +4,7 @@
         <div class="input-group">
 
 
-<form class ="form-signin" id="login-form" action='<?php eh(url(''));?>' method="post">
+<form class ="form-signin" id="login-form" action='<?php say(url(''));?>' method="post">
     <table align="center">
 
         <tr>
@@ -35,7 +35,7 @@
                 <div class="control-group">
                     <div class="controls">
                         <button type="submit" class="btn btn-primary">Sign in</button> &nbsp; &nbsp; &nbsp;
-                        <a href="<?php eh(url('user/register'));?>">Create an account</a>
+                        <a href="<?php say(url('user/register'));?>">Create an account</a>
                     </div>
                 </div>
             </td>

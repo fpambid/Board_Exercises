@@ -1,10 +1,12 @@
 <?php
 class ThreadController extends AppController 
 {
-    public function index() {
-    	$title = " ";
+    public function index() 
+    {
+    	$title = ' ';
         $total_thread = Thread::countThread();
-        $pagination = pagination($total_thread, '');
+        $page = new Pagination();
+        $pagination = $page::setControls($total_thread);
 
         $threads = Thread::getAll($pagination['max']);
         $this->set(get_defined_vars());
@@ -13,8 +15,9 @@ class ThreadController extends AppController
 	/**
 	*To view comments on each thread
     **/
-    public function view() {
-        $title = " ";
+    public function view() 
+    {
+        $title = ' ';
         $thread = Thread::get(Param::get('thread_id'));
         $comments = $thread->getComments();
 
@@ -24,8 +27,9 @@ class ThreadController extends AppController
     /**
     *Enables users to write a comment
     **/
-    public function write() {
-        $title = " ";
+    public function write() 
+    {
+        $title = ' ';
         $thread = Thread::get(Param::get('thread_id'));
         $comment = new Comment;
         $page = Param::get('page_next');
@@ -55,9 +59,9 @@ class ThreadController extends AppController
 		$this->render($page);
 	}
 
-	public function create() {
-    	
-        $title = "";
+	public function create() 
+    {
+        $title = ' ';
         $uname = $_SESSION['username'];
     	$thread = new Thread;
     	$comment = new Comment;
@@ -69,23 +73,25 @@ class ThreadController extends AppController
     	$thread->title = Param::get('title');
     	$comment->username = $uname;
     	$comment->body = Param::get('body');
-    try {
-        $thread->create($comment);
-    } catch (ValidationException $e) {
-        $page = 'create';
-      }
-      break;
-	default:
-	throw new NotFoundException("{$page} is not found");
-	break;
-	}
-	$this->set(get_defined_vars());
-	$this->render($page);
+
+        try {
+            $thread->create($comment);
+        } catch (ValidationException $e) {
+            $page = 'create';
+          }
+          break;
+	    default:
+	    throw new NotFoundException("{$page} is not found");
+	    break;
+	    }
+	    $this->set(get_defined_vars());
+	    $this->render($page);
 	}
 
-   function logout() {
-        session_destroy();
-        redirect('user', 'index');
+    function logout() 
+    {
+    session_destroy();
+    redirect('../');
     }
 
 

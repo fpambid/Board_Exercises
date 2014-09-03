@@ -10,6 +10,8 @@ define('MAX_NAME', 20);
 define('MIN_PASS', 6);
 define('MAX_PASS', 20);
 
+define('MAX_ITEM', 3);
+
 
 error_reporting(E_ALL | E_STRICT);
 ini_set('display_errors', 'On');

@@ -10,9 +10,16 @@ class Thread extends AppModel
             ),
         );
 
-    public static function getAll($limit) {
+    /**
+    *Select all threads from database
+    */
+
+    public static function getAll($limit) 
+    {
         $threads = array();
-        $limited = $limit;
+        $limit = Thread::countThread();
+        $limits = new Pagination();
+        $limited = $limits::setLimit($limit);
         $db = DB::conn();
         $rows = $db->rows("SELECT * FROM thread $limited");
         
@@ -21,20 +28,24 @@ class Thread extends AppModel
 	    }
 	return $threads;
     }
+    
     /**
-    *Select all threads from database
-    */
+    *Select specific thread
+    **/
 
-    public static function get($id) {
+    public static function get($id) 
+    {
     	$db = DB::conn();
     	$row = $db->row('SELECT * FROM thread WHERE id = ?', array($id));
     	return new self($row);
 	}
 
     /**
-    *Select specific thread
+    *Select comments on each thread
     **/
-    public function getComments() {
+
+    public function getComments() 
+    {
     	$comments = array();
     	$db = DB::conn();
     	$rows = $db->rows('SELECT * FROM comment WHERE thread_id = ? ORDER BY created ASC',
@@ -45,11 +56,9 @@ class Thread extends AppModel
     	}
     	return $comments;
 	}
-
-    /**
-    *Select comments on each thread
-    **/
-    public function write(Comment $comment) {
+    
+    public function write(Comment $comment) 
+    {
         if (!$comment->validate()) {
         throw new ValidationException('invalid comment');
         }
@@ -60,7 +69,8 @@ class Thread extends AppModel
 
     }
 
-    public function create(Comment $comment) {
+    public function create(Comment $comment) 
+    {
     	//Validates thread
     	$this->validate();
     	$comment->validate();
@@ -78,7 +88,8 @@ class Thread extends AppModel
     //Insert validated comments to database
 
    
-    public static function countThread() {
+    public static function countThread() 
+    {
         $db= DB::conn();
         $total = $db->value("SELECT COUNT(id) FROM thread");
 

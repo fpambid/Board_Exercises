@@ -2,9 +2,14 @@
 class UserController Extends AppController
 {	
 
-    public function index(){
-    	$title = " ";
-    	$status = " ";
+    /**
+    **Get and Validate entered values in log in form
+    **/
+
+    public function index()
+    {
+    	$title = ' ';
+    	$status = ' ';
 
     	$username = Param::get('username');
     	$password = Param::get('password');
@@ -12,7 +17,7 @@ class UserController Extends AppController
     	$user = new User();
 
     	if (!isset($username) || !isset($password)) {
-            $status = " ";
+            $status = ' ';
         } elseif (!($username || $password)) {
             $status = notice("All fields are required", "error");
         } else {            
@@ -20,10 +25,9 @@ class UserController Extends AppController
                 $log_detail = $user->is_real($username, $password);   
                 $_SESSION['username'] = $log_detail->username;
                 $_SESSION['password'] = $log_detail->password;
-                $_SESSION['password'] = $log_detail->name;
 
                 echo $log_detail->username;
-                redirect('thread','index');
+                redirect('thread/index');
 
             } catch (ValidationException $e) {
                 $status = notice($e->getMessage(),"error");
@@ -34,13 +38,13 @@ class UserController Extends AppController
         $this->set(get_defined_vars());           
     }
 
-
- 
-
-
-    public function register(){
-    	$title = " ";
-    	$status = " ";
+    /**
+    **Get and Validate entered values in registration form
+    **/
+    public function register()
+    {
+    	$title = ' ';
+    	$status = ' ';
 
     	$reg_username = Param::get('username');
     	$reg_name = Param::get('name');
@@ -57,14 +61,14 @@ class UserController Extends AppController
 
     	$register = new Register();
  
-		$status = " ";
+		$status = ' ';
         $register->username = Param::get('username');
         $register->name = Param::get('name');
         $register->email = Param::get('email');
         $register->password = Param::get('password');
 
         if (!isset($reg_name) || !isset($reg_password) || !isset($reg_email) ||!isset($reg_username)) {
-            $status = " ";
+            $status = ' ';
         } elseif (!($reg_username) || !($reg_password) || !($reg_email) || !($reg_name)) {
             $status = notice("All fields are required", "error");
         }
