@@ -1,11 +1,13 @@
 <?php
 class Thread extends AppModel
 {
-
+    const MIN_TITLE = 1;
+    const MAX_TITLE = 30;
+    
 	public $validation = array(
         'title' => array(
             'length' => array(
-                'validate_between', 1, 30,
+                'validate_between', self::MIN_TITLE, self::MAX_TITLE,
                 ),
             ),
         );
@@ -31,6 +33,7 @@ class Thread extends AppModel
     
     /**
     *Select specific thread
+    **@param $id 
     **/
 
     public static function get($id) 
@@ -42,6 +45,7 @@ class Thread extends AppModel
 
     /**
     *Select comments on each thread
+    **@throws ValidationException
     **/
 
     public function getComments() 
@@ -69,25 +73,41 @@ class Thread extends AppModel
 
     }
 
+    /**
+    ** Insert validated thread/comments 
+    ** @param $comment
+    **/
     public function create(Comment $comment) 
     {
-    	//Validates thread
-    	$this->validate();
-    	$comment->validate();
-    	if ($this->hasError() || $comment->hasError()) {
-    		throw new ValidationException('invalid thread or comment');
-    	}
-    	$db = DB::conn();
-        $db->begin();
-        $db->query('INSERT INTO thread SET title = ?, created = NOW()', array($this->title));
-        $this->id = $db->lastInsertId();
-        // write first comment at the same time
-        $this->write($comment);
-        $db->commit();
-    }
-    //Insert validated comments to database
+        $params = array(
+            "id" => $_SESSION['id'], 
+            "title" => $this->title,
+            "created" => date('Y-m-d H:i:s'));
 
-   
+    	$db = DB::conn();
+
+        try{
+            $db->begin();
+
+    	    $this->validate();
+    	    $comment->validate();
+    	    if ($this->hasError() || $comment->hasError()) {
+    		  throw new ValidationException('invalid thread or comment');
+    	    }
+
+            $db->insert('thread', $params);
+
+            $this->id = $db->lastInsertId();
+            $this->write($comment);
+
+            $db->commit();
+
+        } catch (ValidationException $e) {
+            $db->rollback();
+            throw $e;
+        } 
+    }
+
     public static function countThread() 
     {
         $db= DB::conn();

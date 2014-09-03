@@ -1,33 +1,37 @@
 <?php
 class Register Extends AppModel
 {
+    const MIN_NAME = 3;
+    const MAX_NAME = 20;
+    const MIN_PASS = 6;
+    const MAX_PASS = 20;
 
     public $validation = array(
         'name' => array(
             'length' => array(
-                'validate_between', MIN_NAME, MAX_NAME,
+                'validate_between', self::MIN_NAME, self::MAX_NAME,
                 ),
             "format" => array(
-                'name_valid', "Invalid Name"
+                'isNameValid', "Invalid Name"
             )
         ),
         'username' => array(
             'length' => array(
-                'validate_between', MIN_NAME, MAX_NAME
+                'validate_between', self::MIN_NAME, self::MAX_NAME
                 ),
             "format" => array(
-                'username_valid', "Invalid Username"
+                'isUsernameValid', "Invalid Username"
             )
         ),
 
         'password'=> array(
             'length' => array(
-                'validate_between', MIN_PASS, MAX_PASS
+                'validate_between', self::MIN_PASS, self::MAX_PASS
                 ),
             ),
          'email'=> array(
             "format" => array(
-                'email_valid', "Invalid Email"
+                'isEmailValid', "Invalid Email"
             )
         )
     );

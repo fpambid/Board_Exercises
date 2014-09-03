@@ -2,6 +2,8 @@
 
 class Pagination
 {
+    const MAX_ITEM = 3;
+
     public static $last;
     public static $pagenum = 1;
     public static $limit;
@@ -11,7 +13,7 @@ class Pagination
     public static function setLastPage($row_length) 
     {
 
-    self::$last = ceil($row_length/MAX_ITEM); 
+    self::$last = ceil($row_length/self::MAX_ITEM); 
 
         if(self::$last < 1) { 
             self::$last = 1; 
@@ -43,7 +45,7 @@ class Pagination
 
     $currpage = self::setCurrPage($row_length);
 
-    self::$limit = 'LIMIT ' .($currpage - 1) * MAX_ITEM .',' .MAX_ITEM;
+    self::$limit = 'LIMIT ' .($currpage - 1) * self::MAX_ITEM .',' .self::MAX_ITEM;
 
     return self::$limit;
     }

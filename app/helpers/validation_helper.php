@@ -11,24 +11,27 @@ function redirect($url)
     header("Location:" .$url);
 }
 
-function name_valid($string) 
+function isNameValid($string) 
 {
     if(preg_match("/[a-zA-Z]/", $string)) {
         return true;
     }
+    return false;
 }
 
-function email_valid($email) 
+function isEmailValid($email) 
 {
     if(preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/", $email)) {
         return true;
     }
+    return false;
 
 }
 
-function username_valid($uname) 
+function isUsernameValid($uname) 
 {
     if(preg_match('/[a-zA-Z0-9_-]/', $uname)) {
         return true;
     }
+    return false;
 }

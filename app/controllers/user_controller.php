@@ -1,11 +1,9 @@
 <?php
 class UserController Extends AppController
 {	
-
     /**
     **Get and Validate entered values in log in form
     **/
-
     public function index()
     {
     	$title = ' ';
@@ -35,6 +33,7 @@ class UserController Extends AppController
                 $status = notice($e->getMessage(),"error");
             }
         }
+
         $this->set(get_defined_vars());           
     }
 
@@ -59,7 +58,7 @@ class UserController Extends AppController
                	          'password' => $reg_password
                           );
 
-    	$register = new Register();
+    	$register = new User();
  
 		$status = ' ';
         $register->username = Param::get('username');
@@ -73,28 +72,27 @@ class UserController Extends AppController
             $status = notice("All fields are required", "error");
         }
        	
-       	foreach ($user_detail as $key => $value) {
-    		if (!$value){
+        foreach ($user_detail as $key => $value) {
+    		if (!$value) {
     			$empty_field++;
-    		}
-    	    else {
+    		} else {
                 $user_detail['$key'] = $value;
             }
         }
 
-   if ($empty_field === 0)
-   {
-
-        try{
-            $a = $register->UserRegister($user_detail);
+       if ($empty_field === 0)
+       {
+            try{
+                $a = $register->UserRegister($user_detail);
 	            $status = notice("Registration Done! Thank You!");
-	    } catch (ExistingUserException $e) {
-            $status = notice($e->getMessage(), "error");
+	        } catch (ExistingUserException $e) {
+                $status = notice($e->getMessage(), "error");
             
-        } catch (ValidationException $e) {
-        	$status = notice($e->getMessage(), "error");
+            } catch (ValidationException $e) {
+        	    $status = notice($e->getMessage(), "error");
+            }  
         }  
-    }  
+
         //TODO: Get all threads
         $this->set(get_defined_vars());
     }
