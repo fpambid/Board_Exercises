@@ -15,12 +15,11 @@ class Thread extends AppModel
     /**
     *Select all threads from database
     */
-    public static function getAll($limit) 
+    public static function getAll($total_thread) 
     {
         $threads = array();
-        $limit = Thread::count();
-        $limits = new Pagination();
-        $limited = $limits::setLimit($limit);
+        $total_thread = self::count();
+        $limited = Pagination::setLimit($total_thread);
         $db = DB::conn();
         $rows = $db->rows("SELECT * FROM thread $limited");
         
@@ -37,10 +36,7 @@ class Thread extends AppModel
     public static function get($id) 
     {
         $db = DB::conn();
-
-        $query = 'SELECT * FROM thread WHERE id = ?';
-        $params = array($id);
-        $row = $db->row($query, $params);
+        $row = $db->row('SELECT * FROM thread WHERE id = ?', array($id));
 
         return new self($row);
     }
@@ -74,7 +70,7 @@ class Thread extends AppModel
         }
 
         $db = DB::conn();
-        $db->insert('thread_id', $params);
+        $db->insert('comment', $params);
     }
 
     /**
@@ -84,9 +80,9 @@ class Thread extends AppModel
     public function create(Comment $comment) 
     {
         $params = array(
-            "id" => $_SESSION['id'], 
+            "id" => $this->id, 
             "title" => $this->title,
-            "created" => date('Y-m-d H:i:s'));
+            "created" => NOW());
 
         $db = DB::conn();
 
@@ -106,7 +102,6 @@ class Thread extends AppModel
 
         } catch (ValidationException $e) {
             $db->rollback();
-            throw $e;
         } 
     }
 

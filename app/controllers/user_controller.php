@@ -7,18 +7,13 @@ class UserController Extends AppController
     public function index()
     {
         $title = ' ';
-        $status = ' ';
 
         $user = new User();
 
         $user->username = Param::get('username');
-        $user->password = sha1(Param::get('password'));
+        $user->password = sha1(Param::get('password'));        
 
-        if (!isset($user->username) || !isset($user->password)) {
-            $status = ' ';
-        } elseif (!($user->username || $user->password)) {
-            $status = notice("All fields are required", "error");
-        } else {            
+        if($_POST) {     
             try {
                 $user_detail = $user->authenticate($user->username, $user->password);
                 $_SESSION['username'] = $user_detail->username;
@@ -52,7 +47,7 @@ class UserController Extends AppController
         $empty_field = 0;
 
         $user_detail = array(
-               	          'name' => $reg_name,
+                          'name' => $reg_name,
                	          'username' => $reg_username,
                	          'email' => $reg_email,
                	          'password' => $reg_password
@@ -60,38 +55,33 @@ class UserController Extends AppController
 
         $register = new User();
  
-        $status = ' ';
         $register->username = Param::get('username');
         $register->name = Param::get('name');
         $register->email = Param::get('email');
         $register->password = Param::get('password');
 
-        if (!($reg_name) || !($reg_password) || !($reg_email) ||!($reg_username)) {
-            $status = ' ';
-        }elseif (!($reg_username) || !($reg_password) || !($reg_email) || !($reg_name)) {
-            $status = notice("All fields are required", "error");
-        }
-       	
-        foreach ($user_detail as $key => $value) {
-            if (!$value) {
-                $empty_field++;
-            } else {
-                $user_detail['$key'] = $value;
+       	if($_POST) {
+            foreach ($user_detail as $key => $value) {
+                if (!$value) {
+                    $empty_field++;
+                } else {
+                    $user_detail['$key'] = $value;
+                }
             }
-        }
 
-       if ($empty_field === 0)
-       {
-            try{
-                $a = $register->UserRegister($user_detail);
-                $status = notice("Registration Done! Thank You!");
-            } catch (ExistingUserException $e) {
-                $status = notice($e->getMessage(), "error");
+            if ($empty_field === 0)
+            {
+                try{
+                    $a = $register->register($user_detail);
+                    $status = notice("Registration Done! Thank You!");
+                } catch (UserExistsException $e) {
+                    $status = notice($e->getMessage(), "error");
             
-            } catch (ValidationException $e) {
-                $status = notice($e->getMessage(), "error");
+                } catch (ValidationException $e) {
+                    $status = notice($e->getMessage(), "error");
+                }  
             }  
-        }  
+        }
 
         //TODO: Get all threads
         $this->set(get_defined_vars());

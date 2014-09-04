@@ -60,12 +60,12 @@ class User extends AppModel
         $query = 'SELECT * FROM user_detail WHERE username = ? AND password = ?';
         $param = array($username, $password);
 
-        $user_exist = $db->row($query, $param);
+        $row = $db->row($query, $param);
 
-        if (!$user_exist) {
+        if (!$row) {
             throw new RecordNotFoundException("Record not found");
         }  
-        return new self($user_exist);
+        return new self($row);
     }
 
     /**

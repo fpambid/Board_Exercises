@@ -55,28 +55,28 @@
                 <div class="form-group">
                     <label for="InputName">Full Name</label>
                     <div class="input-group">
-                        <input type="text" class="form-control" name="name" id="name" placeholder="Enter Full Name">
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Enter Full Name" required>
                         <span class="input-group-addon"><span class="icon-asterisk"></span></span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="InputUsername">Username</label>
                      <div class="input-group">
-                        <input type="text" class="form-control" id="username" name="username">
+                        <input type="text" class="form-control" id="username" name="username" required>
                         <span class="input-group-addon"><span class="icon-asterisk"></span></span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="InputEmail">Email</label>
                     <div class="input-group">
-                        <input type="email" class="form-control" id="email" name="email">
+                        <input type="email" class="form-control" id="email" name="email" required>
                         <span class="input-group-addon"><span class="icon-asterisk"></span></span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="InputPassword">Password</label>
                     <div class="input-group">
-                        <input type ="Password" name="password" id="password" class="form-control" rows="5">
+                        <input type ="Password" name="password" id="password" class="form-control" rows="5" required>
                         <span class="input-group-addon"><span class="icon-asterisk"></span></span>
                     </div>
                 </div>

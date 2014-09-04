@@ -13,3 +13,7 @@ class RecordNotFoundException extends ValidationException
 {
 	
 }
+
+class UserExistsException extends ValidationException
+{
+}

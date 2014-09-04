@@ -1,4 +1,4 @@
-<h2><?php eh($thread->title) ?></h2>
+<h2><?php say($thread->title) ?></h2>
 <p class="alert alert-success">
 You successfully created.
 </p>

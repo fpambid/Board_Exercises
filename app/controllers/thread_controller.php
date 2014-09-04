@@ -5,8 +5,7 @@ class ThreadController extends AppController
     {
         $title = ' ';
         $total_thread = Thread::count();
-        $page = new Pagination();
-        $pagination = $page::setControls($total_thread);
+        $pagination = Pagination::setControls($total_thread);
 
         $threads = Thread::getAll($pagination['max']);
         $this->set(get_defined_vars());

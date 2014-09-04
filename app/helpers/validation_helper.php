@@ -7,7 +7,7 @@ function validateBetween($check, $min, $max)
 
 function redirect($url) 
 {
-    header("Location:" .$url);
+    header("Location:$url");
 }
 
 function isNameValid($string) 
