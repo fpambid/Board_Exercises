@@ -9,22 +9,22 @@ class UserController Extends AppController
         $title = ' ';
         $status = ' ';
 
-        $username = Param::get('username');
-        $password = Param::get('password');
-
         $user = new User();
 
-        if (!isset($username) || !isset($password)) {
+        $user->username = Param::get('username');
+        $user->password = sha1(Param::get('password'));
+
+        if (!isset($user->username) || !isset($user->password)) {
             $status = ' ';
-        } elseif (!($username || $password)) {
+        } elseif (!($user->username || $user->password)) {
             $status = notice("All fields are required", "error");
         } else {            
             try {
-                $log_detail = $user->is_real($username, $password);   
-                $_SESSION['username'] = $log_detail->username;
-                $_SESSION['password'] = $log_detail->password;
+                $user_detail = $user->authenticate($user->username, $user->password);
+                $_SESSION['username'] = $user_detail->username;
+                $_SESSION['password'] = $user_detail->password;
 
-                echo $log_detail->username;
+                echo $user_detail->username;
                 redirect('thread/index');
 
             } catch (ValidationException $e) {
@@ -48,7 +48,7 @@ class UserController Extends AppController
         $reg_username = Param::get('username');
         $reg_name = Param::get('name');
         $reg_email = Param::get('email');
-        $reg_password= Param::get('password');
+        $reg_password = Param::get('password');
         $empty_field = 0;
 
         $user_detail = array(

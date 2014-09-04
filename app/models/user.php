@@ -4,13 +4,13 @@ class User extends AppModel
     const MIN_NAME = 3;
     const MAX_NAME = 20;
     const MIN_PASS = 6;
-    const MAX_PASS = 20;
+    const MAX_PASS = 40;
 
     public $validation = array(
         'name' => array(
             'length' => array(
                 'validate_between', self::MIN_NAME, self::MAX_NAME,
-                ),
+            ),
             "format" => array(
                 'isNameValid', "Invalid Name"
             )
@@ -18,7 +18,7 @@ class User extends AppModel
         'username' => array(
             'length' => array(
                 'validate_between', self::MIN_NAME, self::MAX_NAME
-                ),
+            ),
             "format" => array(
                 'isUsernameValid', "Invalid Username"
             )
@@ -27,8 +27,8 @@ class User extends AppModel
         'password'=> array(
             'length' => array(
                 'validate_between', self::MIN_PASS, self::MAX_PASS
-                ),
             ),
+        ),
         'email'=> array(
             "format" => array(
                 'isEmailValid', "Invalid Email"
@@ -47,7 +47,7 @@ class User extends AppModel
     **@param $username, $password
     **@throws RecordNotFoundException
     **/
-    public function is_real($username, $password) 
+    public function authenticate($username, $password) 
     {
         $this->username = $username;
         $this->password = $password;
@@ -67,10 +67,10 @@ class User extends AppModel
         }  
         return new self($user_exist);
     }
+
     /**
     **Insert validated values to table user_detail
     **/ 
-
     public function UserRegister(array $user_detail) 
     {
         extract($user_detail);
@@ -78,14 +78,13 @@ class User extends AppModel
             'name' => $name,
             'username' => $username,
             'email' => $email,
-            'password' => $password,
+            'password' => sha1($password),
             'created' => date('Y-m-d H:i:s')
         );
                           
         $this->validate();
 
         if ($this->hasError()) {
-
             throw new ValidationException(notice('Error Found!', "error"));
         }
 
@@ -97,12 +96,11 @@ class User extends AppModel
 
         $exist = $db->row($query, $param);
 
-        if($exist){
+        if($exist) {
             throw new ValidationException(notice('Sorry, that Username, Name or Email is not available', "error"));
         }
-        else{ 
+        else { 
             $db->insert('user_detail', $values);      
         }
     }  
 }
-

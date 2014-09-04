@@ -8,14 +8,13 @@ class Thread extends AppModel
         'title' => array(
             'length' => array(
                 'validate_between', self::MIN_TITLE, self::MAX_TITLE,
-                ),
             ),
-        );
+        ),
+    );
 
     /**
     *Select all threads from database
     */
-
     public static function getAll($limit) 
     {
         $threads = array();
@@ -35,7 +34,6 @@ class Thread extends AppModel
     *Select specific thread
     **@param $id 
     **/
-
     public static function get($id) 
     {
         $db = DB::conn();
@@ -51,7 +49,6 @@ class Thread extends AppModel
     *Select comments on each thread
     **@throws ValidationException
     **/
-
     public function getComments() 
     {
         $comments = array();
@@ -96,9 +93,7 @@ class Thread extends AppModel
         try{
             $db->begin();
 
-            $this->validate();
-            $comment->validate();
-            if ($this->hasError() || $comment->hasError()) {
+            if (!$this->validate() || !$comment->validate()) {
                 throw new ValidationException('invalid thread or comment');
             }
 

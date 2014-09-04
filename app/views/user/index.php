@@ -25,7 +25,7 @@
                 <div class="control-group">
                     <label class="control-label" for="inputPassword">Password</label>
                         <div class="controls">
-                            <input type="password" name="password" maxlength="16" >
+                            <input type="password" name="password" maxlength="40" >
                         </div>
                 </div>
             </td>

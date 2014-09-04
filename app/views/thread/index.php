@@ -1,11 +1,19 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
 
-	    <h1>Hello there! <?php echo $_SESSION['username'];?></h1>
+	    <div class="well well-sm"><span><strong><font size = "6">Hello there! <?php echo $_SESSION['username'];?>
+        </font></strong></span>
+        </div>
+    </div>
 
 <div style="float: right; width: 185px; height: 50px; margin: -70px" >
-    <a class = "btn btn-primary btn-lg" name = "logout" href="<?php say(url('thread/logout'));?>">
+    <a  name = "logout" href="<?php say(url('thread/logout'));?>">
     Logout
     </a>
 </div>
+
+
 
        <br/> <h2>All threads</h2>
     <ul>
@@ -21,6 +29,7 @@
     	<a class="btn btn-large btn-primary" href="<?php say(url('thread/create')) ?>">Create</a>
         <br/>
 
-<div style="float: right; width: 200px; height: 50px;" >
+<div style="float: right; width: 100px; height: 50px;" >
     <?php echo $pagination['control'];?>
+</div>
 </div>

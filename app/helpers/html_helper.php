@@ -18,7 +18,7 @@ function readable_text($s)
 function notice($text, $notice_type = NULL)
 {
     $msg = "<center>";
-    if ($notice_type == 'error') {
+    if ($notice_type === 'error') {
         return $msg .= "<font color=red size=2>" . $text . "</font></center>";
     }
 
