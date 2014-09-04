@@ -66,9 +66,9 @@ class UserController Extends AppController
         $register->email = Param::get('email');
         $register->password = Param::get('password');
 
-        if (!isset($reg_name) || !isset($reg_password) || !isset($reg_email) ||!isset($reg_username)) {
+        if (!($reg_name) || !($reg_password) || !($reg_email) ||!($reg_username)) {
             $status = ' ';
-        } elseif (!($reg_username) || !($reg_password) || !($reg_email) || !($reg_name)) {
+        }elseif (!($reg_username) || !($reg_password) || !($reg_email) || !($reg_name)) {
             $status = notice("All fields are required", "error");
         }
        	

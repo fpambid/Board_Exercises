@@ -10,12 +10,12 @@ class Comment extends AppModel
     public $validation = array(
         'username' => array(
             'length' => array(
-                'validate_between', self::MIN_USERNAME, self::MAX_USERNAME,
+                'validateBetween', self::MIN_USERNAME, self::MAX_USERNAME,
             ),
         ),
         'body' => array(
             'length' => array(
-                'validate_between', self::MIN_BODY, self::MAX_BODY,
+                'validateBetween', self::MIN_BODY, self::MAX_BODY,
                 ),
             ),
         );

@@ -7,7 +7,7 @@ class Thread extends AppModel
     public $validation = array(
         'title' => array(
             'length' => array(
-                'validate_between', self::MIN_TITLE, self::MAX_TITLE,
+                'validateBetween', self::MIN_TITLE, self::MAX_TITLE,
             ),
         ),
     );
@@ -18,7 +18,7 @@ class Thread extends AppModel
     public static function getAll($limit) 
     {
         $threads = array();
-        $limit = Thread::countThread();
+        $limit = Thread::count();
         $limits = new Pagination();
         $limited = $limits::setLimit($limit);
         $db = DB::conn();
@@ -110,7 +110,7 @@ class Thread extends AppModel
         } 
     }
 
-    public static function countThread() 
+    public static function count() 
     {
         $db= DB::conn();
         $total = $db->value("SELECT COUNT(id) FROM thread");

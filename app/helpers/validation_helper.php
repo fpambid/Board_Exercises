@@ -1,5 +1,5 @@
 <?php
-function validate_between($check, $min, $max) 
+function validateBetween($check, $min, $max) 
 {
     $n = mb_strlen($check);
     return $min <= $n && $n <= $max;
@@ -12,7 +12,7 @@ function redirect($url)
 
 function isNameValid($string) 
 {
-    if(preg_match("/[a-zA-Z]/", $string)) {
+    if(ctype_alpha($string)) {
         return true;
     }
     return false;

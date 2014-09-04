@@ -4,7 +4,7 @@ class ThreadController extends AppController
     public function index() 
     {
         $title = ' ';
-        $total_thread = Thread::countThread();
+        $total_thread = Thread::count();
         $page = new Pagination();
         $pagination = $page::setControls($total_thread);
 

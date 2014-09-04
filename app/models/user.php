@@ -9,7 +9,7 @@ class User extends AppModel
     public $validation = array(
         'name' => array(
             'length' => array(
-                'validate_between', self::MIN_NAME, self::MAX_NAME,
+                'validateBetween', self::MIN_NAME, self::MAX_NAME,
             ),
             "format" => array(
                 'isNameValid', "Invalid Name"
@@ -17,7 +17,7 @@ class User extends AppModel
         ),
         'username' => array(
             'length' => array(
-                'validate_between', self::MIN_NAME, self::MAX_NAME
+                'validateBetween', self::MIN_NAME, self::MAX_NAME
             ),
             "format" => array(
                 'isUsernameValid', "Invalid Username"
@@ -26,7 +26,7 @@ class User extends AppModel
 
         'password'=> array(
             'length' => array(
-                'validate_between', self::MIN_PASS, self::MAX_PASS
+                'validateBetween', self::MIN_PASS, self::MAX_PASS
             ),
         ),
         'email'=> array(
@@ -36,7 +36,7 @@ class User extends AppModel
         ),
         'password' => array(
             "length" => array(
-                "validate_between" , self::MIN_PASS, self::MAX_PASS
+                "validateBetween" , self::MIN_PASS, self::MAX_PASS
             ),
         ),
 
@@ -71,7 +71,7 @@ class User extends AppModel
     /**
     **Insert validated values to table user_detail
     **/ 
-    public function UserRegister(array $user_detail) 
+    public function register(array $user_detail) 
     {
         extract($user_detail);
         $values = array(
@@ -82,9 +82,7 @@ class User extends AppModel
             'created' => date('Y-m-d H:i:s')
         );
                           
-        $this->validate();
-
-        if ($this->hasError()) {
+        if (!$this->validate()) {
             throw new ValidationException(notice('Error Found!', "error"));
         }
 
@@ -94,10 +92,10 @@ class User extends AppModel
         $query = 'SELECT username, email, name FROM user_detail WHERE username = ? OR email = ? OR name = ?';
         $param = array($this->username, $this->email, $this->name);
 
-        $exist = $db->row($query, $param);
+        $row = $db->row($query, $param);
 
-        if($exist) {
-            throw new ValidationException(notice('Sorry, that Username, Name or Email is not available', "error"));
+        if($row) {
+            throw new UserExistsException(notice('Sorry, that Username, Name or Email is not available', "error"));
         }
         else { 
             $db->insert('user_detail', $values);      
