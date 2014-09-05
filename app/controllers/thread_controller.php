@@ -3,7 +3,7 @@ class ThreadController extends AppController
 {
     public function index() 
     {
-        $title = ' ';
+        $title = NULL;
         $total_thread = Thread::count();
         $pagination = Pagination::setControls($total_thread);
 
@@ -12,11 +12,12 @@ class ThreadController extends AppController
     }
 
     /**
-    **To view comments on each thread
-    **/
+    *
+    *To view comments on each thread
+    */
     public function view() 
     {
-        $title = ' ';
+        $title = NULL;
         $thread = Thread::get(Param::get('thread_id'));
         $comments = $thread->getComments();
 
@@ -24,11 +25,12 @@ class ThreadController extends AppController
     }
     
     /**
+    *
     *Enables users to write a comment
-    **/
+    */
     public function write() 
     {
-        $title = ' ';
+        $title = NULL;
         $thread = Thread::get(Param::get('thread_id'));
         $comment = new Comment;
         $page = Param::get('page_next');
@@ -56,7 +58,7 @@ class ThreadController extends AppController
 
     public function create() 
     {
-        $title = ' ';
+        $title = NULL;
         $uname = $_SESSION['username'];
         $thread = new Thread;
         $comment = new Comment;
@@ -87,7 +89,7 @@ class ThreadController extends AppController
 
     function logout() 
     {
-    session_destroy();
-    redirect('../');
+        session_destroy();
+        redirect('../');
     }
 }

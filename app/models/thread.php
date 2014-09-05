@@ -1,18 +1,19 @@
 <?php
 class Thread extends AppModel
 {
-    const MIN_TITLE = 1;
-    const MAX_TITLE = 30;
+    const MIN_TITLE_LENGTH = 1;
+    const MAX_TITLE_LENGTH = 30;
     
     public $validation = array(
         'title' => array(
             'length' => array(
-                'validateBetween', self::MIN_TITLE, self::MAX_TITLE,
+                'validate_between', self::MIN_TITLE_LENGTH, self::MAX_TITLE_LENGTH,
             ),
         ),
     );
 
     /**
+    *
     *Select all threads from database
     */
     public static function getAll($total_thread) 
@@ -31,8 +32,8 @@ class Thread extends AppModel
     
     /**
     *Select specific thread
-    **@param $id 
-    **/
+    *@param $id 
+    */
     public static function get($id) 
     {
         $db = DB::conn();
@@ -43,14 +44,14 @@ class Thread extends AppModel
 
     /**
     *Select comments on each thread
-    **@throws ValidationException
-    **/
+    *@throws ValidationException
+    */
     public function getComments() 
     {
         $comments = array();
         $db = DB::conn();
-        $rows = $db->rows('SELECT * FROM comment WHERE thread_id = ? ORDER BY created ASC',
-            array($this->id));
+
+        $rows = $db->search('comment', 'thread_id = ?', array($this->id), 'created ASC' );
 
         foreach ($rows as $row) {
             $comments[] = new Comment($row);
@@ -63,10 +64,11 @@ class Thread extends AppModel
         $params = array(
             "thread_id" => $this->id,
             "username" => $comment->username,
-            "body" => $comment->body);
+            "body" => $comment->body,
+            "created" => date('Y-m-d H:i:s'));
 
         if (!$comment->validate()) {
-        throw new ValidationException('invalid comment');
+            throw new ValidationException('invalid comment');
         }
 
         $db = DB::conn();
@@ -74,15 +76,15 @@ class Thread extends AppModel
     }
 
     /**
-    ** Insert validated thread/comments 
-    ** @param $comment
-    **/
+    *Insert validated thread/comments 
+    * @param $comment
+    */
     public function create(Comment $comment) 
     {
         $params = array(
             "id" => $this->id, 
             "title" => $this->title,
-            "created" => NOW());
+            "created" => date('Y-m-d H:i:s'));
 
         $db = DB::conn();
 
@@ -112,5 +114,4 @@ class Thread extends AppModel
 
         return $total;
     }
-     //count number of rows
 }

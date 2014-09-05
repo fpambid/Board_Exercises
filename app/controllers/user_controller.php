@@ -2,11 +2,13 @@
 class UserController Extends AppController
 {	
     /**
-    **Get and Validate entered values in log in form
-    **/
+    *
+    *Get and Validate entered values in log in form
+    */
     public function index()
     {
-        $title = ' ';
+        $title = NULL;
+        $status = NULL;
 
         $user = new User();
 
@@ -19,7 +21,6 @@ class UserController Extends AppController
                 $_SESSION['username'] = $user_detail->username;
                 $_SESSION['password'] = $user_detail->password;
 
-                echo $user_detail->username;
                 redirect('thread/index');
 
             } catch (ValidationException $e) {
@@ -33,12 +34,13 @@ class UserController Extends AppController
     }
 
     /**
-    **Get and Validate entered values in registration form
-    **/
+    *
+    *Get and Validate entered values in registration form
+    */
     public function register()
     {
-        $title = ' ';
-        $status = ' ';
+        $title = NULL;
+        $status = NULL;
 
         $reg_username = Param::get('username');
         $reg_name = Param::get('name');
@@ -53,12 +55,12 @@ class UserController Extends AppController
                	          'password' => $reg_password
                           );
 
-        $register = new User();
+        $user = new User();
  
-        $register->username = Param::get('username');
-        $register->name = Param::get('name');
-        $register->email = Param::get('email');
-        $register->password = Param::get('password');
+        $user->username = Param::get('username');
+        $user->name = Param::get('name');
+        $user->email = Param::get('email');
+        $user->password = Param::get('password');
 
        	if($_POST) {
             foreach ($user_detail as $key => $value) {
@@ -71,8 +73,8 @@ class UserController Extends AppController
 
             if ($empty_field === 0)
             {
-                try{
-                    $a = $register->register($user_detail);
+                try {
+                    $a = $user->register($user_detail);
                     $status = notice("Registration Done! Thank You!");
                 } catch (UserExistsException $e) {
                     $status = notice($e->getMessage(), "error");

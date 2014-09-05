@@ -1,4 +1,4 @@
-<?php if ($register->hasError()): ?>
+<?php if ($user->hasError()): ?>
     <div class="alert alert-block">
         <h4 class="alert-heading">Validation error!</h4>
 
@@ -15,28 +15,28 @@
         <?php if (!empty($user->validation_errors['email']['format'])): ?>
             <div>That Email is INVALID!
             </div>
-        <?php endif ?>          
+        <?php endif ?>  
         
-        <?php if (!empty($register->validation_errors['name']['length'])): ?>
-            <div><em>Comment</em> must be between
-                <?php say($register->validation['name']['length'][1]) ?> and
-                <?php say($register->validation['name']['length'][2]) ?> characters in length.
+        <?php if (!empty($user->validation_errors['name']['length'])): ?>
+            <div><em>Name</em> must be between
+                <?php say($user->validation['name']['length'][1]) ?> and
+                <?php say($user->validation['name']['length'][2]) ?> characters in length.
             </div>
         <?php endif ?>
 
-        <?php if (!empty($register->validation_errors['username']['length'])|| !empty($user->validation_errors['username']['format'])): ?>
+        <?php if (!empty($user->validation_errors['username']['length'])|| !empty($user->validation_errors['username']['format'])): ?>
                 
             <div><em>Your name</em> must be between
-                <?php say($register->validation['username']['length'][1]) ?> and
-                <?php say($register->validation['username']['length'][2]) ?> characters in length.
+                <?php say($user->validation['username']['length'][1]) ?> and
+                <?php say($user->validation['username']['length'][2]) ?> characters in length.
             </div>
         <?php endif ?>
 
-        <?php if (!empty($register->validation_errors['password']['length'])): ?>
+        <?php if (!empty($user->validation_errors['password']['length'])): ?>
                 
             <div><em>Your password</em> must be between
-                <?php say($register->validation['password']['length'][1]) ?> and
-                <?php say($register->validation['password']['length'][2]) ?> characters in length.
+                <?php say($user->validation['password']['length'][1]) ?> and
+                <?php say($user->validation['password']['length'][2]) ?> characters in length.
             </div>
         <?php endif ?>
  <?php endif ?>

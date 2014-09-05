@@ -1,21 +1,24 @@
 <?php
-//Adds validation rule
+/**
+*Adds validation rule
+*
+*/
 class Comment extends AppModel
 {
-    const MIN_USERNAME = 1;
-    const MAX_USERNAME = 16;
-    const MIN_BODY = 1;
-    const MAX_BODY = 200;
+    const MIN_USERNAME_LENGTH = 1;
+    const MAX_USERNAME_LENGTH = 16;
+    const MIN_BODY_LENGTH = 1;
+    const MAX_BODY_LENGTH = 200;
 
     public $validation = array(
         'username' => array(
             'length' => array(
-                'validateBetween', self::MIN_USERNAME, self::MAX_USERNAME,
+                'validate_between', self::MIN_USERNAME_LENGTH, self::MAX_USERNAME_LENGTH,
             ),
         ),
         'body' => array(
             'length' => array(
-                'validateBetween', self::MIN_BODY, self::MAX_BODY,
+                'validate_between', self::MIN_BODY_LENGTH, self::MAX_BODY_LENGTH,
                 ),
             ),
         );

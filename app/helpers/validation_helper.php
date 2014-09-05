@@ -1,5 +1,5 @@
 <?php
-function validateBetween($check, $min, $max) 
+function validate_between($check, $min, $max) 
 {
     $n = mb_strlen($check);
     return $min <= $n && $n <= $max;
@@ -10,26 +10,17 @@ function redirect($url)
     header("Location:$url");
 }
 
-function isNameValid($string) 
+function is_name_valid($string) 
 {
-    if(ctype_alpha($string)) {
-        return true;
-    }
-    return false;
+    return ctype_alpha($string);
 }
 
-function isEmailValid($email) 
+function is_email_valid($email) 
 {
-    if(preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/", $email)) {
-        return true;
-    }
-    return false;
+    return preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/", $email);
 }
 
-function isUsernameValid($uname) 
+function is_username_valid($uname) 
 {
-    if(preg_match('/[a-zA-Z0-9_-]/', $uname)) {
-        return true;
-    }
-    return false;
+    return preg_match('/[a-zA-Z0-9_-]/', $uname); 
 }

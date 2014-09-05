@@ -3,3 +3,6 @@ app/tmp/logs/*.log
 app/tmp/logs/php.log
 app/tmp/logs/debug.log
 app/tmp/logs/access.log
+app/controllers/hello_controller.php
+app/models/hello.php
+app/views/hello/index.php
