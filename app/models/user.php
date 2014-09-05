@@ -34,12 +34,6 @@ class User extends AppModel
                 'is_email_valid', "Invalid Email"
             ),
         ),
-        'password' => array(
-            "length" => array(
-                "validate_between" , self::MIN_PASS_LENGTH, self::MAX_PASS_LENGTH
-            ),
-        ),
-
     );
 
     /**
@@ -49,9 +43,6 @@ class User extends AppModel
     */
     public function authenticate($username, $password) 
     {
-        $this->username = $username;
-        $this->password = $password;
-
         if (!$this->validate()) {
             throw new ValidationException("Invalid Username/Password");
         }

@@ -7,7 +7,7 @@ class UserController Extends AppController
     */
     public function index()
     {
-        $title = NULL;
+         
         $status = NULL;
 
         $user = new User();
@@ -39,14 +39,13 @@ class UserController Extends AppController
     */
     public function register()
     {
-        $title = NULL;
         $status = NULL;
 
         $reg_username = Param::get('username');
         $reg_name = Param::get('name');
         $reg_email = Param::get('email');
         $reg_password = Param::get('password');
-        $empty_field = 0;
+        $empty_field = NULL;
 
         $user_detail = array(
                           'name' => $reg_name,
@@ -71,7 +70,7 @@ class UserController Extends AppController
                 }
             }
 
-            if ($empty_field === 0)
+            if (!$empty_field)
             {
                 try {
                     $a = $user->register($user_detail);

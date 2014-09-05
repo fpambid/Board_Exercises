@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>DietKAY <?php say($title) ?></title>
+    <title>DietKAY</title>
 
     <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <style>

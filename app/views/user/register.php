@@ -2,29 +2,29 @@
     <div class="alert alert-block">
         <h4 class="alert-heading">Validation error!</h4>
 
-         <?php if (!empty($user->validation_errors['name']['format'])): ?>
+         <?php if ($user->validation_errors['name']['format']): ?>
             <div>That name is INVALID! Alphanumerics only!
             </div>
         <?php endif ?>  
 
-        <?php if (!empty($user->validation_errors['username']['format'])): ?>
+        <?php if ($user->validation_errors['username']['format']): ?>
             <div>That username is INVALID!
             </div>
         <?php endif ?>     
 
-        <?php if (!empty($user->validation_errors['email']['format'])): ?>
+        <?php if ($user->validation_errors['email']['format']): ?>
             <div>That Email is INVALID!
             </div>
         <?php endif ?>  
         
-        <?php if (!empty($user->validation_errors['name']['length'])): ?>
+        <?php if ($user->validation_errors['name']['length']): ?>
             <div><em>Name</em> must be between
                 <?php say($user->validation['name']['length'][1]) ?> and
                 <?php say($user->validation['name']['length'][2]) ?> characters in length.
             </div>
         <?php endif ?>
 
-        <?php if (!empty($user->validation_errors['username']['length'])|| !empty($user->validation_errors['username']['format'])): ?>
+        <?php if ($user->validation_errors['username']['length'] || $user->validation_errors['username']['format']): ?>
                 
             <div><em>Your name</em> must be between
                 <?php say($user->validation['username']['length'][1]) ?> and
@@ -32,7 +32,7 @@
             </div>
         <?php endif ?>
 
-        <?php if (!empty($user->validation_errors['password']['length'])): ?>
+        <?php if ($user->validation_errors['password']['length']): ?>
                 
             <div><em>Your password</em> must be between
                 <?php say($user->validation['password']['length'][1]) ?> and

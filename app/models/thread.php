@@ -27,7 +27,7 @@ class Thread extends AppModel
         foreach ($rows as $row) {
             $threads[] = new self($row);
         }
-    return $threads;
+        return $threads;
     }
     
     /**
@@ -42,23 +42,6 @@ class Thread extends AppModel
         return new self($row);
     }
 
-    /**
-    *Select comments on each thread
-    *@throws ValidationException
-    */
-    public function getComments() 
-    {
-        $comments = array();
-        $db = DB::conn();
-
-        $rows = $db->search('comment', 'thread_id = ?', array($this->id), 'created ASC' );
-
-        foreach ($rows as $row) {
-            $comments[] = new Comment($row);
-        }
-        return $comments;
-    }
-    
     public function write(Comment $comment) 
     {
         $params = array(
