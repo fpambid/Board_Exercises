@@ -26,7 +26,7 @@ class Comment extends AppModel
     /**
     *Select comments on each thread
     */
-    public function getComments() 
+    public function getAll() 
     {
         $comments = array();
         $db = DB::conn();
