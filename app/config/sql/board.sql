@@ -6,29 +6,35 @@ FLUSH PRIVILEGES;
 
 USE board;
 
-CREATE TABLE IF NOT EXISTS thread (
-    id       INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    title    VARCHAR(255) NOT NULL,
-    created  DATETIME NOT NULL,
+CREATE TABLE IF NOT EXISTS user_detail (
+    id          INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+    username    VARCHAR(20) NOT NULL,
+    name        VARCHAR(20) NOT NULL,
+    email       VARCHAR(30) NOT NULL,
+    password    VARCHAR(40) NOT NULL,
     PRIMARY KEY (id)
+)ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS thread (
+    id       INT (10) UNSIGNED NOT NULL AUTO_INCREMENT,
+    title    VARCHAR(30) NOT NULL,
+    created  TIMESTAMP NOT NULL,
+    user_id  INT(10) NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (user_id) REFERENCES user_detail(id)
 )ENGINE=InnoDB;
 
 CREATE TABLE IF NOT EXISTS comment (
-    id         INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    id         INT (10) UNSIGNED NOT NULL AUTO_INCREMENT,
+    user_id    INT (10) NOT NULL,
     thread_id  INT UNSIGNED NOT NULL,
     username   VARCHAR(255) NOT NULL,
-    body       TEXT NOT NULL,
-    created    DATETIME NOT NULL,
+    body       TEXT(200) NOT NULL,
+    created    TIMESTAMP NOT NULL,
     PRIMARY KEY (id),
+    FOREIGN KEY (thread_id) references thread(id)
     INDEX (thread_id, created)
 )ENGINE=InnoDB;
 
-CREATE TABLE IF NOT EXISTS user_detail (
-    id     INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    username    VARCHAR(255) NOT NULL,
-    name        VARCHAR(255) NOT NULL,
-    email       VARCHAR(255) NOT NULL,
-    password    VARCHAR(255) NOT NULL,
-    PRIMARY KEY (id)
-)ENGINE=InnoDB;
+
 
