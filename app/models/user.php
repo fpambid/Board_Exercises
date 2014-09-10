@@ -48,7 +48,7 @@ class User extends AppModel
         }
 
         $db=DB::conn();
-        $query = 'SELECT * FROM user_detail WHERE username = ? AND password = ?';
+        $query = 'SELECT * FROM user WHERE username = ? AND password = ?';
         $param = array($username, $password);
 
         $row = $db->row($query, $param);
@@ -60,7 +60,7 @@ class User extends AppModel
     }
 
     /**
-    *Insert validated values to table user_detail
+    *Insert validated values to table user
     */ 
     public function register(array $user_detail) 
     {
@@ -79,7 +79,7 @@ class User extends AppModel
 
         $db = DB::conn();
 
-        $query = 'SELECT username, email, name FROM user_detail WHERE username = ? OR email = ? OR name = ?';
+        $query = 'SELECT username, email, name FROM user WHERE username = ? OR email = ? OR name = ?';
         $param = array($this->username, $this->email, $this->name);
 
         $row = $db->row($query, $param);
@@ -88,7 +88,7 @@ class User extends AppModel
             throw new UserExistsException(notice('Sorry, that Username, Name or Email is not available', "error"));
         }
         else { 
-            $db->insert('user_detail', $values);      
+            $db->insert('user', $values);      
         }
     }  
 }

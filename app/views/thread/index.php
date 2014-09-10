@@ -19,7 +19,7 @@
     <ul>
     <?php foreach ($threads as $v): ?>
         <li>
-            <a href="<?php say(url('thread/view', array('thread_id' => $v->id))) ?>">
+            <a href="<?php say(url('comment/view', array('thread_id' => $v->id))) ?>">
             <?php say($v->title) ?></a>
             
         </li>

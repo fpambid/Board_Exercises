@@ -27,7 +27,7 @@
         <label>Title</label>
         <input type="text" class="span2" name="title" value="<?php say(Param::get('title')) ?>">
         <label>Your name</label>
-        <input type="text" class="span2" name="username" value="<?php echo $_SESSION['username'];?>" disabled>
+        <input type="text" class="span2" name="username" value="<?php echo $_SESSION['username'];?>" readonly>
         <label>Comment</label>
         <textarea name="body"><?php say(Param::get('body')) ?></textarea>
         <br />
