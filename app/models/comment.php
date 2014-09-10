@@ -57,7 +57,7 @@ class Comment extends AppModel
         return $comments;
     }
 
-    public static function get($id) 
+    public static function getByThreadId($id) 
     {
         $db = DB::conn();
         $row = $db->row('SELECT * FROM thread WHERE id = ?', array($id));

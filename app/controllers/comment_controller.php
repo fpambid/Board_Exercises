@@ -10,7 +10,7 @@ class CommentController extends AppController
         $thread = array();
 
         $thread_id = Param::get('thread_id');
-        $thread = Comment::get($thread_id);
+        $thread = Comment::getByThreadId($thread_id);
 
         $total_comment = Comment::count($thread_id);
         $pagination = Pagination::setControls($total_comment); 

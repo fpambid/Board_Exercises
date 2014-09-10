@@ -32,5 +32,5 @@
         <textarea name="body"><?php say(Param::get('body')) ?></textarea>
         <br />
         <input type="hidden" name="page_next" value="create_end">
-        <button type="submit" class="btn btn-primary" onclick="alert('Thank you!')">Submit</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
     </form>

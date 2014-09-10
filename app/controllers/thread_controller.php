@@ -3,11 +3,11 @@ class ThreadController extends AppController
 {
     public function index() 
     {
-         
         $total_thread = Thread::count();
         $pagination = Pagination::setControls($total_thread);
+        $sort = Param::get('sort_by');
 
-        $threads = Thread::getAll($pagination['max']);
+        $threads = Thread::getAll($pagination['max'], $sort);
         $this->set(get_defined_vars());
     }
 

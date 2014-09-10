@@ -6,7 +6,7 @@
 	<div class="comment">
 	    <div class="meta">
 	        <span class=""></span>
-	        <?php say($k + 1) ?>: <strong><?php say($v->username) ?></strong>
+	        <strong><?php say($v->username) ?></strong>
 	        <div style="float: right; width: 700px; height: 25px;" ><font color="#005C8A"><em>
 	            <?php say($v->created) ?></em></font>
 	        </div>
