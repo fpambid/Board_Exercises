@@ -22,7 +22,7 @@ class Thread extends AppModel
         $total_thread = self::count();
         $limited = Pagination::setLimit($total_thread);
         $db = DB::conn();
-        $rows = $db->rows("SELECT * FROM thread $limited");
+        $rows = $db->rows("SELECT * FROM thread LIMIT $limited");
         
         foreach ($rows as $row) {
             $threads[] = new self($row);
@@ -36,6 +36,7 @@ class Thread extends AppModel
     */
     public static function get($id) 
     {
+        $thread_id = Param::get('thread_id');
         $db = DB::conn();
         $row = $db->row('SELECT * FROM thread WHERE id = ?', array($id));
 

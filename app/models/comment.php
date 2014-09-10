@@ -26,12 +26,30 @@ class Comment extends AppModel
     /**
     *Select comments on each thread
     */
-    public function getAll() 
+
+
+// $comments = array();
+//         $db = DB::conn();
+//         $where = "thread_id = ?";
+//         $where_params = array($this->thread_id);
+//         $order = "created DESC";
+//         $rows = $db->search(self::COMMENT_TABLE, $where, $where_params, $order, $limit);
+
+
+    public function getAll($total_comment, $thread_id) 
     {
+        $total_comment = $this->count($thread_id);
+        $limited = Pagination::setLimit($total_comment);
+
         $comments = array();
         $db = DB::conn();
+        $where = "thread_id = ?";
+        $where_params = array($this->id);
+        $order = "created ASC";
 
-        $rows = $db->search('comment', 'thread_id = ?', array($this->id), 'created ASC' );
+        // $rows = $db->row('SELECT * from comment WHERE thread_id = ? create ASC $limited', array($this->id));
+
+        $rows = $db->search('comment', $where, $where_params, $order, $limited);
 
         foreach ($rows as $row) {
             $comments[] = new Comment($row);
@@ -45,5 +63,19 @@ class Comment extends AppModel
         $row = $db->row('SELECT * FROM thread WHERE id = ?', array($id));
 
         return new self($row);
+    }
+
+    public static function count($thread_id)
+    {
+        $db = DB::conn();
+        $query = 'SELECT COUNT(id) from comment WHERE thread_id = ?';
+        $where_params = array($thread_id);
+
+        $count = $db->value($query, $where_params);
+
+        // echo $thread_id;
+
+        return $count;
+
     }
 }

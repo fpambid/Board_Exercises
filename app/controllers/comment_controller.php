@@ -7,9 +7,19 @@ class CommentController extends AppController
     */
     public function view() 
     {
-         
-        $thread = Comment::get(Param::get('thread_id'));
-        $comments = $thread->getAll();
+        $thread = array();
+
+        $thread_id = Param::get('thread_id');
+        $thread = Comment::get($thread_id);
+
+        $total_comment = Comment::count($thread_id);
+        $pagination = Pagination::setControls($total_comment); 
+ 
+        // echo $total_comment;
+        
+        
+        // $comment->thread_id = $thread->id;
+        $comments = $thread->getAll($pagination['max'], $thread_id);
 
         $this->set(get_defined_vars());
     }
@@ -23,7 +33,7 @@ class CommentController extends AppController
     {
          
         $thread = Thread::get(Param::get('thread_id'));
-        $comment = new Comment;
+        $comment = new Comment();
         $page = Param::get('page_next');
 
         switch ($page) {

@@ -39,6 +39,10 @@
     <-- All threads
     </a>
 
+    <div style="float: right; width: 100px; height: 50px;" >
+    <?php echo $pagination['control'];?>
+</div>
+
 <!--     <button type="button" onclick="<?php say(url('thread/index')) ?>">
 	&larr; All threads
 	</button>
