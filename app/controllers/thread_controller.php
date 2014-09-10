@@ -26,7 +26,7 @@ class ThreadController extends AppController
     
     /**
     *
-    *Enables users to write a comment
+    *Enables users to write a comment 
     */
     public function write() 
     {
