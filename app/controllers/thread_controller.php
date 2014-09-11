@@ -74,11 +74,20 @@ class ThreadController extends AppController
         $this->set(get_defined_vars());
         $this->render($page);
     } 
-    
+
 
     function logout() 
     {
         session_destroy();
         redirect('../');
+    }
+
+    public function delete()
+    {
+        $thread = Thread::get(Param::get('id'));
+        $title = $thread->title;
+        $thread->delete();
+        redirect('index');
+        $this->set(get_defined_vars());
     }
 }

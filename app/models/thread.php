@@ -69,7 +69,8 @@ class Thread extends AppModel
         $params = array(
             "id" => $this->id, 
             "title" => $this->title,
-            "created" => date('Y-m-d H:i:s'));
+            "created" => date('Y-m-d H:i:s'),
+            "user_id" => $_SESSION['id']);
 
         $db = DB::conn();
 
@@ -115,11 +116,13 @@ class Thread extends AppModel
         }
 
         return $order_by;
-    }
+    } 
 
-    // public static function delete();
-    // {
-    //     $db = DB::conn();
-    //     $delete = $db->
-    // }
+    public function delete()
+    {
+        $db = DB::conn();
+        $query = 'DELETE FROM thread WHERE id = ?';
+        $where_params = array($this->id);
+        $db->query($query, $where_params);
+    }
 }

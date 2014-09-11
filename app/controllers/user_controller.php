@@ -20,6 +20,7 @@ class UserController Extends AppController
                 $user_detail = $user->authenticate($user->username, $user->password);
                 $_SESSION['username'] = $user_detail->username;
                 $_SESSION['password'] = $user_detail->password;
+                $_SESSION['id'] = $user_detail->id;
 
                 redirect('thread/index');
 

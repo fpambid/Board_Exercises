@@ -20,6 +20,8 @@
 
     <?php endforeach ?>
 
+     <a class="btn" href="<?php say(url('thread/delete', array('id' => $thread->id)));?>"><i class="icon-trash"></i></a>
+
 
 	<!-- To enable user to write a comment on a thread -->
 
