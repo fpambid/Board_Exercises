@@ -116,4 +116,10 @@ class Thread extends AppModel
 
         return $order_by;
     }
+
+    // public static function delete();
+    // {
+    //     $db = DB::conn();
+    //     $delete = $db->
+    // }
 }
