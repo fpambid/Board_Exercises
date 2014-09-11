@@ -6,7 +6,7 @@ FLUSH PRIVILEGES;
 
 USE board;
 
-CREATE TABLE IF NOT EXISTS user_detail (
+CREATE TABLE IF NOT EXISTS user (
     id          INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
     username    VARCHAR(20) NOT NULL,
     name        VARCHAR(20) NOT NULL,
@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS thread (
     created  TIMESTAMP NOT NULL,
     user_id  INT(10) NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (user_id) REFERENCES user_detail(id)
+    FOREIGN KEY (user_id) REFERENCES user(id)
 )ENGINE=InnoDB;
 
 CREATE TABLE IF NOT EXISTS comment (

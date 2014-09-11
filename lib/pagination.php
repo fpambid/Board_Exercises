@@ -2,7 +2,7 @@
 
 class Pagination
 {
-    const MAX_ITEM = 3;
+    const MAX_ITEM = 5;
 
     public static $last;
     public static $pagenum = 1;
@@ -13,7 +13,7 @@ class Pagination
     public static function setLastPage($row_length) 
     {
 
-    self::$last = ceil($row_length/self::MAX_ITEM); 
+    self::$last = ceil($row_length/self::MAX_ITEM);  
 
         if(self::$last < 1) { 
             self::$last = 1; 
@@ -45,7 +45,7 @@ class Pagination
 
     $currpage = self::setCurrPage($row_length);
 
-    self::$limit = 'LIMIT ' .($currpage - 1) * self::MAX_ITEM .',' .self::MAX_ITEM;
+    self::$limit = ($currpage - 1) * self::MAX_ITEM .',' .self::MAX_ITEM;
 
     return self::$limit;
     }
@@ -64,11 +64,11 @@ class Pagination
         if($last != 1) { 
             if ($pagenum > 1) { 
                 $page_url = $pagenum - 1; 
-                $pageCtrls .= "<a href='". url('', $url) ."'>Previous</a> &nbsp; &nbsp;"; 
+                $pageCtrls .= '<a href="'. url('', $url) .'">Previous</a> &nbsp; &nbsp'; 
 
                 for($i = $pagenum-4; $i < $pagenum; $i++) {
                     if($i > 0) { 
-                        $pageCtrls .= '<a href="'. url('', $url) .'">'.$i.'</a> &nbsp; '; 
+                        $pageCtrls .= '<a href="'. url('', $url) .'">'.$i.'</a> &nbsp'; 
                     }
                 }
             }
@@ -76,7 +76,7 @@ class Pagination
 
             for($i = $pagenum+1; $i <= $last; $i++) { 
                 $page_url = $i;
-                $pageCtrls .= "<a href='".url('', $url)."')'.$i.'</a> &nbsp;"; 
+                $pageCtrls .= '<a href="'.url('', $url).'">'.$i.'</a> &nbsp;'; 
                 if($i >= $pagenum+4) { 
                     break; 
                 } 
@@ -84,7 +84,7 @@ class Pagination
 
             if ($pagenum != $last) {
                 $page_url = $pagenum + 1; 
-                $pageCtrls .= "&nbsp; &nbsp; <a href='".url('', $url)."'>Next</a>";
+                $pageCtrls .= '&nbsp; &nbsp; <a href="'.url('', $url).'">Next</a>';
             } 
         } 
 

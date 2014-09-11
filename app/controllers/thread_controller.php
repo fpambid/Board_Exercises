@@ -3,31 +3,18 @@ class ThreadController extends AppController
 {
     public function index() 
     {
-         
         $total_thread = Thread::count();
         $pagination = Pagination::setControls($total_thread);
+        $sort = Param::get('sort_by');
 
-        $threads = Thread::getAll($pagination['max']);
+        $threads = Thread::getAll($pagination['max'], $sort);
         $this->set(get_defined_vars());
     }
 
-    /**
-    *
-    *To view comments on each thread
-    */
-    public function view() 
-    {
-         
-        $thread = Comment::get(Param::get('thread_id'));
-        $comments = $thread->getAll();
-
-        $this->set(get_defined_vars());
-    }
     
     /**
     *
     *Enables users to write a comment
-    
     */
     public function write() 
     {

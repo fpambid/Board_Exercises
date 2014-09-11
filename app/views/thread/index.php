@@ -7,19 +7,30 @@
         </div>
     </div>
 
-<div style="float: right; width: 185px; height: 50px; margin: -70px" >
+<div style="float: right; width: 185px; height: 200px; margin: -70px" >
     <a  name = "logout" href="<?php say(url('thread/logout'));?>">
     Logout
     </a>
 </div>
 
+<form class = "form-search" method = "GET">
+<div style="float: right; width: 195px; height: 50px;" >
+ <select name="sort_by" class="span2">
+    <option value="" class="invisible" selected disabled>Sort by</option>
+    <option value="title">Title</option>
+    <option value="created">Date Created</option>
+  </select>
+    <button type="submit" name="btnSort" class="btn">Go</button>
+</div>
+</form>
 
 
        <br/> <h2>All threads</h2>
+
     <ul>
     <?php foreach ($threads as $v): ?>
         <li>
-            <a href="<?php say(url('thread/view', array('thread_id' => $v->id))) ?>">
+            <a href="<?php say(url('comment/view', array('thread_id' => $v->id))) ?>">
             <?php say($v->title) ?></a>
             
         </li>
