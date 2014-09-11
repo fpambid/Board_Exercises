@@ -74,6 +74,7 @@ class ThreadController extends AppController
         $this->set(get_defined_vars());
         $this->render($page);
     } 
+    
 
     function logout() 
     {
