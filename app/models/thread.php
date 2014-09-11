@@ -121,8 +121,22 @@ class Thread extends AppModel
     public function delete()
     {
         $db = DB::conn();
-        $query = 'DELETE FROM thread WHERE id = ?';
-        $where_params = array($this->id);
+
+ 
+
+        // $author = 'SELECT user_id FROM thread WHERE id =?';
+
+        // $find = $db->search($author, $where_params);
+
+        // if ($find) {
+        //     # code...
+        // }
+
+        $query = 'DELETE FROM thread WHERE id = ? and user_id = ?';
+        $where_params = array($this->id, $_SESSION['id']);
+        
         $db->query($query, $where_params);
+
+        
     }
 }

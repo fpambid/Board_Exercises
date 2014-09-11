@@ -1,11 +1,16 @@
 <html>
 <h1><?php say($thread->title) ?></h1>
 
+<!-- <em>author: <?php say($rows->username)?></em> <br/> -->
+
 	<?php foreach ($comments as $k => $v): ?>
+
+
 
 	<div class="comment">
 	    <div class="meta">
 	        <span class=""></span>
+
 	        <strong><?php say($v->username) ?></strong>
 	        <div style="float: right; width: 700px; height: 25px;" ><font color="#005C8A"><em>
 	            <?php say($v->created) ?></em></font>
@@ -20,7 +25,17 @@
 
     <?php endforeach ?>
 
-     <a class="btn" href="<?php say(url('thread/delete', array('id' => $thread->id)));?>"><i class="icon-trash"></i></a>
+    <?php if ($thread->user_id == $_SESSION['id']):?>
+
+    	<a class="btn" href="<?php say(url('thread/delete', array('id' => $thread->id)));?>"><i class="icon-trash"></i></a>
+
+     
+     <?php endif ?>
+
+<!--      <?php if($thread->user_id != $_SESSION['id']): echo "WATTTT??"; ?>
+     <?php endif ?> -->
+
+
 
 
 	<!-- To enable user to write a comment on a thread -->

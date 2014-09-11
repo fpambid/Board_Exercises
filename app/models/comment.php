@@ -28,14 +28,6 @@ class Comment extends AppModel
     */
 
 
-// $comments = array();
-//         $db = DB::conn();
-//         $where = "thread_id = ?";
-//         $where_params = array($this->thread_id);
-//         $order = "created DESC";
-//         $rows = $db->search(self::COMMENT_TABLE, $where, $where_params, $order, $limit);
-
-
     public function getAll($total_comment, $thread_id) 
     {
         $total_comment = $this->count($thread_id);
@@ -76,6 +68,15 @@ class Comment extends AppModel
         // echo $thread_id;
 
         return $count;
+
+    }
+
+    public function allowDelete()
+    {
+        $db = DB::conn();
+        $where = "thread_id = ?";
+        $where_params = array($this->id);
+        $db->search('comment', $where, $where_params);
 
     }
 }
