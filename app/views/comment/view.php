@@ -32,7 +32,7 @@
      
      <?php endif ?>
 
-<!--      <?php if($thread->user_id != $_SESSION['id']): echo "WATTTT??"; ?>
+<!--       <?php if($thread->user_id != $_SESSION['id']): echo "WATTTT??"; ?>
      <?php endif ?> -->
 
 
