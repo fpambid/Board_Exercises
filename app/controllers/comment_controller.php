@@ -57,9 +57,14 @@ class CommentController extends AppController
         $this->render($page);
     }
 
-    
-    
-    
-
+    public function delete()
+    {
+        // $thread = Thread::get(Param::get('id'));
+        $comment = Thread::get(Param::get('id'));
+        $comment->delete();
+        // redirect();
+        redirect($_SERVER['HTTP_REFERER']);
+        $this->set(get_defined_vars());
+    }
 
 }

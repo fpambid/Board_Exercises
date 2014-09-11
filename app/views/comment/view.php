@@ -21,7 +21,10 @@
 	<ul>
     <?php echo readable_text($v->body); ?>
     </ul>
+    <?php if ($comment->id == $_SESSION['id']):?>
+    <a class="btn" href="<?php say(url('comment/delete', array('id' => $v->id)));?>"><i class="icon-trash"></i></a>
     </div>
+<?php endif ?>
 
     <?php endforeach ?>
 

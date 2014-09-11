@@ -71,12 +71,12 @@ class Comment extends AppModel
 
     }
 
-    public function allowDelete()
+    public static function delete()
     {
         $db = DB::conn();
-        $where = "thread_id = ?";
-        $where_params = array($this->id);
-        $db->search('comment', $where, $where_params);
-
+        $query = 'DELETE FROM comment WHERE id = ? and user_id = ?';
+        $where_params = array($this->id, $_SESSION['id']);
+        $db->query($query, $where_params);
     }
+
 }
