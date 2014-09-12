@@ -21,9 +21,12 @@
 	<ul>
     <?php echo readable_text($v->body); ?>
     </ul>
-    <?php if ($comment->id == $_SESSION['id']):?>
-    <a class="btn" href="<?php say(url('comment/delete', array('id' => $v->id)));?>"><i class="icon-trash"></i></a>
     </div>
+
+     <?php if ($v->username == $_SESSION['username']): ?>
+
+    <a class="btn" href="<?php say(url('comment/delete', array('id' => $v->id)));?>"><i class="icon-trash"></i></a>
+
 <?php endif ?>
 
     <?php endforeach ?>
@@ -35,7 +38,7 @@
      
      <?php endif ?>
 
-<!--       <?php if($thread->user_id != $_SESSION['id']): echo "WATTTT??"; ?>
+<!--      <?php if($thread->user_id != $_SESSION['id']): echo "WATTTT??"; ?>
      <?php endif ?> -->
 
 

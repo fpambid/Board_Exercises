@@ -57,6 +57,15 @@ class Comment extends AppModel
         return new self($row);
     }
 
+
+    public static function getComment($id) 
+    {
+        $db = DB::conn();
+        $row = $db->row('SELECT * FROM comment WHERE id = ?', array($id));
+
+        return new self($row);
+    }
+
     public static function count($thread_id)
     {
         $db = DB::conn();
@@ -71,12 +80,11 @@ class Comment extends AppModel
 
     }
 
-    public static function delete()
+    public function delete()
     {
         $db = DB::conn();
-        $query = 'DELETE FROM comment WHERE id = ? and user_id = ?';
-        $where_params = array($this->id, $_SESSION['id']);
-        $db->query($query, $where_params);
+        $query = "DELETE FROM comment WHERE id = ?";
+        $where_params = array($this->id);
+        $db->query($query, $where_params);  
     }
-
 }

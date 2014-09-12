@@ -50,8 +50,7 @@ class Thread extends AppModel
             "thread_id" => $this->id,
             "username" => $comment->username,
             "body" => $comment->body,
-            "created" => date('Y-m-d H:i:s'),
-            "user_id" => $_SESSION['id']);
+            "created" => date('Y-m-d H:i:s'));
 
         if (!$comment->validate()) {
             throw new ValidationException('invalid comment');
@@ -123,12 +122,25 @@ class Thread extends AppModel
     {
         $db = DB::conn();
 
-        $thread_delete = 'DELETE FROM thread WHERE id = ? and user_id = ?';
-        // $comment_delete = 'DELETE FROM comment WHERE id = ? and user_id = ?';
+ 
 
+        // $author = 'SELECT user_id FROM thread WHERE id =?';
+
+        // $find = $db->search($author, $where_params);
+
+        // if ($find) {
+        //     # code...
+        // }
+
+        $db = DB::conn();
+
+        $thread_query = 'DELETE FROM thread WHERE id = ? and user_id = ?';
+        $comment_query = 'DELETE FROM comment WHERE thread_id = ? and user_id = ?';
         $where_params = array($this->id, $_SESSION['id']);
         
-        $db->query($thread_delete, $where_params);
-        // $db->query($comment_delete, $where_params);
+        $db->query($thread_query, $where_params);
+        $db->query($comment_query, $where_params);
+
+        
     }
 }
