@@ -13,7 +13,6 @@ class Thread extends AppModel
     );
 
     /**
-    *
     *Select all threads from database
     */
     public static function getAll($total_thread, $sort) 
@@ -22,6 +21,7 @@ class Thread extends AppModel
         $total_thread = self::count();
         $limited = Pagination::setLimit($total_thread);
         $order_by = self::sortThreads($sort);
+
         $db = DB::conn();
         $rows = $db->rows("SELECT * FROM thread $order_by LIMIT $limited");
         
@@ -38,6 +38,7 @@ class Thread extends AppModel
     public static function get($id) 
     {
         $thread_id = Param::get('thread_id');
+
         $db = DB::conn();
         $row = $db->row('SELECT * FROM thread WHERE id = ?', array($id));
 
@@ -50,7 +51,8 @@ class Thread extends AppModel
             "thread_id" => $this->id,
             "username" => $comment->username,
             "body" => $comment->body,
-            "created" => date('Y-m-d H:i:s'));
+            "created" => date('Y-m-d H:i:s'),
+            "user_id" => $_SESSION['id']);
 
         if (!$comment->validate()) {
             throw new ValidationException('invalid comment');
@@ -122,25 +124,11 @@ class Thread extends AppModel
     {
         $db = DB::conn();
 
- 
-
-        // $author = 'SELECT user_id FROM thread WHERE id =?';
-
-        // $find = $db->search($author, $where_params);
-
-        // if ($find) {
-        //     # code...
-        // }
-
-        $db = DB::conn();
-
         $thread_query = 'DELETE FROM thread WHERE id = ? and user_id = ?';
         $comment_query = 'DELETE FROM comment WHERE thread_id = ? and user_id = ?';
         $where_params = array($this->id, $_SESSION['id']);
         
         $db->query($thread_query, $where_params);
-        $db->query($comment_query, $where_params);
-
-        
+        $db->query($comment_query, $where_params);   
     }
 }

@@ -1,5 +1,13 @@
 <html>
+
+    <div style="float: right; width: 600px; height: 25px;">
+    <?php if ($thread->user_id == $_SESSION['id']):?>
+    	<a class="btn" href="<?php say(url('thread/delete', array('id' => $thread->id)));?>"><i class="icon-trash"></i></a>
+     <?php endif ?>
+     </div>
 <h1><?php say($thread->title) ?></h1>
+
+
 
 <!-- <em>author: <?php say($rows->username)?></em> <br/> -->
 
@@ -25,18 +33,12 @@
 
      <?php if ($v->username == $_SESSION['username']): ?>
 
-    <a class="btn" href="<?php say(url('comment/delete', array('id' => $v->id)));?>"><i class="icon-trash"></i></a>
+    <a class="btn" href="<?php say(url('comment/delete', array('id' => $v->id)));?>"><i class="icon-trash"></i></a><br/>
 
 <?php endif ?>
 
     <?php endforeach ?>
 
-    <?php if ($thread->user_id == $_SESSION['id']):?>
-
-    	<a class="btn" href="<?php say(url('thread/delete', array('id' => $thread->id)));?>"><i class="icon-trash"></i></a>
-
-     
-     <?php endif ?>
 
 <!--      <?php if($thread->user_id != $_SESSION['id']): echo "WATTTT??"; ?>
      <?php endif ?> -->

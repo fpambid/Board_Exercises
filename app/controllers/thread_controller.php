@@ -1,6 +1,7 @@
 <?php
 class ThreadController extends AppController 
 {
+    
     public function index() 
     {
         $total_thread = Thread::count();
@@ -11,7 +12,6 @@ class ThreadController extends AppController
         $this->set(get_defined_vars());
     }
 
-    
     /**
     *
     *Enables users to write a comment
@@ -29,6 +29,7 @@ class ThreadController extends AppController
         case 'write_end':
             $comment->username = Param::get('username');
             $comment->body = Param::get('body');
+
             try{
                 $thread->write($comment);
             } catch (ValidationException $e) {
@@ -46,7 +47,6 @@ class ThreadController extends AppController
 
     public function create() 
     {
-         
         $uname = $_SESSION['username'];
         $thread = new Thread;
         $comment = new Comment;
@@ -55,6 +55,7 @@ class ThreadController extends AppController
         switch ($page) {
         case 'create':
             break;
+
         case 'create_end':
             $thread->title = Param::get('title');
             $comment->username = $uname;
@@ -62,10 +63,12 @@ class ThreadController extends AppController
 
             try {
                 $thread->create($comment);
+
             } catch (ValidationException $e) {
                 $page = 'create';
             }
             break;
+
         default:
             throw new NotFoundException("{$page} is not found");
             break;
@@ -75,8 +78,7 @@ class ThreadController extends AppController
         $this->render($page);
     } 
 
-
-    function logout() 
+    public function logout() 
     {
         session_destroy();
         redirect('../');

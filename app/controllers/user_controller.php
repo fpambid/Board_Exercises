@@ -7,7 +7,6 @@ class UserController Extends AppController
     */
     public function index()
     {
-         
         $status = NULL;
 
         $user = new User();
@@ -53,7 +52,7 @@ class UserController Extends AppController
                	          'username' => $reg_username,
                	          'email' => $reg_email,
                	          'password' => $reg_password
-                          );
+                        );
 
         $user = new User();
  
@@ -71,8 +70,8 @@ class UserController Extends AppController
                 }
             }
 
-            if (!$empty_field)
-            {
+            if (!$empty_field) {
+
                 try {
                     $a = $user->register($user_detail);
                     $status = notice("Registration Done! Thank You!");

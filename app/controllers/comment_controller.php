@@ -8,17 +8,12 @@ class CommentController extends AppController
     public function view() 
     {
         $thread = array();
-
         $thread_id = Param::get('thread_id');
         $thread = Comment::getByThreadId($thread_id);
 
         $total_comment = Comment::count($thread_id);
         $pagination = Pagination::setControls($total_comment); 
- 
-        // echo $total_comment;
-        
-        
-        // $comment->thread_id = $thread->id;
+
         $comments = $thread->getAll($pagination['max'], $thread_id);
 
         $this->set(get_defined_vars());
@@ -28,10 +23,8 @@ class CommentController extends AppController
     *
     *Enables users to write a comment 
     */
-
-     public function write() 
+    public function write() 
     {
-         
         $thread = Thread::get(Param::get('thread_id'));
         $comment = new Comment();
         $page = Param::get('page_next');
@@ -42,6 +35,7 @@ class CommentController extends AppController
         case 'write_end':
             $comment->username = Param::get('username');
             $comment->body = Param::get('body');
+
             try{
                 $thread->write($comment);
             } catch (ValidationException $e) {
@@ -59,16 +53,9 @@ class CommentController extends AppController
 
     public function delete()
     {
-        // $thread = Thread::get(Param::get('id'));
         $comment = Comment::getComment(Param::get('id'));
         $comment->delete(); 
-        redirect('../');
+        redirect($_SERVER['HTTP_REFERER']);
         $this->set(get_defined_vars());
     }
-
-    
-    
-    
-
-
 }
