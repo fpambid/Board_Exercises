@@ -43,6 +43,10 @@ class Comment extends AppModel
         $db = DB::conn();
         $row = $db->row('SELECT * FROM thread WHERE id = ?', array($id));
 
+        if(!$row) {
+            throw new ValidationException("Please fill out fields!");
+        }
+
         return new self($row);
     }
 
@@ -51,6 +55,10 @@ class Comment extends AppModel
         $db = DB::conn();
         $row = $db->row('SELECT * FROM comment WHERE id = ?', array($id));
 
+        if(!$row) {
+            throw new ValidationException("Please fill out fields!");
+        }
+        
         return new self($row);
     }
 

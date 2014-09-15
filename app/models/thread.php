@@ -42,6 +42,10 @@ class Thread extends AppModel
         $db = DB::conn();
         $row = $db->row('SELECT * FROM thread WHERE id = ?', array($id));
 
+        if(!$row) {
+            throw new ValidationException("Please fill out field!");
+        }
+
         return new self($row);
     }
 
