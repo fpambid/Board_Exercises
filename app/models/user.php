@@ -93,13 +93,12 @@ class User extends AppModel
     }  
 
     public function update()
-    {
-        extract($user_detail);
+    {   
         $values = array(
             'name' => $this->name,
             'username' => $this->username,
             'email' => $this->email,
-            'password' => sha1($password),
+            'password' => sha1($this->password),
             'updated' => date('Y-m-d H:i:s')
         );
 
@@ -117,4 +116,17 @@ class User extends AppModel
             $db->update('user', $values, $where_params);   
         }
     }
+
+    public function updateSession()
+    {
+        $db = DB::conn();
+
+        $query = "SELECT * FROM user WHERE id = ?";
+        $param = array($_SESSION['id']);
+
+        $values = $db->row($query, $param);
+
+        return $values;
+    }
+
 }

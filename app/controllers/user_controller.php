@@ -48,11 +48,11 @@ class UserController Extends AppController
         $empty_field = NULL;
 
         $user_detail = array(
-                          'name' => $reg_name,
-               	          'username' => $reg_username,
-               	          'email' => $reg_email,
-               	          'password' => $reg_password
-                        );
+            'name' => $reg_name,
+            'username' => $reg_username,
+            'email' => $reg_email,
+            'password' => $reg_password
+            );
 
         $user = new User();
  
@@ -92,6 +92,8 @@ class UserController Extends AppController
     {
         $status = NULL;
 
+        $user = new User();
+
         $new_username = Param::get('username');
         $new_name = Param::get('name');
         $new_email = Param::get('email');
@@ -105,12 +107,11 @@ class UserController Extends AppController
             'password' => $new_password
             );
 
-        $user = new User();
- 
         $user->username = Param::get('username');
         $user->name = Param::get('name');
         $user->email = Param::get('email');
         $user->password = Param::get('password');
+        $user->id = $_SESSION['id'];
 
         if($_POST) {
             foreach ($user_detail as $key => $value) {
@@ -124,7 +125,7 @@ class UserController Extends AppController
             if (!$empty_field) {
 
                 try {
-                    $a = $user->register($user_detail);
+                    $a = $user->update($user_detail);
                     $status = notice("Your Account is updated! Thank You!");
                 } catch (UserExistsException $e) {
                     $status = notice($e->getMessage(), "error");

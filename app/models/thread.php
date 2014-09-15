@@ -15,12 +15,12 @@ class Thread extends AppModel
     /**
     *Select all threads from database
     */
-    public static function getAll($total_thread, $sort) 
+    public static function getAll($total_thread, $category) 
     {
         $threads = array();
         $total_thread = self::count();
         $limited = Pagination::setLimit($total_thread);
-        $order_by = self::sortThreads($sort);
+        $order_by = self::sortThreads($category);
 
         $db = DB::conn();
         $rows = $db->rows("SELECT * FROM thread $order_by LIMIT $limited");
@@ -103,18 +103,18 @@ class Thread extends AppModel
         return $total;
     }
 
-    public static function sortThreads($sort)
+    public static function sortThreads($category)
     {
-        switch($sort) {
-        case 'title':
-            $order_by = 'ORDER BY title';
-            break;
-        case 'created':
-            $order_by = 'ORDER BY created';
-            break;
-        default:
-            $order_by = 'ORDER BY created';
-            break;
+        switch($category) {
+            case 'title':
+                $order_by = 'ORDER BY title';
+                break;
+            case 'created':
+                $order_by = 'ORDER BY created';
+                break;
+            default:
+                $order_by = 'ORDER BY created';
+                break;
         }
 
         return $order_by;

@@ -4,6 +4,10 @@ class ThreadController extends AppController
     
     public function index() 
     {
+        $user = new User();
+        $values = $user->updateSession();
+        $_SESSION['username'] = $values['username'];
+
         $total_thread = Thread::count();
         $pagination = Pagination::setControls($total_thread);
         $sort = Param::get('sort_by');
@@ -24,21 +28,21 @@ class ThreadController extends AppController
         $page = Param::get('page_next');
 
         switch ($page) {
-        case 'write':
-            break;
-        case 'write_end':
-            $comment->username = Param::get('username');
-            $comment->body = Param::get('body');
+            case 'write':
+                break;
+            case 'write_end':
+                $comment->username = Param::get('username');
+                $comment->body = Param::get('body');
 
-            try{
-                $thread->write($comment);
-            } catch (ValidationException $e) {
-                $page ='write';
-            }    
-            break;
-        default:
-            throw new NotFoundException("{$page} is not found");
-            break;
+                try{
+                    $thread->write($comment);
+                } catch (ValidationException $e) {
+                    $page ='write';
+                }    
+                break;
+            default:
+                throw new NotFoundException("{$page} is not found");
+                break;
         }
 
         $this->set(get_defined_vars());
@@ -53,25 +57,25 @@ class ThreadController extends AppController
         $page = Param::get('page_next', 'create');
 
         switch ($page) {
-        case 'create':
-            break;
+            case 'create':
+                break;
 
-        case 'create_end':
-            $thread->title = Param::get('title');
-            $comment->username = $uname;
-            $comment->body = Param::get('body');
+            case 'create_end':
+                $thread->title = Param::get('title');
+                $comment->username = $uname;
+                $comment->body = Param::get('body');
 
-            try {
-                $thread->create($comment);
+                try {
+                    $thread->create($comment);
 
-            } catch (ValidationException $e) {
-                $page = 'create';
-            }
-            break;
+                } catch (ValidationException $e) {
+                    $page = 'create';
+                }
+                break;
 
-        default:
-            throw new NotFoundException("{$page} is not found");
-            break;
+            default:
+                throw new NotFoundException("{$page} is not found");
+                break;
         }
 
         $this->set(get_defined_vars());
@@ -87,7 +91,6 @@ class ThreadController extends AppController
     public function delete()
     {
         $thread = Thread::get(Param::get('id'));
-        $title = $thread->title;
         $thread->delete();
         redirect('index');
         $this->set(get_defined_vars());
