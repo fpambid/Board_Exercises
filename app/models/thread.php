@@ -124,11 +124,11 @@ class Thread extends AppModel
     {
         $db = DB::conn();
 
-        $thread_query = 'DELETE FROM thread WHERE id = ? and user_id = ?';
-        $comment_query = 'DELETE FROM comment WHERE thread_id = ? and user_id = ?';
+        $thread = 'DELETE FROM thread WHERE id = ? and user_id = ?';
+        $comment = 'DELETE FROM comment WHERE thread_id = ? and user_id = ?';
         $where_params = array($this->id, $_SESSION['id']);
         
-        $db->query($thread_query, $where_params);
-        $db->query($comment_query, $where_params);   
+        $db->query($thread, $where_params);
+        $db->query($comment, $where_params);   
     }
 }
