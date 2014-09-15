@@ -7,11 +7,11 @@
      </div>
 <h1><?php say($thread->title) ?></h1>
 
+<em>author: <?php say($thread->username)?></em> <br/> 
 
-
-<!-- <em>author: <?php say($rows->username)?></em> <br/> -->
 
 	<?php foreach ($comments as $k => $v): ?>
+
 
 
 

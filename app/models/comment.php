@@ -58,7 +58,7 @@ class Comment extends AppModel
         if(!$row) {
             throw new ValidationException("Please fill out fields!");
         }
-        
+
         return new self($row);
     }
 

@@ -35,6 +35,7 @@
         <li>
             <a href="<?php say(url('comment/view', array('thread_id' => $v->id))) ?>">
             <?php say($v->title) ?></a>
+             <!-- &nbsp; &nbsp; &nbsp; <em>author: <?php say($v->username)?></em> <br/>  -->
             
         </li>
         <?php endforeach ?>

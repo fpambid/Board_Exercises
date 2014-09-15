@@ -76,7 +76,8 @@ class Thread extends AppModel
             "id" => $this->id, 
             "title" => $this->title,
             "created" => date('Y-m-d H:i:s'),
-            "user_id" => $_SESSION['id']);
+            "user_id" => $_SESSION['id'],
+            "username" => $_SESSION['username']);
 
         $db = DB::conn();
 
