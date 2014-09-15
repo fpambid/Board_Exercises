@@ -91,4 +91,30 @@ class User extends AppModel
             $db->insert('user', $values);      
         }
     }  
+
+    public function update()
+    {
+        extract($user_detail);
+        $values = array(
+            'name' => $this->name,
+            'username' => $this->username,
+            'email' => $this->email,
+            'password' => sha1($password),
+            'updated' => date('Y-m-d H:i:s')
+        );
+
+        $db = DB::conn();
+
+        $query = 'SELECT username, email, name FROM user WHERE username = ? OR email = ? OR name = ?';
+        $param = array($this->username, $this->email, $this->name);
+        $where_params = array('id' => $this->id);
+
+        $row = $db->row($query, $param);
+
+        if($row) {
+            throw new UserExistsException(notice('Sorry, that Username, Name or Email is not available', "error"));
+        } else { 
+            $db->update('user', $values, $where_params);   
+        }
+    }
 }

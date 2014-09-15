@@ -10,6 +10,9 @@
 <div style="float: right; width: 185px; height: 200px; margin: -70px" >
     <a  name = "logout" href="<?php say(url('thread/logout'));?>">
     Logout
+    </a><br>
+    <a  name = "update" href="<?php say(url('user/update'));?>">
+    Account Settings
     </a>
 </div>
 
@@ -40,7 +43,7 @@
     	<a class="btn btn-large btn-primary" href="<?php say(url('thread/create')) ?>">Create</a>
         <br/>
 
-<div style="float: right; width: 100px; height: 50px;" >
+<div class = "pagination" style="float: right; width: 100px; height: 50px;" >
     <?php echo $pagination['control'];?>
 </div>
 </div>

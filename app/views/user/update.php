@@ -44,13 +44,13 @@
 
 <div class="container">
     <div class="row">
-        <form role="form" action = "<?php say(url(''))?>" method = "post" onSubmit = "register()">
+        <form role="form" action = "<?php say(url(''))?>" method = "POST" onSubmit = "update()">
             <div class="col-lg-6">
-                <div class="well well-sm"><strong><span class="icon-pencil"></span>&nbsp;Create an Account</strong>
+                <div class="well well-sm"><strong><span class="icon-pencil"></span>&nbsp;Account Settings</strong>
                 </div>
                 <div style="float: right; width: 250px; height: 50px; margin: -70px" >
-                <a size = "10px" name = "login" href="<?php say(url('../'));?>">
-                <font size = "2.5">Have an Account? Log in</font></a>
+                <a size = "10px" name = "login" href="<?php say(url('thread/index'));?>">
+                <font size = "2.5">Back to threads</font></a>
                 </div>
                 <div class="form-group">
                     <label for="InputName">Full Name</label>
@@ -85,23 +85,5 @@
         </form>
     </div>
 </div>
-    <!-- Button to trigger modal -->
-    <a href="#myModal" role="button" class="btn" data-toggle="modal">Launch demo modal</a>
-     
-    <!-- Modal -->
-    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Modal header</h3>
-    </div>
-    <div class="modal-body">
-    <p>One fine body…</p>
-    </div>
-    <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-    <button class="btn btn-primary">Save changes</button>
-    </div>
-    </div>
-    </div>
 
 <?php echo $status;?>
