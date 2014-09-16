@@ -90,6 +90,7 @@ class UserController Extends AppController
 
     public function update()
     {
+
         $status = NULL;
 
         $user = new User();

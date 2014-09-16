@@ -4,6 +4,7 @@ class ThreadController extends AppController
     
     public function index() 
     {
+        is_logged_out();
         $user = new User();
         $values = $user->updateSession();
         $_SESSION['username'] = $values['username'];
@@ -22,7 +23,7 @@ class ThreadController extends AppController
     */
     public function write() 
     {
-         
+        is_logged_out();
         $thread = Thread::get(Param::get('thread_id'));
         $comment = new Comment;
         $page = Param::get('page_next');
@@ -51,6 +52,7 @@ class ThreadController extends AppController
 
     public function create() 
     {
+        is_logged_out();
         $uname = $_SESSION['username'];
         $thread = new Thread;
         $comment = new Comment;
@@ -90,6 +92,7 @@ class ThreadController extends AppController
 
     public function delete()
     {
+        is_logged_out();
         $thread = Thread::get(Param::get('id'));
         $thread->delete();
         redirect('index');

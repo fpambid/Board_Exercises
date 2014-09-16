@@ -1,6 +1,7 @@
 <!-- nav -->
- <div class = "row-fluid">
-   <div class = "span9 offset11"> 
+<div class = "row-fluid">
+
+  <div style="float: right; width: 85px; height: 50px;">
    
     
      <a  name = "logout" href="<?php say(url('thread/index'));?>" > 
@@ -12,13 +13,10 @@
     <a  name = "logout" href="<?php say(url('thread/logout'));?>"
     onClick = "return confirm('Are you sure you want to logout?')"><i class = "icon-off"></i>
     </a> 
-    
-    </div>
+</div>
 </div>
  <!-- nav -->
 
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <body class="boxed"> 
 <div class="container">
     <div class="row">

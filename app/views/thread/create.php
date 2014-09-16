@@ -1,6 +1,6 @@
 <!-- nav -->
  <div class = "row-fluid">
-   <div class = "span9 offset11"> 
+<div style="float: right; width: 85px; height: 50px;">
    
     
      <a  name = "logout" href="<?php say(url('thread/index'));?>" > 
