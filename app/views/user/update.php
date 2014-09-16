@@ -1,3 +1,24 @@
+<div class = "container">
+
+<!-- nav -->
+ <div class = "row-fluid">
+   <div class = "span9 offset11"> 
+   
+    
+     <a  name = "logout" href="<?php say(url('thread/index'));?>" > 
+     <i class = "icon-home"></i>
+    </a>  &nbsp; &nbsp;
+    
+    <a  name = "update" href="<?php say(url('user/update'));?>"><i class = "icon-cog"></i>
+    </a> &nbsp; &nbsp;
+    <a  name = "logout" href="<?php say(url('thread/logout'));?>"
+    onClick = "return confirm('Are you sure you want to logout?')"><i class = "icon-off"></i>
+    </a> 
+    
+    </div>
+</div>
+ <!-- nav -->
+
 <?php if ($user->hasError()): ?>
     <div class="alert alert-block">
         <h4 class="alert-heading">Validation error!</h4>
@@ -52,27 +73,28 @@
                 <a size = "10px" name = "login" href="<?php say(url('thread/index'));?>">
                 <font size = "2.5">Back to threads</font></a>
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="InputName">Full Name</label>
                     <div class="input-group">
-                        <input type="text" class="form-control" name="name" id="name" placeholder="Enter Full Name" required>
+                        <input type="text" class="form-control" name="name" id="name" required>
                         <span class="input-group-addon"><span class="icon-asterisk"></span></span>
                     </div>
-                </div>
+                </div> -->
                 <div class="form-group">
                     <label for="InputUsername">Username</label>
                      <div class="input-group">
-                        <input type="text" class="form-control" id="username" name="username" required>
+                        <input type="text" class="form-control" id="username" name="username" 
+                        value="<?php echo $_SESSION['username'];?>" required>
                         <span class="input-group-addon"><span class="icon-asterisk"></span></span>
                     </div>
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="InputEmail">Email</label>
                     <div class="input-group">
                         <input type="email" class="form-control" id="email" name="email" required>
                         <span class="input-group-addon"><span class="icon-asterisk"></span></span>
                     </div>
-                </div>
+                </div>  -->
                 <div class="form-group">
                     <label for="InputPassword">Password</label>
                     <div class="input-group">
@@ -80,10 +102,12 @@
                         <span class="input-group-addon"><span class="icon-asterisk"></span></span>
                     </div>
                 </div>
-                <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-left">
+                <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-left" 
+                onClick = "return confirm('Are you sure you want to edit your information?')">
             </div>
         </form>
     </div>
+</div>
 </div>
 
 <?php echo $status;?>

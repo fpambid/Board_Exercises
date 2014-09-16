@@ -1,3 +1,25 @@
+<!-- nav -->
+ <div class = "row-fluid">
+   <div class = "span9 offset11"> 
+   
+    
+     <a  name = "logout" href="<?php say(url('thread/index'));?>" > 
+     <i class = "icon-home"></i>
+    </a>  &nbsp; &nbsp;
+    
+    <a  name = "update" href="<?php say(url('user/update'));?>"><i class = "icon-cog"></i>
+    </a> &nbsp; &nbsp;
+    <a  name = "logout" href="<?php say(url('thread/logout'));?>"
+    onClick = "return confirm('Are you sure you want to logout?')"><i class = "icon-off"></i>
+    </a> 
+    
+    </div>
+</div>
+ <!-- nav -->
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<body class="boxed"> 
 <div class="container">
     <div class="row">
         <div class="col-lg-6">
@@ -6,15 +28,6 @@
         </font></strong></span>
         </div>
     </div>
-
-<div style="float: right; width: 185px; height: 200px; margin: -70px" >
-    <a  name = "logout" href="<?php say(url('thread/logout'));?>">
-    Logout
-    </a><br>
-    <a  name = "update" href="<?php say(url('user/update'));?>">
-    Account Settings
-    </a>
-</div>
 
 <form class = "form-search" method = "GET">
 <div style="float: right; width: 195px; height: 50px;" >
@@ -45,6 +58,11 @@
         <br/>
 
 <div class = "pagination" style="float: right; width: 100px; height: 50px;" >
+   <ul>
     <?php echo $pagination['control'];?>
+
+</ul>
 </div>
 </div>
+
+</body>

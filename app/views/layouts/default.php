@@ -17,7 +17,7 @@
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
-          <a class="brand" href="#">DietCake Board Exercise</a>
+          <a class="brand" href="<?php say(url('thread/index'));?>">ThreadBoard</a>
         </div>
       </div>
     </div>

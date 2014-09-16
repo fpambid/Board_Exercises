@@ -1,3 +1,22 @@
+<!-- nav -->
+ <div class = "row-fluid">
+   <div class = "span9 offset11"> 
+   
+    
+     <a  name = "logout" href="<?php say(url('thread/index'));?>" > 
+     <i class = "icon-home"></i>
+    </a>  &nbsp; &nbsp;
+    
+    <a  name = "update" href="<?php say(url('user/update'));?>"><i class = "icon-cog"></i>
+    </a> &nbsp; &nbsp;
+    <a  name = "logout" href="<?php say(url('thread/logout'));?>"
+    onClick = "return confirm('Are you sure you want to logout?')"><i class = "icon-off"></i>
+    </a> 
+    
+    </div>
+</div>
+ <!-- nav -->
+
 <?php if ($user->hasError()): ?>
     <div class="alert alert-block">
         <h4 class="alert-heading">Validation error!</h4>
@@ -85,11 +104,11 @@
         </form>
     </div>
 </div>
-    <!-- Button to trigger modal -->
-    <a href="#myModal" role="button" class="btn" data-toggle="modal">Launch demo modal</a>
+   <!-- <!--  <!-- Button to trigger modal -->
+<!--     <a href="#myModal" role="button" class="btn" data-toggle="modal">Launch demo modal</a> -->
      
     <!-- Modal -->
-    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<!--     <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
     <h3 id="myModalLabel">Modal header</h3>
@@ -102,6 +121,7 @@
     <button class="btn btn-primary">Save changes</button>
     </div>
     </div>
-    </div>
+    </div>  -->
+    
 
 <?php echo $status;?>

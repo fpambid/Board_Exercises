@@ -1,13 +1,51 @@
 <html>
 
+<!-- nav -->
+ <div class = "row-fluid">
+   <div class = "span9 offset11"> 
+   
+    
+     <a  name = "logout" href="<?php say(url('thread/index'));?>" > 
+     <i class = "icon-home"></i>
+    </a>  &nbsp; &nbsp;
+    
+    <a  name = "update" href="<?php say(url('user/update'));?>"><i class = "icon-cog"></i>
+    </a> &nbsp; &nbsp;
+    <a  name = "logout" href="<?php say(url('thread/logout'));?>"
+    onClick = "return confirm('Are you sure you want to logout?')"><i class = "icon-off"></i>
+    </a> 
+    
+    </div>
+</div>
+ <!-- nav -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+
     <div style="float: right; width: 600px; height: 25px;">
     <?php if ($thread->user_id == $_SESSION['id']):?>
-    	<a class="btn" href="<?php say(url('thread/delete', array('id' => $thread->id)));?>"><i class="icon-trash"></i></a>
+    	<a href="<?php say(url('thread/delete', array('id' => $thread->id)));?>" 
+        onClick = "return confirm('Are you sure you want to delete this thread?')">
+        <i class="icon-trash"></i></a>
      <?php endif ?>
      </div>
 <h1><?php say($thread->title) ?></h1>
 
-<em>author: <?php say($thread->username)?></em> <br/> 
+<em>author: <?php say($thread->username)?></em> <br/> <br/>
+
+    <!-- To enable user to write a comment on a thread -->
+
+    <form class="well" method="post" action="<?php say(url('comment/write')) ?>">
+        <input placeholder = "Your name" type="text" class="span2" name="username" value="<?php echo $_SESSION['username'];?>" readonly> 
+        <div class=”col-lg-4 col-md-4 col-sm-5″>
+        <textarea class="form-control" name="body" placeholder = "Join the discussion.."><?php say(Param::get('body')) ?></textarea> <br />
+        <input type="hidden" name="thread_id" value="<?php say($thread->id) ?>">
+        <input type="hidden" name="page_next" value="write_end">
+        <button type="submit" class="btn btn-primary">Submit</button> 
+        </div>
+    </form>
+
 
 
 	<?php foreach ($comments as $k => $v): ?>
@@ -15,54 +53,38 @@
 
 
 
-	<div class="comment">
-	    <div class="meta">
+	<div class="container">
 	        <span class=""></span>
 
-	        <strong><?php say($v->username) ?></strong>
-	        <div style="float: right; width: 700px; height: 25px;" ><font color="#005C8A"><em>
-	            <?php say($v->created) ?></em></font>
-	        </div>
-	    </div> 
+            <table style="width:30%">
+            <tr>
+            <td>
 
-	<div> 
-	<ul>
-    <?php echo readable_text($v->body); ?>
-    </ul>
-    </div>
+	        <font color="#008AB8"><strong><?php say($v->username) ?> </strong></font> &nbsp; <i class = "icon-time"></i>
+	        <font color="#808080" size="1px">
+	            <?php say($v->created) ?></font> 
+                <div>
+                <?php echo readable_text($v->body); ?>
+                </div>
+            </td>
+            <td>
 
-     <?php if ($v->username == $_SESSION['username']): ?>
+               <?php if ($v->username == $_SESSION['username']): ?> 
 
-    <a class="btn" href="<?php say(url('comment/delete', array('id' => $v->id)));?>"><i class="icon-trash"></i></a><br/>
+                    <a href="<?php say(url('comment/delete', array('id' => $v->id)));?>" 
+                    onClick = "return confirm('Are you sure you want to delete this comment?')">
+                    <i class="icon-trash"></i></a><br/>
 
-<?php endif ?>
+                <?php endif ?>
+	        </div> 
+            </td>
+            </tr>
+            </table>
+            
+	    </div> <br/>
 
     <?php endforeach ?>
 
-
-<!--      <?php if($thread->user_id != $_SESSION['id']): echo "WATTTT??"; ?>
-     <?php endif ?> -->
-
-
-
-
-	<!-- To enable user to write a comment on a thread -->
-
-	<hr>
-	<form class="well" method="post" action="<?php say(url('comment/write')) ?>">
-	    <label>Your name</label>
-	    <input type="text" class="span2" name="username" value="<?php echo $_SESSION['username'];?>" readonly>
-	    <label>Comment</label>
-	    <textarea name="body"><?php say(Param::get('body')) ?></textarea> <br />
-	    <input type="hidden" name="thread_id" value="<?php say($thread->id) ?>">
-	    <input type="hidden" name="page_next" value="write_end">
-	    <button type="submit" class="btn btn-primary">Submit</button> 
-	</form>
-    </hr>
-
-     <a  name = "logout" href="<?php say(url('thread/index'));?>">
-    <-- All threads
-    </a>
 
     <div style="float: right; width: 100px; height: 50px;" >
     <?php echo $pagination['control'];?>
@@ -72,4 +94,7 @@
 	&larr; All threads
 	</button>
  -->
+ </div>
+ </div>
+ </div>
 </html>

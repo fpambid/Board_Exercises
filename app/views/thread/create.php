@@ -1,3 +1,21 @@
+<!-- nav -->
+ <div class = "row-fluid">
+   <div class = "span9 offset11"> 
+   
+    
+     <a  name = "logout" href="<?php say(url('thread/index'));?>" > 
+     <i class = "icon-home"></i>
+    </a>  &nbsp; &nbsp;
+    
+    <a  name = "update" href="<?php say(url('user/update'));?>"><i class = "icon-cog"></i>
+    </a> &nbsp; &nbsp;
+    <a  name = "logout" href="<?php say(url('thread/logout'));?>"
+    onClick = "return confirm('Are you sure you want to logout?')"><i class = "icon-off"></i>
+    </a> 
+    
+    </div>
+</div>
+ <!-- nav -->
 <h1>Create a thread</h1>
     <?php if ($thread->hasError() || $comment->hasError()): ?>
     	<div class="alert alert-block">
@@ -24,12 +42,9 @@
     <?php endif ?>
 
     <form class="well" method="post" action="<?php say(url('')) ?>">
-        <label>Title</label>
-        <input type="text" class="span2" name="title" value="<?php say(Param::get('title')) ?>">
-        <label>Your name</label>
-        <input type="text" class="span2" name="username" value="<?php echo $_SESSION['username'];?>" readonly>
-        <label>Comment</label>
-        <textarea name="body"><?php say(Param::get('body')) ?></textarea>
+        <input placeholder = "Title" type="text" class="span2" name="title" value="<?php say(Param::get('title')) ?>"><br/>
+        <input type="text" class="span2" name="username" value="<?php echo $_SESSION['username'];?>" readonly><br/>
+        <textarea placeholder = "Shout it out!" name="body"><?php say(Param::get('body')) ?></textarea>
         <br />
         <input type="hidden" name="page_next" value="create_end">
         <button type="submit" class="btn btn-primary">Submit</button>
