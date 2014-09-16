@@ -102,10 +102,14 @@ class User extends AppModel
             'updated' => date('Y-m-d H:i:s')
         );
 
+        if (!$this->validate()) {
+            throw new ValidationException(notice('Error Found!', "error"));
+        }
+
         $db = DB::conn();
 
-        $query = 'SELECT username, email, name FROM user WHERE username = ? OR email = ? OR name = ?';
-        $param = array($this->username, $this->email, $this->name);
+        $query = 'SELECT username, email, name, id FROM user WHERE (username = ? OR email = ? OR name = ?) AND id != ?';
+        $param = array($this->username, $this->email, $this->name, $_SESSION['id']);
         $where_params = array('id' => $this->id);
 
         $row = $db->row($query, $param);

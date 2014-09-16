@@ -79,8 +79,7 @@
                 <div class="form-group">
                     <label for="InputUsername">Username</label>
                      <div class="input-group">
-                        <input type="text" class="form-control" id="username" name="username" 
-                        placeholder ="<?php echo $_SESSION['username'];?>" required>
+                        <input type="text" class="form-control" id="username" name="username" required>
                         <span class="input-group-addon"><span class="icon-asterisk"></span></span>
                     </div>
                 </div>
