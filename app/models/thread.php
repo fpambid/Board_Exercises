@@ -119,7 +119,7 @@ class Thread extends AppModel
                 $order_by = 'ORDER BY created';
                 break;
             default:
-                $order_by = 'ORDER BY created';
+                $order_by = 'ORDER BY created DESC';
                 break;
         }
 

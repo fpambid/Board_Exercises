@@ -15,7 +15,7 @@
  <select name="sort_by" class="span2">
     <option value="" class="invisible" selected disabled>Sort by</option>
     <option value="title">Title</option>
-    <option value="created">Date Created</option>
+    <option value="created">Oldest</option>
   </select>
     <button type="submit" name="btnSort" class="btn">Go</button>
 </div>
