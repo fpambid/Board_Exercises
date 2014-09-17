@@ -21,7 +21,7 @@ padding-top: 60px;
 <!-- nav -->
  <div class = "row-fluid">
 <div style="float: right; width: 210px; height: 0px;">
-     <a   name = "logout" class = "brand" href="<?php say(url('thread/index'));?>" > 
+     <a class = "brand" href="<?php say(url('thread/index'));?>" > 
      <i class = "icon-home"></i>
     </a>  &nbsp; &nbsp;
     

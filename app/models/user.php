@@ -2,7 +2,7 @@
 class User extends AppModel
 {
     const MIN_NAME_LENGTH = 3;
-    const MAX_NAME_LENGTH = 20;
+    const MAX_NAME_LENGTH = 30;
     const MIN_PASS_LENGTH = 6;
     const MAX_PASS_LENGTH = 40;
 

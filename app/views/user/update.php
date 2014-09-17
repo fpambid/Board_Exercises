@@ -48,10 +48,10 @@
     <div class="row">
         <form role="form" action = "<?php say(url(''))?>" method = "POST" onSubmit = "update()">
             <div class="col-lg-6">
-                <div class="well well-sm"><strong><span class="icon-pencil"></span>&nbsp;Account Settings</strong>
+                <div class="well well-sm"><strong><span class="icon-pencil"></span>&nbsp;Update your Account</strong>
                 </div>
                  <div class="form-group">
-                    <label for="InputName">Full Name</label>
+                    <label for="InputName">Name</label>
                     <div class="input-group">
                         <input type="text" class="form-control" name="name" id="name" required>
                         <span class="input-group-addon"><span class="icon-asterisk"></span></span>

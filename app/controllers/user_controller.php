@@ -7,6 +7,7 @@ class UserController Extends AppController
     */
     public function index()
     {
+        is_logged_in();
         $status = NULL;
 
         $user = new User();
@@ -39,6 +40,7 @@ class UserController Extends AppController
     */
     public function register()
     {
+        is_logged_in();
         $status = NULL;
 
         $reg_username = Param::get('username');

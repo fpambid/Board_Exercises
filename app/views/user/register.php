@@ -55,9 +55,9 @@
                 <font size = "2.5">Have an Account? Log in</font></a>
                 </div>
                 <div class="form-group">
-                    <label for="InputName">Full Name</label>
+                    <label for="InputName">Name</label>
                     <div class="input-group">
-                        <input type="text" class="form-control" name="name" id="name" placeholder="Enter Full Name" required>
+                        <input type="text" class="form-control" name="name" id="name" required>
                         <span class="input-group-addon"><span class="icon-asterisk"></span></span>
                     </div>
                 </div>
