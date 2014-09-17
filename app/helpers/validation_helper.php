@@ -34,10 +34,9 @@ function is_logged_out()
 
 function is_logged_in()
 {
-    if (isset($_SESSION['id']))
-    {
+    if (isset($_SESSION['id'])) {
+        
         $logout = "Please logout first";
-
         redirect(url("thread/index", array("m"=>$logout)));
     }
 }

@@ -137,4 +137,14 @@ class Thread extends AppModel
         $db->query($thread, $where_params);
         $db->query($comment, $where_params);   
     }
+
+    // public function getAuthor()
+    // {
+    //     $db = DB::conn();
+
+    //     $query = 'SELECT username FROM user WHERE id = ?;'
+    //     $params = array($this->user_id);
+
+    //     $db->row($query, $params);
+    // }
 }

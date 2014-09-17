@@ -102,6 +102,8 @@ class User extends AppModel
             'updated' => date('Y-m-d H:i:s')
         );
 
+        $author = array('username' => $this->username);
+
         if (!$this->validate()) {
             throw new ValidationException(notice('Error Found!', "error"));
         }
@@ -111,13 +113,15 @@ class User extends AppModel
         $query = 'SELECT username, email, name, id FROM user WHERE (username = ? OR email = ? OR name = ?) AND id != ?';
         $param = array($this->username, $this->email, $this->name, $_SESSION['id']);
         $where_params = array('id' => $this->id);
+        $where_params2 = array('user_id' => $this->id);
 
         $row = $db->row($query, $param);
 
         if($row) {
             throw new UserExistsException(notice('Sorry, that Username, Name or Email is not available', "error"));
         } else { 
-            $db->update('user', $values, $where_params);   
+            $db->update('user', $values, $where_params);
+            $db->update('thread', $author, $where_params2);   
         }
     }
 
@@ -132,5 +136,4 @@ class User extends AppModel
 
         return $values;
     }
-
 }

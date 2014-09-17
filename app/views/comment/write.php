@@ -1,5 +1,3 @@
-
-
 <h2><?php say($thread->title) ?></h2>
     <?php if ($comment->hasError()): ?>
         <div class="alert alert-block">
@@ -17,7 +15,7 @@
                 <?php say($comment->validation['body']['length'][1]) ?> and
                 <?php say($comment->validation['body']['length'][2]) ?> characters in length.
                 </div>
-                <?php endif ?>
+            <?php endif ?>
         </div>
     <?php endif ?>
 

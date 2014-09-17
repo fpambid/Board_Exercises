@@ -1,5 +1,3 @@
-<div class = "container">
-
 <?php if ($user->hasError()): ?>
     <div class="alert alert-block">
         <h4 class="alert-heading">Validation error!</h4>
@@ -50,7 +48,7 @@
             <div class="col-lg-6">
                 <div class="well well-sm"><strong><span class="icon-pencil"></span>&nbsp;Update your Account</strong>
                 </div>
-                 <div class="form-group">
+                <div class="form-group">
                     <label for="InputName">Name</label>
                     <div class="input-group">
                         <input type="text" class="form-control" name="name" id="name" required>
@@ -64,7 +62,7 @@
                         <span class="input-group-addon"><span class="icon-asterisk"></span></span>
                     </div>
                 </div>
-                 <div class="form-group">
+                <div class="form-group">
                     <label for="InputEmail">Email</label>
                     <div class="input-group">
                         <input type="email" class="form-control" id="email" name="email" required>
@@ -78,12 +76,10 @@
                         <span class="input-group-addon"><span class="icon-asterisk"></span></span>
                     </div>
                 </div>
-                <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-left" 
-                >
+                <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-left">
             </div>
         </form>
     </div>
-</div>
 </div>
 
 <?php echo $status;?>
