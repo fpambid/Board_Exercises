@@ -1,10 +1,9 @@
 <?php
 class ThreadController extends AppController 
 {
-    
     public function index() 
     {
-        has_logged_in();
+        confirm_logged_in();
 
         $user = new User();
         $values = $user->updateSession();
@@ -24,7 +23,7 @@ class ThreadController extends AppController
     */
     public function write() 
     {
-        has_logged_in();
+        confirm_logged_in();
 
         $thread = Thread::get(Param::get('thread_id'));
         $comment = new Comment;
@@ -55,7 +54,7 @@ class ThreadController extends AppController
 
     public function create() 
     {
-        has_logged_in();
+        confirm_logged_in();
 
         $uname = $_SESSION['username'];
         $user_id = $_SESSION['id'];
@@ -97,7 +96,7 @@ class ThreadController extends AppController
 
     public function delete()
     {
-        has_logged_in();
+        confirm_logged_in();
 
         $user_id = $_SESSION['id'];
         $thread = Thread::get(Param::get('id'));

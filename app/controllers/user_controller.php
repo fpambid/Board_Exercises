@@ -7,7 +7,7 @@ class UserController Extends AppController
     */
     public function index()
     {    
-        has_logged_out();
+        confirm_logged_out();
 
         $status = NULL;
 
@@ -41,7 +41,7 @@ class UserController Extends AppController
     */
     public function register()
     {
-        has_logged_out();
+        confirm_logged_out();
 
         $status = NULL;
 
@@ -94,7 +94,7 @@ class UserController Extends AppController
 
     public function update()
     {
-        has_logged_in();
+        confirm_logged_in();
 
         $status = NULL;
 

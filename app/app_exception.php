@@ -16,4 +16,10 @@ class RecordNotFoundException extends ValidationException
 
 class UserExistsException extends ValidationException
 {
+
+}
+
+class NotFoundException extends AppException
+{
+    
 }

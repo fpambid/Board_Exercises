@@ -7,7 +7,7 @@ class CommentController extends AppController
     */
     public function view() 
     {
-        has_logged_in();
+        confirm_logged_in();
 
         $thread = array();
         $thread_id = Param::get('thread_id');
@@ -27,7 +27,7 @@ class CommentController extends AppController
     */
     public function write() 
     {
-        has_logged_in();
+        confirm_logged_in();
 
         $thread = Thread::get(Param::get('thread_id'));
         $comment = new Comment();
@@ -57,11 +57,12 @@ class CommentController extends AppController
 
     public function delete()
     {
-        has_logged_in();
+        confirm_logged_in();
         
         $comment = Comment::getComment(Param::get('id'));
         $comment->delete(); 
         redirect($_SERVER['HTTP_REFERER']);
+
         $this->set(get_defined_vars());
     }
 }
