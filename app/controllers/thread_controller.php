@@ -4,7 +4,8 @@ class ThreadController extends AppController
     
     public function index() 
     {
-        is_logged_out();
+        has_logged_in();
+
         $user = new User();
         $values = $user->updateSession();
         $_SESSION['username'] = $values['username'];
@@ -23,10 +24,12 @@ class ThreadController extends AppController
     */
     public function write() 
     {
-        is_logged_out();
+        has_logged_in();
+
         $thread = Thread::get(Param::get('thread_id'));
         $comment = new Comment;
         $page = Param::get('page_next');
+        $user_id = $_SESSION['id'];
 
         switch ($page) {
             case 'write':
@@ -52,8 +55,10 @@ class ThreadController extends AppController
 
     public function create() 
     {
-        is_logged_out();
+        has_logged_in();
+
         $uname = $_SESSION['username'];
+        $user_id = $_SESSION['id'];
         $thread = new Thread;
         $comment = new Comment;
         $page = Param::get('page_next', 'create');
@@ -92,10 +97,14 @@ class ThreadController extends AppController
 
     public function delete()
     {
-        is_logged_out();
+        has_logged_in();
+
+        $user_id = $_SESSION['id'];
         $thread = Thread::get(Param::get('id'));
+
         $thread->delete();
         redirect('index');
+
         $this->set(get_defined_vars());
     }
 }

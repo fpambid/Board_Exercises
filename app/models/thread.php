@@ -56,7 +56,7 @@ class Thread extends AppModel
             "username" => $comment->username,
             "body" => $comment->body,
             "created" => date('Y-m-d H:i:s'),
-            "user_id" => $_SESSION['id']);
+            "user_id" => $this->user_id);
 
         if (!$comment->validate()) {
             throw new ValidationException('invalid comment');
@@ -76,8 +76,8 @@ class Thread extends AppModel
             "id" => $this->id, 
             "title" => $this->title,
             "created" => date('Y-m-d H:i:s'),
-            "user_id" => $_SESSION['id'],
-            "username" => $_SESSION['username']);
+            "user_id" => $this->user_id,
+            "username" => $this->uname);
 
         $db = DB::conn();
 
@@ -132,19 +132,9 @@ class Thread extends AppModel
 
         $thread = 'DELETE FROM thread WHERE id = ? and user_id = ?';
         $comment = 'DELETE FROM comment WHERE thread_id = ? and user_id = ?';
-        $where_params = array($this->id, $_SESSION['id']);
+        $where_params = array($this->id, $this->user_id);
         
         $db->query($thread, $where_params);
         $db->query($comment, $where_params);   
     }
-
-    // public function getAuthor()
-    // {
-    //     $db = DB::conn();
-
-    //     $query = 'SELECT username FROM user WHERE id = ?;'
-    //     $params = array($this->user_id);
-
-    //     $db->row($query, $params);
-    // }
 }

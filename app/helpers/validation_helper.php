@@ -25,14 +25,14 @@ function is_username_valid($uname)
     return preg_match('/^([a-zA-Z_-]+)$/', $uname);
 }
 
-function is_logged_out()
+function has_logged_in()
 {
     if (!isset($_SESSION['id'])) {
         redirect('../');
     }
 }
 
-function is_logged_in()
+function has_logged_out()
 {
     if (isset($_SESSION['id'])) {
         

@@ -6,8 +6,9 @@ class UserController Extends AppController
     *Get and Validate entered values in log in form
     */
     public function index()
-    {
-        is_logged_in();
+    {    
+        has_logged_out();
+
         $status = NULL;
 
         $user = new User();
@@ -40,7 +41,8 @@ class UserController Extends AppController
     */
     public function register()
     {
-        is_logged_in();
+        has_logged_out();
+
         $status = NULL;
 
         $reg_username = Param::get('username');
@@ -92,6 +94,7 @@ class UserController Extends AppController
 
     public function update()
     {
+        has_logged_in();
 
         $status = NULL;
 
