@@ -28,7 +28,6 @@ class ThreadController extends AppController
         $thread = Thread::get(Param::get('thread_id'));
         $comment = new Comment;
         $page = Param::get('page_next');
-        $user_id = $_SESSION['id'];
 
         switch ($page) {
             case 'write':
@@ -36,6 +35,7 @@ class ThreadController extends AppController
             case 'write_end':
                 $comment->username = Param::get('username');
                 $comment->body = Param::get('body');
+                $comment->user_id = $_SESSION['id'];
 
                 try{
                     $thread->write($comment);
@@ -57,7 +57,6 @@ class ThreadController extends AppController
         confirm_logged_in();
 
         $uname = $_SESSION['username'];
-        $user_id = $_SESSION['id'];
         $thread = new Thread;
         $comment = new Comment;
         $page = Param::get('page_next', 'create');
@@ -70,6 +69,7 @@ class ThreadController extends AppController
                 $thread->title = Param::get('title');
                 $comment->username = $uname;
                 $comment->body = Param::get('body');
+                $comment->user_id = $_SESSION['id'];
 
                 try {
                     $thread->create($comment);
@@ -98,7 +98,10 @@ class ThreadController extends AppController
     {
         confirm_logged_in();
 
-        $user_id = $_SESSION['id'];
+        // $thread = new Thread;
+        // $comment = new Comment;
+        // $comment->user_id = $_SESSION['id'];
+        // $thread->user_id = $_SESSION['id'];
         $thread = Thread::get(Param::get('id'));
 
         $thread->delete();

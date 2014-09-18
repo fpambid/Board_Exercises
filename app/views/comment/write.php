@@ -16,6 +16,13 @@
                 <?php say($comment->validation['body']['length'][2]) ?> characters in length.
                 </div>
             <?php endif ?>
+
+            <?php if (!empty($comment->validation_errors['body']['format'])): ?>
+                <div> That's invalid! Say something!
+                </div>
+            <?php endif ?>
+
+
         </div>
     <?php endif ?>
 

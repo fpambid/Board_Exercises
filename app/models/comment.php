@@ -13,6 +13,9 @@ class Comment extends AppModel
             'length' => array(
                 'validate_between', self::MIN_BODY_LENGTH, self::MAX_BODY_LENGTH
             ),
+            'format' => array(
+                'is_title_valid', "Invalid Title",
+            ),
         ),
     );
 
@@ -28,7 +31,7 @@ class Comment extends AppModel
         $db = DB::conn();
         $where = "thread_id = ?";
         $where_params = array($this->id);
-        $order = "created ASC";
+        $order = "created DESC";
 
         $rows = $db->search('comment', $where, $where_params, $order, $limited);
 

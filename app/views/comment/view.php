@@ -20,7 +20,7 @@
         <form class="well" method="post" action="<?php say(url('comment/write')) ?>">
             <input placeholder = "Your name" type="text" class="span2" name="username" value="<?php echo $_SESSION['username'];?>" readonly> 
             <div class=”col-lg-4 col-md-4 col-sm-5″>
-            <textarea class="form-control" name="body" placeholder = "Join the discussion.."><?php say(Param::get('body')) ?></textarea> <br />
+            <textarea class="form-control" name="body" placeholder = "Join the discussion.." maxlength = '200'><?php say(Param::get('body')) ?></textarea> <br />
             <input type="hidden" name="thread_id" value="<?php say($thread->id) ?>">
             <input type="hidden" name="page_next" value="write_end">
             <button type="submit" class="btn btn-primary">Submit</button> 

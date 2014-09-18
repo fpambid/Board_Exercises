@@ -32,6 +32,7 @@ class CommentController extends AppController
         $thread = Thread::get(Param::get('thread_id'));
         $comment = new Comment();
         $page = Param::get('page_next');
+        $user_id = $_SESSION['id'];
 
         switch ($page) {
             case 'write':
@@ -39,6 +40,7 @@ class CommentController extends AppController
             case 'write_end':
                 $comment->username = Param::get('username');
                 $comment->body = Param::get('body');
+                $comment->user_id = $_SESSION['id'];
 
                 try{
                     $thread->write($comment);

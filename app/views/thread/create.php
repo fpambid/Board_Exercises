@@ -21,6 +21,11 @@
     		<?php say($comment->validation['body']['length'][2]) ?> characters in length.
     		</div>
     	<?php endif ?>
+        <?php if (!empty($comment->validation_errors['title']['format'])): ?>
+            <div> Invalid Title!
+            </div>
+        <?php endif ?>
+        
     	</div>
     <?php endif ?>
 

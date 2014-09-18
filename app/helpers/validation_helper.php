@@ -25,6 +25,11 @@ function is_username_valid($uname)
     return preg_match('/^([a-zA-Z_-]+)$/', $uname);
 }
 
+function is_title_valid($string)
+{
+    return !(preg_match('/^\s+$/', $string));
+}
+
 function confirm_logged_in()
 {
     if (!isset($_SESSION['id'])) {
