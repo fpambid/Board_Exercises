@@ -3,6 +3,9 @@
 class Pagination
 {
     const MAX_ITEM = 5;
+    const PAGE_LINKS = 4;
+    const NEXT_PAGE = 1;
+    const PREVIOUS_PAGE = 1;
 
     public static $last;
     public static $pagenum = 1;
@@ -63,10 +66,10 @@ class Pagination
 
         if($last != 1) { 
             if ($pagenum > 1) { 
-                $page_url = $pagenum - 1; 
+                $page_url = $pagenum - self::PREVIOUS_PAGE; 
                 $pageCtrls .= '<a href="'. url('', $url) .'">Previous</a> &nbsp; &nbsp'; 
 
-                for($i = $pagenum-4; $i < $pagenum; $i++) {
+                for($i = $pagenum - self::PAGE_LINKS; $i < $pagenum; $i++) {
                     if($i > 0) { 
                         $pageCtrls .= '<a href="'. url('', $url) .'">'.$i.'</a> &nbsp'; 
                     }
@@ -74,16 +77,16 @@ class Pagination
             }
             $pageCtrls .= ''.$pagenum.' &nbsp; ';
 
-            for($i = $pagenum+1; $i <= $last; $i++) { 
+            for($i = $pagenum + self::NEXT_PAGE; $i <= $last; $i++) { 
                 $page_url = $i;
                 $pageCtrls .= '<a href="'.url('', $url).'">'.$i.'</a> &nbsp;'; 
-                if($i >= $pagenum+4) { 
+                if($i >= $pagenum + self::PAGE_LINKS) { 
                     break; 
                 } 
             }
 
             if ($pagenum != $last) {
-                $page_url = $pagenum + 1; 
+                $page_url = $pagenum + self::NEXT_PAGE; 
                 $pageCtrls .= '&nbsp; &nbsp; <a href="'.url('', $url).'">Next</a>';
             } 
         } 
