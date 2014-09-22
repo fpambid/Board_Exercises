@@ -41,15 +41,15 @@ class User extends AppModel
     *@param $username, $password
     *@throws RecordNotFoundException
     */
-    public function authenticate($username, $password) 
+    public function authenticate() 
     {
         if (!$this->validate()) {
             throw new ValidationException("Invalid Username/Password");
         }
 
-        $db=DB::conn();
+        $db = DB::conn();
         $query = 'SELECT * FROM user WHERE username = ? AND password = ?';
-        $param = array($username, $password);
+        $param = array($this->username, $this->password);
 
         $row = $db->row($query, $param);
 
@@ -110,6 +110,8 @@ class User extends AppModel
 
         $db = DB::conn();
 
+        $db->begin();
+
         $query = 'SELECT username, email, name, id FROM user WHERE (username = ? OR email = ? OR name = ?) AND id != ?';
         $param = array($this->username, $this->email, $this->name, $_SESSION['id']);
         $where_params = array('id' => $this->id);
@@ -123,6 +125,7 @@ class User extends AppModel
             $db->update('user', $values, $where_params);
             $db->update('thread', $author, $where_params2);   
         }
+        $db->commit();
     }
 
     public function updateSession()

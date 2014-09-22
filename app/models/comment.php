@@ -24,8 +24,8 @@ class Comment extends AppModel
     */
     public function getAll($total_comment, $thread_id) 
     {
-        $total_comment = $this->count($thread_id);
-        $limited = Pagination::setLimit($total_comment);
+        $comment_count = $this->count($thread_id);
+        $limited = Pagination::getLimit($comment_count);
 
         $comments = array();
         $db = DB::conn();
@@ -43,23 +43,25 @@ class Comment extends AppModel
 
     public static function getByThreadId($id) 
     {
+        $thread_id = Param::get('thread_id');
+
         $db = DB::conn();
         $row = $db->row('SELECT * FROM thread WHERE id = ?', array($id));
 
         if(!$row) {
-            throw new ValidationException("Please fill out fields!");
+            throw new ValidationException("Thread id not found");
         }
 
         return new self($row);
     }
 
-    public static function getComment($id) 
+    public static function get($id) 
     {
         $db = DB::conn();
         $row = $db->row('SELECT * FROM comment WHERE id = ?', array($id));
 
         if(!$row) {
-            throw new ValidationException("Please fill out fields!");
+            throw new ValidationException("Comment Not Found");
         }
 
         return new self($row);
@@ -68,19 +70,13 @@ class Comment extends AppModel
     public static function count($thread_id)
     {
         $db = DB::conn();
-        $query = 'SELECT COUNT(id) from comment WHERE thread_id = ?';
-        $where_params = array($thread_id);
 
-        $count = $db->value($query, $where_params);
-
-        return $count;
+        return $db->value('SELECT count(id) FROM comment WHERE thread_id = ?', array($thread_id));
     }
 
     public function delete()
     {
         $db = DB::conn();
-        $query = 'DELETE FROM comment WHERE id = ?';
-        $where_params = array($this->id);
-        $db->query($query, $where_params);  
+        $db->query('DELETE FROM comment WHERE id = ?', array($this->id));
     }
 }

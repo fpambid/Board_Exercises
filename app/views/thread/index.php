@@ -9,11 +9,15 @@
         </div>
 
             <form class = "form-search" method = "GET">
-            <div style="float: right; width: 195px; height: 50px;" >
+            <div style="float: right; width: 250px; height: 50px;" >
+            <label> Sort by: </label>
                 <select name="sort_by" class="span2">
-                    <option value="" class="invisible" selected disabled>Sort by</option>
-                    <option value="title">Title</option>
-                    <option value="created">Oldest</option>
+                <?php if($category = 'title'): ?>
+                    <option value="title" selected >Title</option>
+               <?php endif ?>
+               <?php if($category = 'oldest'): ?>
+                    <option value="oldest" selected >Oldest</option>
+               <?php endif ?>
                 </select>
                 <button type="submit" name="btnSort" class="btn">Go</button>
             </div>

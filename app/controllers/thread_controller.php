@@ -10,7 +10,7 @@ class ThreadController extends AppController
         $_SESSION['username'] = $values['username'];
 
         $total_thread = Thread::count();
-        $pagination = Pagination::setControls($total_thread);
+        $pagination = Pagination::getControls($total_thread);
         $sort = Param::get('sort_by');
 
         $threads = Thread::getAll($pagination['max'], $sort);
@@ -64,13 +64,11 @@ class ThreadController extends AppController
         switch ($page) {
             case 'create':
                 break;
-
             case 'create_end':
                 $thread->title = Param::get('title');
                 $comment->username = $uname;
                 $comment->body = Param::get('body');
                 $comment->user_id = $_SESSION['id'];
-
                 try {
                     $thread->create($comment);
 
@@ -78,7 +76,6 @@ class ThreadController extends AppController
                     $page = 'create';
                 }
                 break;
-
             default:
                 throw new NotFoundException("{$page} is not found");
                 break;
@@ -98,13 +95,10 @@ class ThreadController extends AppController
     {
         confirm_logged_in();
 
-        // $thread = new Thread;
-        // $comment = new Comment;
-        // $comment->user_id = $_SESSION['id'];
-        // $thread->user_id = $_SESSION['id'];
         $thread = Thread::get(Param::get('id'));
+        $session = $_SESSION['id'];
 
-        $thread->delete();
+        $thread->delete($session);
         redirect('index');
 
         $this->set(get_defined_vars());

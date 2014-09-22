@@ -12,90 +12,89 @@ class Pagination
     public static $limit;
     public static $pagination = array();
 
-
-    public static function setLastPage($row_length) 
+    public static function getLastPage($row_length)
     {
+        self::$last = ceil($row_length/self::MAX_ITEM);
 
-    self::$last = ceil($row_length/self::MAX_ITEM);  
-
-        if(self::$last < 1) { 
-            self::$last = 1; 
+        if(self::$last < 1) {
+            self::$last = 1;
         } 
 
-    return self::$last;
+        return self::$last;
     }
-    //Get the last page 
+        //Get the last page 
 
-    public static function setCurrPage($row_length)
+    public static function getCurrPage($row_length)
     {
+        $last_page = self::getLastPage($row_length);
 
-    $last_page = self::setLastPage($row_length);
-
-        if(isset($_GET['pn'])) { 
-            self::$pagenum = preg_replace('#[^0-9]#', '', $_GET['pn']); 
+        if(isset($_GET['pn'])) {
+            self::$pagenum = preg_replace('#[^0-9]#', '', $_GET['pn']);
         }
 
-        if (self::$pagenum > $last_page) {
-            self::$pagenum = $last_page; 
+        if(self::$pagenum > $last_page) {
+            self::$pagenum = $last_page;
         }
 
-    return self::$pagenum;
+        return self::$pagenum;
     }
-    //Get the current page
+        //Get the current page
 
-    public static function setLimit($row_length)
+    public static function getLimit($row_length)
     {
+        $currpage = self::getCurrPage($row_length);
 
-    $currpage = self::setCurrPage($row_length);
+        self::$limit = ($currpage - 1) * self::MAX_ITEM .',' .self::MAX_ITEM;
 
-    self::$limit = ($currpage - 1) * self::MAX_ITEM .',' .self::MAX_ITEM;
-
-    return self::$limit;
+        return self::$limit;
     }
-    //Get the maximum number of item per page
+        //Get the maximum number of item per page
 
-    public static function setControls($row_length) 
+    public static function getControls($row_length)
     {
+        $last = self::getLastPage($row_length);
+        $pagenum = self::getCurrPage($row_length);
+        $limit = self::getLimit($row_length);
 
-    $last = self::setLastPage($row_length); 
-    $pagenum = self::setCurrPage($row_length);
-    $limit = self::setLimit($row_length);
+        $page_url =& $url['pn'];
+        $pageCtrls = '';
 
-    $page_url =& $url['pn'];
-    $pageCtrls = ''; 
+        if($last != 1) {
+            if($pagenum > 1) {
 
-        if($last != 1) { 
-            if ($pagenum > 1) { 
-                $page_url = $pagenum - self::PREVIOUS_PAGE; 
-                $pageCtrls .= '<a href="'. url('', $url) .'">Previous</a> &nbsp; &nbsp'; 
+                $page_url = $pagenum - self::PREVIOUS_PAGE;
+                $pageCtrls .= '<a href="'. url('', $url) .'">Previous</a> &nbsp; &nbsp';
 
                 for($i = $pagenum - self::PAGE_LINKS; $i < $pagenum; $i++) {
                     if($i > 0) { 
-                        $pageCtrls .= '<a href="'. url('', $url) .'">'.$i.'</a> &nbsp'; 
+                        $pageCtrls .= '<a href="'. url('', $url) .'">'.$i.'</a> &nbsp';
                     }
                 }
             }
+
             $pageCtrls .= ''.$pagenum.' &nbsp; ';
 
-            for($i = $pagenum + self::NEXT_PAGE; $i <= $last; $i++) { 
+            for($i = $pagenum + self::NEXT_PAGE; $i <= $last; $i++) {
+
                 $page_url = $i;
-                $pageCtrls .= '<a href="'.url('', $url).'">'.$i.'</a> &nbsp;'; 
-                if($i >= $pagenum + self::PAGE_LINKS) { 
-                    break; 
-                } 
+                $pageCtrls .= '<a href="'.url('', $url).'">'.$i.'</a> &nbsp;';
+
+                if($i >= $pagenum + self::PAGE_LINKS) {
+                    break;
+                }
             }
 
-            if ($pagenum != $last) {
-                $page_url = $pagenum + self::NEXT_PAGE; 
+            if($pagenum != $last) {
+                $page_url = $pagenum + self::NEXT_PAGE;
                 $pageCtrls .= '&nbsp; &nbsp; <a href="'.url('', $url).'">Next</a>';
-            } 
-        } 
+            }
+        }
 
-    self::$pagination['pagenum'] = $pagenum;
-    self::$pagination['max'] = $limit;
-    self::$pagination['control'] = $pageCtrls;
-    self::$pagination['last_page'] = $last;
+        self::$pagination['pagenum'] = $pagenum;
+        self::$pagination['max'] = $limit;
+        self::$pagination['control'] = $pageCtrls;
+        self::$pagination['last_page'] = $last;
    
-    return self::$pagination;
+        return self::$pagination;
     }
 }

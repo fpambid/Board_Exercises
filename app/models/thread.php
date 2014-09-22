@@ -10,7 +10,7 @@ class Thread extends AppModel
                 'validate_between', self::MIN_TITLE_LENGTH, self::MAX_TITLE_LENGTH,
             ),
             'format' => array(
-                'is_username_valid', "Invalid Title",
+                'is_title_valid', "Invalid Title",
             ),
         ),
 
@@ -22,8 +22,8 @@ class Thread extends AppModel
     public static function getAll($total_thread, $category) 
     {
         $threads = array();
-        $total_thread = self::count();
-        $limited = Pagination::setLimit($total_thread);
+        $thread_count = self::count();
+        $limited = Pagination::getLimit($thread_count);
         $order_by = self::sortThreads($category);
 
         $db = DB::conn();
@@ -41,8 +41,6 @@ class Thread extends AppModel
     */
     public static function get($id) 
     {
-        $thread_id = Param::get('thread_id');
-
         $db = DB::conn();
         $row = $db->row('SELECT * FROM thread WHERE id = ?', array($id));
 
@@ -119,7 +117,7 @@ class Thread extends AppModel
             case 'title':
                 $order_by = 'ORDER BY title';
                 break;
-            case 'created':
+            case 'oldest':
                 $order_by = 'ORDER BY created';
                 break;
             default:
@@ -130,13 +128,13 @@ class Thread extends AppModel
         return $order_by;
     } 
 
-    public function delete()
+    public function delete($session)
     {
         $db = DB::conn();
 
         $thread = 'DELETE FROM thread WHERE id = ? and user_id = ?';
         $comment = 'DELETE FROM comment WHERE thread_id = ? and user_id = ?';
-        $where_params = array($this->id, $_SESSION['id']);
+        $where_params = array($this->id, $session);
         
         $db->query($thread, $where_params);
         $db->query($comment, $where_params);   

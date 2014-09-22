@@ -14,7 +14,7 @@ class CommentController extends AppController
         $thread = Comment::getByThreadId($thread_id);
 
         $total_comment = Comment::count($thread_id);
-        $pagination = Pagination::setControls($total_comment); 
+        $pagination = Pagination::getControls($total_comment); 
 
         $comments = $thread->getAll($pagination['max'], $thread_id);
 
@@ -61,7 +61,7 @@ class CommentController extends AppController
     {
         confirm_logged_in();
         
-        $comment = Comment::getComment(Param::get('id'));
+        $comment = Comment::get(Param::get('id'));
         $comment->delete(); 
         redirect($_SERVER['HTTP_REFERER']);
 
