@@ -16,7 +16,7 @@ class CommentController extends AppController
         $total_comment = Comment::count($thread_id);
         $pagination = Pagination::getControls($total_comment); 
 
-        $comments = $thread->getAll($pagination['max'], $thread_id);
+        $comments = $thread->getAll($total_comment, $thread_id);
 
         $this->set(get_defined_vars());
     }

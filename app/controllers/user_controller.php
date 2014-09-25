@@ -44,8 +44,6 @@ class UserController Extends AppController
         confirm_logged_out();
 
         $status = NULL;
-        $empty_field = NULL;
-
         $user = new User();
  
         $user->username = Param::get('username');
@@ -60,26 +58,16 @@ class UserController Extends AppController
             'password' => $user->password
         );
 
-       	if($_POST) {
-            foreach ($user_detail as $key => $value) {
-                if (!$value) {
-                    $empty_field++;
-                } else {
-                    $user_detail['$key'] = $value;
-                }
-            }
+        if($_POST) {
 
-            if (!$empty_field) {
-
-                try {
-                    $user->register($user_detail);
-                    $status = notice("Registration Done! Thank You!");
-                } catch (UserExistsException $e) {
-                    $status = notice($e->getMessage(), "error");
-            
-                } catch (ValidationException $e) {
-                    $status = notice($e->getMessage(), "error");
-                }  
+            try {
+                $user->register($user_detail);
+                $status = notice("Registration Done! Thank You!");
+            } catch (UserExistsException $e) {
+                $status = notice($e->getMessage(), "error");
+        
+            } catch (ValidationException $e) {
+                $status = notice($e->getMessage(), "error");
             }  
         }
 
@@ -92,8 +80,6 @@ class UserController Extends AppController
         confirm_logged_in();
 
         $status = NULL;
-        $empty_field = NULL;
-
         $user = new User();
 
         $user->username = Param::get('username');
@@ -110,25 +96,15 @@ class UserController Extends AppController
         );
 
         if($_POST) {
-            foreach ($user_detail as $key => $value) {
-                if (!$value) {
-                    $empty_field++;
-                } else {
-                    $user_detail['$key'] = $value;
-                }
-            }
-
-            if (!$empty_field) {
-
-                try {
-                    $user->update($user_detail);
-                    $status = notice("Your Account is updated! Thank You!");
-                } catch (UserExistsException $e) {
-                    $status = notice($e->getMessage(), "error");
             
-                } catch (ValidationException $e) {
-                    $status = notice($e->getMessage(), "error");
-                }  
+            try {
+                $user->update($user_detail);
+                $status = notice("Your Account is updated! Thank You!");
+            } catch (UserExistsException $e) {
+                $status = notice($e->getMessage(), "error");
+        
+            } catch (ValidationException $e) {
+                $status = notice($e->getMessage(), "error");
             }  
         }
         //TODO: Get all threads

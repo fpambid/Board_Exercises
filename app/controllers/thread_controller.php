@@ -14,7 +14,7 @@ class ThreadController extends AppController
         $pagination = Pagination::getControls($total_thread);
         $sort = Param::get('sort_by');
 
-        $threads = Thread::getAll($pagination['max'], $sort);
+        $threads = Thread::getAll($total_thread, $sort);
         $this->set(get_defined_vars());
     }
 

@@ -80,7 +80,7 @@ class Pagination
 
                 for($i = $pagenum - self::PAGE_LINKS; $i < $pagenum; $i++) {
                     if($i > 0) { 
-                        $pageCtrls .= '<a href="'. url('', $url) .'">'.$i.'</a> &nbsp';
+                        $pageCtrls .= '<a href="'. url('', $url) .'">'.$i.'</a> &nbsp;';
                     }
                 }
             }
@@ -103,10 +103,7 @@ class Pagination
             }
         }
 
-        self::$pagination['pagenum'] = $pagenum;
-        self::$pagination['max'] = $row_length;
         self::$pagination['control'] = $pageCtrls;
-        self::$pagination['last_page'] = $last;
    
         return self::$pagination;
     }
