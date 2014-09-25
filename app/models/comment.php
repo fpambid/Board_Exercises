@@ -28,11 +28,9 @@ class Comment extends AppModel
 
         $comments = array();
         $db = DB::conn();
-        $where = "thread_id = ?";
-        $where_params = array($this->id);
-        $order = "created DESC";
 
-        $rows = $db->search('comment', $where, $where_params, $order, $limited);
+        $rows = $db->search('comment', 'thread_id = ?', array($this->id), 
+            'created DESC', $limited);
 
         foreach ($rows as $row) {
             $comments[] = new Comment($row);

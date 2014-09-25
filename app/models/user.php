@@ -126,14 +126,14 @@ class User extends AppModel
         $db->commit();
     }
 
-    public function updateSession()
+    public function updateSession($session)
     {
         $db = DB::conn();
 
         $query = "SELECT * FROM user WHERE id = ?";
-        $param = array($_SESSION['id']);
+        // $param = array($_SESSION['id']);
 
-        $values = $db->row($query, $param);
+        $values = $db->row($query, array($session));
 
         return $values;
     }

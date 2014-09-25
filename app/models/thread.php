@@ -133,9 +133,8 @@ class Thread extends AppModel
 
         $thread = 'DELETE FROM thread WHERE id = ? and user_id = ?';
         $comment = 'DELETE FROM comment WHERE thread_id = ? and user_id = ?';
-        $where_params = array($this->id, $session);
         
-        $db->query($thread, $where_params);
-        $db->query($comment, $where_params);   
+        $db->query($thread, array($this->id, $session));
+        $db->query($comment, array($this->id, $session));   
     }
 }

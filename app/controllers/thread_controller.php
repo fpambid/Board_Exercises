@@ -5,8 +5,9 @@ class ThreadController extends AppController
     {
         confirm_logged_in();
 
+        $session = $_SESSION['id'];
         $user = new User();
-        $values = $user->updateSession();
+        $values = $user->updateSession($session);
         $_SESSION['username'] = $values['username'];
 
         $total_thread = Thread::count();

@@ -121,7 +121,7 @@ class UserController Extends AppController
             if (!$empty_field) {
 
                 try {
-                    $a = $user->update($user_detail);
+                    $user->update($user_detail);
                     $status = notice("Your Account is updated! Thank You!");
                 } catch (UserExistsException $e) {
                     $status = notice($e->getMessage(), "error");
