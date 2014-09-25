@@ -24,8 +24,7 @@ class Comment extends AppModel
     */
     public function getAll($total_comment, $thread_id) 
     {
-        $comment_count = $this->count($thread_id);
-        $limited = Pagination::getLimit($comment_count);
+        $limited = Pagination::getLimit($total_comment);
 
         $comments = array();
         $db = DB::conn();
@@ -43,8 +42,6 @@ class Comment extends AppModel
 
     public static function getByThreadId($id) 
     {
-        $thread_id = Param::get('thread_id');
-
         $db = DB::conn();
         $row = $db->row('SELECT * FROM thread WHERE id = ?', array($id));
 

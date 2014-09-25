@@ -104,7 +104,7 @@ class Pagination
         }
 
         self::$pagination['pagenum'] = $pagenum;
-        self::$pagination['max'] = $limit;
+        self::$pagination['max'] = $row_length;
         self::$pagination['control'] = $pageCtrls;
         self::$pagination['last_page'] = $last;
    

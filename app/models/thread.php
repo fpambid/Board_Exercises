@@ -22,8 +22,7 @@ class Thread extends AppModel
     public static function getAll($total_thread, $category) 
     {
         $threads = array();
-        $thread_count = self::count();
-        $limited = Pagination::getLimit($thread_count);
+        $limited = Pagination::getLimit($total_thread);
         $order_by = self::sortThreads($category);
 
         $db = DB::conn();
