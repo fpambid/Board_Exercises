@@ -26,7 +26,7 @@
 	<hr>
 	<form class="well" method="post" action="<?php say(url('thread/write')) ?>">
 	    <label>Your name</label>
-	    <input type="text" class="span2" name="username" value="<?php say(Param::get('username')) ?>">
+	    <input type="text" class="span2" name="username" value="<?php echo $_SESSION['username'];?>" disabled>
 	    <label>Comment</label>
 	    <textarea name="body"><?php say(Param::get('body')) ?></textarea> <br />
 	    <input type="hidden" name="thread_id" value="<?php say($thread->id) ?>">

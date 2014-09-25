@@ -123,11 +123,12 @@ class Log
         if (is_string($data)) {
             return $data;
         }
-    ob_start();
-    ini_set('html_errors', 0);
-    var_dump($data);
-    ini_set('html_errors', 1);
-    return ob_get_clean();
+        
+        ob_start();
+        ini_set('html_errors', 0);
+        var_dump($data);
+        ini_set('html_errors', 1);
+        return ob_get_clean();
     }
 }
 

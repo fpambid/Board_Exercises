@@ -9,20 +9,24 @@ class Thread extends AppModel
             'length' => array(
                 'validate_between', self::MIN_TITLE_LENGTH, self::MAX_TITLE_LENGTH,
             ),
+            'format' => array(
+                'is_title_valid', "Invalid Title",
+            ),
         ),
+
     );
 
     /**
-    *
     *Select all threads from database
     */
-    public static function getAll($total_thread) 
+    public static function getAll($total_thread, $category) 
     {
         $threads = array();
-        $total_thread = self::count();
-        $limited = Pagination::setLimit($total_thread);
+        $limited = Pagination::getLimit($total_thread);
+        $order_by = self::sortThreads($category);
+
         $db = DB::conn();
-        $rows = $db->rows("SELECT * FROM thread $limited");
+        $rows = $db->rows("SELECT * FROM thread $order_by LIMIT $limited");
         
         foreach ($rows as $row) {
             $threads[] = new self($row);
@@ -39,6 +43,10 @@ class Thread extends AppModel
         $db = DB::conn();
         $row = $db->row('SELECT * FROM thread WHERE id = ?', array($id));
 
+        if(!$row) {
+            throw new ValidationException("Please fill out field!");
+        }
+
         return new self($row);
     }
 
@@ -48,7 +56,8 @@ class Thread extends AppModel
             "thread_id" => $this->id,
             "username" => $comment->username,
             "body" => $comment->body,
-            "created" => date('Y-m-d H:i:s'));
+            "created" => date('Y-m-d H:i:s'),
+            "user_id" => $comment->user_id);
 
         if (!$comment->validate()) {
             throw new ValidationException('invalid comment');
@@ -67,7 +76,9 @@ class Thread extends AppModel
         $params = array(
             "id" => $this->id, 
             "title" => $this->title,
-            "created" => date('Y-m-d H:i:s'));
+            "created" => date('Y-m-d H:i:s'),
+            "user_id" => $comment->user_id,
+            "username" => $comment->username);
 
         $db = DB::conn();
 
@@ -87,6 +98,7 @@ class Thread extends AppModel
 
         } catch (ValidationException $e) {
             $db->rollback();
+            throw $e;
         } 
     }
 
@@ -96,5 +108,33 @@ class Thread extends AppModel
         $total = $db->value("SELECT COUNT(id) FROM thread");
 
         return $total;
+    }
+
+    public static function sortThreads($category)
+    {
+        switch($category) {
+            case 'title':
+                $order_by = 'ORDER BY title';
+                break;
+            case 'oldest':
+                $order_by = 'ORDER BY created';
+                break;
+            default:
+                $order_by = 'ORDER BY created DESC';
+                break;
+        }
+
+        return $order_by;
+    } 
+
+    public function delete($session)
+    {
+        $db = DB::conn();
+
+        $thread = 'DELETE FROM thread WHERE id = ? and user_id = ?';
+        $comment = 'DELETE FROM comment WHERE thread_id = ? and user_id = ?';
+        
+        $db->query($thread, array($this->id, $session));
+        $db->query($comment, array($this->id, $session));   
     }
 }

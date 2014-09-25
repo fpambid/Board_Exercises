@@ -2,7 +2,7 @@
 class User extends AppModel
 {
     const MIN_NAME_LENGTH = 3;
-    const MAX_NAME_LENGTH = 20;
+    const MAX_NAME_LENGTH = 30;
     const MIN_PASS_LENGTH = 6;
     const MAX_PASS_LENGTH = 40;
 
@@ -41,15 +41,15 @@ class User extends AppModel
     *@param $username, $password
     *@throws RecordNotFoundException
     */
-    public function authenticate($username, $password) 
+    public function authenticate() 
     {
         if (!$this->validate()) {
             throw new ValidationException("Invalid Username/Password");
         }
 
-        $db=DB::conn();
-        $query = 'SELECT * FROM user_detail WHERE username = ? AND password = ?';
-        $param = array($username, $password);
+        $db = DB::conn();
+        $query = 'SELECT * FROM user WHERE username = ? AND password = ?';
+        $param = array($this->username, $this->password);
 
         $row = $db->row($query, $param);
 
@@ -60,7 +60,7 @@ class User extends AppModel
     }
 
     /**
-    *Insert validated values to table user_detail
+    *Insert validated values to table user
     */ 
     public function register(array $user_detail) 
     {
@@ -79,7 +79,7 @@ class User extends AppModel
 
         $db = DB::conn();
 
-        $query = 'SELECT username, email, name FROM user_detail WHERE username = ? OR email = ? OR name = ?';
+        $query = 'SELECT username, email, name FROM user WHERE username = ? OR email = ? OR name = ?';
         $param = array($this->username, $this->email, $this->name);
 
         $row = $db->row($query, $param);
@@ -88,7 +88,53 @@ class User extends AppModel
             throw new UserExistsException(notice('Sorry, that Username, Name or Email is not available', "error"));
         }
         else { 
-            $db->insert('user_detail', $values);      
+            $db->insert('user', $values);      
         }
     }  
+
+    public function update()
+    {   
+        $values = array(
+            'name' => $this->name,
+            'username' => $this->username,
+            'email' => $this->email,
+            'password' => sha1($this->password),
+            'updated' => date('Y-m-d H:i:s')
+        );
+
+        $author = array('username' => $this->username);
+
+        if (!$this->validate()) {
+            throw new ValidationException(notice('Error Found!', "error"));
+        }
+
+        $db = DB::conn();
+
+        $db->begin();
+
+        $query = 'SELECT username, email, name, id FROM user WHERE (username = ? OR email = ? OR name = ?) AND id != ?';
+        $param = array($this->username, $this->email, $this->name, $_SESSION['id']);
+
+        $row = $db->row($query, $param);
+
+        if($row) {
+            throw new UserExistsException(notice('Sorry, that Username, Name or Email is not available', "error"));
+        } else { 
+            $db->update('user', $values, array('id' => $this->id));
+            $db->update('thread', $author, array('user_id' => $this->id));   
+        }
+        $db->commit();
+    }
+
+    public function updateSession($session)
+    {
+        $db = DB::conn();
+
+        $query = "SELECT * FROM user WHERE id = ?";
+        // $param = array($_SESSION['id']);
+
+        $values = $db->row($query, array($session));
+
+        return $values;
+    }
 }

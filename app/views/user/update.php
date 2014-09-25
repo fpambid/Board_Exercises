@@ -44,13 +44,9 @@
 
 <div class="container">
     <div class="row">
-        <form role="form" action = "<?php say(url(''))?>" method = "post" onSubmit = "register()">
+        <form role="form" action = "<?php say(url(''))?>" method = "POST" onSubmit = "update()">
             <div class="col-lg-6">
-                <div class="well well-sm"><strong><span class="icon-pencil"></span>&nbsp;Create an Account</strong>
-                </div>
-                <div style="float: right; width: 250px; height: 50px; margin: -70px" >
-                <a size = "10px" name = "login" href="<?php say(url('../'));?>">
-                <font size = "2.5">Have an Account? Log in</font></a>
+                <div class="well well-sm"><strong><span class="icon-pencil"></span>&nbsp;Update your Account</strong>
                 </div>
                 <div class="form-group">
                     <label for="InputName">Name</label>
@@ -58,7 +54,7 @@
                         <input type="text" class="form-control" name="name" id="name" required>
                         <span class="input-group-addon"><span class="icon-asterisk"></span></span>
                     </div>
-                </div>
+                </div> 
                 <div class="form-group">
                     <label for="InputUsername">Username</label>
                      <div class="input-group">
@@ -72,7 +68,7 @@
                         <input type="email" class="form-control" id="email" name="email" required>
                         <span class="input-group-addon"><span class="icon-asterisk"></span></span>
                     </div>
-                </div>
+                </div>  
                 <div class="form-group">
                     <label for="InputPassword">Password</label>
                     <div class="input-group">
@@ -85,4 +81,5 @@
         </form>
     </div>
 </div>
+
 <?php echo $status;?>
