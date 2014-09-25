@@ -12,6 +12,10 @@ class Pagination
     public static $limit;
     public static $pagination = array();
 
+    /**
+    *Get last page
+    *@param $row_length,
+    */
     public static function getLastPage($row_length)
     {
         self::$last = ceil($row_length/self::MAX_ITEM);
@@ -22,9 +26,12 @@ class Pagination
 
         return self::$last;
     }
-        //Get the last page 
 
-    public static function getCurrPage($row_length)
+    /**
+    *Get the current page
+    *@param $row_length
+    */
+    public static function getCurrentPage($row_length)
     {
         $last_page = self::getLastPage($row_length);
 
@@ -38,22 +45,28 @@ class Pagination
 
         return self::$pagenum;
     }
-        //Get the current page
 
+    /**
+    *Get the maximum number of item per page
+    *@param $row_length
+    */
     public static function getLimit($row_length)
     {
-        $currpage = self::getCurrPage($row_length);
+        $currpage = self::getCurrentPage($row_length);
 
         self::$limit = ($currpage - 1) * self::MAX_ITEM .',' .self::MAX_ITEM;
 
         return self::$limit;
     }
-        //Get the maximum number of item per page
 
+    /**
+    *Set page links for pagination
+    *@param $row_length
+    */
     public static function getControls($row_length)
     {
         $last = self::getLastPage($row_length);
-        $pagenum = self::getCurrPage($row_length);
+        $pagenum = self::getCurrentPage($row_length);
         $limit = self::getLimit($row_length);
 
         $page_url =& $url['pn'];

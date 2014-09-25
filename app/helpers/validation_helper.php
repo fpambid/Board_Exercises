@@ -22,7 +22,7 @@ function is_email_valid($email)
 
 function is_username_valid($uname) 
 {
-    return preg_match('/^([a-zA-Z_-]+)$/', $uname);
+    return preg_match('/^([a-zA-Z_-\d]+)$/', $uname);
 }
 
 function is_title_valid($string)
