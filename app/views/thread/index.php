@@ -7,18 +7,25 @@
             </font></strong></span>
             </div>
         </div>
-
+<?php $selected = null; ?>
             <form class = "form-search" method = "GET">
             <div style="float: right; width: 250px; height: 50px;" >
             <label> Sort by: </label>
-                <select name="sort_by" class="span2">
-                <?php if($category = 'title'): ?>
-                    <option value="title" selected >Title</option>
-               <?php endif ?>
-               <?php if($category = 'oldest'): ?>
-                    <option value="oldest" selected >Oldest</option>
-               <?php endif ?>
+
+                <select name="sort_by" class="span2">  
+
+                <?php if($_GET['sort_by'] == 'title'): ?>
+                    <?php $selected = "selected" ?>
+                <?php elseif($_GET['sort_by'] == 'oldest'): ?>
+                    <?php $select = "selected" ?>
+                <?php endif ?>
+
+                <option value="title" <?php echo $selected ?>>Title</option>
+                <option value="oldest" <?php echo $select ?>>Oldest</option>
                 </select>
+
+                
+
                 <button type="submit" name="btnSort" class="btn">Go</button>
             </div>
             </form>
