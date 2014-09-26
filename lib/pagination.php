@@ -105,6 +105,6 @@ class Pagination
 
         self::$pagination['control'] = $pageCtrls;
    
-        return self::$pagination;
+   
     }
 }
